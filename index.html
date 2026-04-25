@@ -213,45 +213,26 @@ header{
 
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
 
+let allJobs = [];
+
 fetch(sheetURL)
 .then(res => res.text())
 .then(data => {
 
     let rows = data.trim().split("\n").slice(1);
 
-    let html = "";
-
     rows.forEach(row => {
 
-        let cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+        let cols = row.split(",");
 
-        let title = cols[0] || "";
-        let desc  = cols[1] || "";
-        let link  = cols[2] || "";
-        let date  = cols[3] || "";
-        let pdf   = cols[4] || "";
-
-        let pdfBtn = pdf 
-            ? `<a class="btn" href="${pdf}" target="_blank">PDF</a>` 
-            : "";
-
-        html += `
-        <div class="card">
-            <h3>${title}</h3>
-            <p>${desc}</p>
-            <small>${date}</small><br>
-            <a class="btn" href="${link}" target="_blank">Apply</a>
-            ${pdfBtn}
-        </div>
-        `;
+        allJobs.push({
+            title: cols[0] || "",
+            desc: cols[1] || "",
+            link: cols[2] || "",
+            date: cols[3] || "",
+            pdf: cols[4] || ""   // ✅ FIXED
+        });
     });
-
-    document.getElementById("jobs").innerHTML = html;
-
-})
-.catch(err => {
-    console.log("Error:", err);
-});
     renderJobs(allJobs);
  
 
