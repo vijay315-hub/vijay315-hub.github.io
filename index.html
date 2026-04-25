@@ -242,14 +242,12 @@ const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi
 let allJobs = [];
 
 fetch(sheetURL)
-  
 .then(res => res.text())
 .then(data => {
 
     let rows = data.trim().split("\n").slice(1);
 
     rows.forEach(row => {
-
         let cols = row.split(",");
 
         allJobs.push({
@@ -257,19 +255,20 @@ fetch(sheetURL)
             desc: cols[1] || "",
             link: cols[2] || "",
             date: cols[3] || "",
-            pdf: cols[4] || ""   // ✅ FIXED
+            pdf: cols[4] || ""
         });
     });
-  // ✅ SHOW JOBS
+
     renderJobs(allJobs);
 
-    // ✅ UPDATE TICKER
+    // ✅ ADD THIS PART
     let tickerText = "";
     allJobs.slice(0,5).forEach(job => {
         tickerText += " 🔴 " + job.title;
     });
 
     document.getElementById("tickerText").innerText = tickerText;
+
 });
 
     renderJobs(allJobs);
