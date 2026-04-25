@@ -242,21 +242,7 @@ const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi
 let allJobs = [];
 
 fetch(sheetURL)
-  let ticker = "";
   
-  fetch(sheetURL)
-  .then(res => res.text())
-  .then(data => {
-  
-      let rows = data.trim().split("\n").slice(1);
-  
-      rows.slice(0,5).forEach(row => {
-          let cols = row.split(",");
-          ticker += " 🔴 " + cols[0];
-      });
-  
-      document.getElementById("tickerText").innerText = ticker;
-  });
 .then(res => res.text())
 .then(data => {
 
