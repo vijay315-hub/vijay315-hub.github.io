@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vijay315-hub.github.io/gov-job-portal/">
+  <!-- SEO META -->
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://vijay315-hub.github.io/gov-job-portal/">
+
+<!-- Open Graph -->
+<meta property="og:url" content="https://vijay315-hub.github.io/gov-job-portal/">
+<meta property="og:image" content="https://via.placeholder.com/300">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MHBPC1C96Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MHBPC1C96Y');
+</script>    
+
+<meta name="google-site-verification" content="43u1mlLsynOfBSKTEifqdGEEaVlHKcqrh3UDkyEa0Tk" />
+  <meta name="google-adsense-account" content="ca-pub-2328489162459722">    
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2328489162459722"
+     crossorigin="anonymous"></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Latest Government Jobs | India Job Updates 2026</title>
+
+<meta name="description" content="Find latest government jobs, Gujarat jobs, 10th pass, 12th pass, and graduate jobs. Daily updated job portal.">
+
+<meta name="keywords" content="government jobs, Gujarat jobs, OJAS, SSC jobs, railway jobs, bank jobs, latest jobs India">
+
+<meta name="author" content="Vijay Job Portal">
+
+<!-- Open Graph (for sharing on WhatsApp/Facebook) -->
+<meta property="og:title" content="Latest Government Jobs Portal">
+<meta property="og:description" content="Daily updated government job listings in India">
+<meta property="og:type" content="website">
+
+<!-- Favicon (optional) -->
+<link rel="icon" href="https://github.githubassets.com/favicons/favicon.png">
+<style>
+
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f4f6f8;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+/* SEARCH */
+.search-box{
+    text-align:center;
+    margin:20px;
+}
+
+.search-box input{
+    width:60%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+/* CARD */
+.container{
+    width:90%;
+    max-width:850px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:18px;
+    margin:12px 0;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+.btn{
+    display:inline-block;
+    margin-top:8px;
+    padding:7px 12px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Latest Government Job Updates in India</h1>
+<p>Daily updated government job listings including Gujarat jobs, railway, SSC, banking, and state-level recruitment.</p>
+</header>
+ <div style="text-align:center; margin:15px;">
+  <a class="btn" href="10th-pass-jobs.html">10th Pass Jobs</a>
+  <a class="btn" href="12th-pass-jobs.html">12th Pass Jobs</a>
+  <a class="btn" href="latest-jobs.html">Latest Jobs</a>
+</div> 
+
+<div class="search-box">
+<input type="text" id="search" placeholder="Search jobs...">
+</div>
+
+<div class="container" id="jobs">Loading...</div>
+
+  <footer>
+<p>© 2026 Job Portal | Built by Vijay</p>
+
+<div style="margin-top:10px;">
+  <a href="about.html">About</a> |
+  <a href="privacy-policy.html">Privacy Policy</a> |
+  <a href="contact.html">Contact</a>
+</div>
+
+</footer>
+
+<script>
+
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
+
+let allJobs = [];
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+    let rows = data.trim().split("\n").slice(1);
+
+    rows.forEach(row => {
+
+        let cols = row.split(",");
+
+        allJobs.push({
+            title: cols[0] || "",
+            desc: cols[1] || "",
+            link: cols[2] || "",
+            date: cols[3] || "",
+            pdf: cols[4] || ""   // ✅ FIXED
+        });
+    });
+
+    renderJobs(allJobs);
+});
+
+function renderJobs(jobs){
+
+    let html = "";
+
+    jobs.forEach(job => {
+
+        let pdfButton = job.pdf 
+        ? `<a class="btn" href="${job.pdf}" target="_blank">View PDF</a>`
+        : "";
+
+        html += `
+        <div class="card">
+            <h3>${job.title}</h3>
+            <p>${job.desc}</p>
+            <small>${job.date}</small><br>
+            <a class="btn" href="${job.link}" target="_blank">Apply</a>
+            ${pdfButton}
+        </div>
+        `;
+    });
+
+    document.getElementById("jobs").innerHTML = html;
+}
+
+/* SEARCH */
+document.getElementById("search").addEventListener("input", function(){
+
+    let value = this.value.toLowerCase();
+
+    let filtered = allJobs.filter(job =>
+        job.title.toLowerCase().includes(value)
+    );
+
+    renderJobs(filtered);
+});
+
+</script>
+
+</body>
+</html>
