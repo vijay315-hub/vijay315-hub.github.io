@@ -223,7 +223,7 @@ fetch(sheetURL)
 
     rows.forEach(row => {
 
-        let cols = row.split(",");
+        let cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
         let title = cols[0] || "";
         let desc  = cols[1] || "";
