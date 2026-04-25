@@ -259,24 +259,7 @@ fetch(sheetURL)
         });
     });
 
-    // ✅ SHOW JOBS
-    renderJobs(allJobs);
-
-    // ✅ FIXED TICKER (SAFE)
-    let tickerText = "";
-
-    allJobs.slice(0,5).forEach(job => {
-        tickerText += " 🔴 " + job.title;
-    });
-
-    let tickerElement = document.getElementById("tickerText");
-
-    if(tickerElement){
-        tickerElement.innerText = tickerText;
-    }
-
-})
-.catch(err => {
+    .catch(err => {
     console.log("Error:", err);
 });
 
