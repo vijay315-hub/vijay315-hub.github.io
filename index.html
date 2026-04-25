@@ -259,23 +259,7 @@ fetch(sheetURL)
 });
 
     renderJobs(allJobs);
-  // ✅ FIXED TICKER (WORKING)
-setTimeout(() => {
-
-    let el = document.getElementById("tickerText");
-
-    if (!el) return;
-
-    let text = "";
-
-    allJobs.slice(0,5).forEach(job => {
-        text += " 🔴 " + job.title;
-    });
-
-    el.innerText = text;
-
-}, 500);
-});
+ 
 
 function renderJobs(jobs){
 
