@@ -1,8 +1,124 @@
 <!DOCTYPE html>
-<html>
-<head><title>Contact</title></head>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Vijay Job Portal</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f4f6f8;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:25px;
+    text-align:center;
+}
+
+.container{
+    max-width:850px;
+    margin:20px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+h2{
+    color:#111827;
+    margin-top:20px;
+}
+
+p{
+    color:#4b5563;
+    line-height:1.7;
+}
+
+.btn{
+    display:inline-block;
+    margin:10px;
+    padding:8px 14px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+/* FORM */
+input, textarea{
+    width:100%;
+    padding:10px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+button{
+    padding:10px 15px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#6b7280;
+}
+</style>
+</head>
+
 <body>
-<h1>Contact</h1>
-<p>Email: your-email@gmail.com</p>
+
+<!-- NAV -->
+<div style="text-align:center;">
+  <a class="btn" href="index.html">🏠 Home</a>
+</div>
+
+<header>
+<h1>Contact Us</h1>
+</header>
+
+<div class="container">
+
+<p>If you have any questions, suggestions, or business inquiries, feel free to contact us.</p>
+
+<h2>Contact Information</h2>
+<p><strong>Email:</strong> your-email@example.com</p>
+
+<h2>Send Message</h2>
+
+<form>
+    <label>Your Name</label>
+    <input type="text" placeholder="Enter your name">
+
+    <label>Your Email</label>
+    <input type="email" placeholder="Enter your email">
+
+    <label>Your Message</label>
+    <textarea rows="4" placeholder="Write your message..."></textarea>
+
+    <button type="submit">Send Message</button>
+</form>
+
+<p><small>Note: This form is for display. To receive messages, backend integration is required.</small></p>
+
+</div>
+
+<footer>
+© 2026 Vijay Job Portal | All Rights Reserved
+</footer>
+
 </body>
 </html>
