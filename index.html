@@ -257,8 +257,17 @@ fetch(sheetURL)
             pdf: cols[4] || ""   // ✅ FIXED
         });
     });
-
+// ✅ SHOW JOBS
     renderJobs(allJobs);
+// 🔥 ADD THIS (TICKER FIX)
+    let tickerText = "";
+
+    allJobs.slice(0,5).forEach(job => {
+        tickerText += " 🔴 " + job.title;
+    });
+
+    document.getElementById("tickerText").innerText = tickerText;
+  
 });
 
 function renderJobs(jobs){
