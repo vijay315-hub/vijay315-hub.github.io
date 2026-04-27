@@ -262,7 +262,7 @@ fetch(sheetURL)
 // 🔥 ADD THIS (TICKER FIX)
     let tickerText = "";
 
-    allJobs.slice(0,5).forEach(job => {
+    allJobs.slice(-5).forEach(job => {
         tickerText += " 🔴 " + job.title;
     });
 
