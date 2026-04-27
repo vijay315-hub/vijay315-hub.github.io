@@ -136,7 +136,7 @@ header{
     font-size:12px;
     color:#9ca3af;
 }
- .navbar{
+.navbar{
     background:#111827;
     color:white;
     display:flex;
@@ -148,17 +148,27 @@ header{
     z-index:1000;
 }
 
-.nav-links a{
-    color:white;
-    margin-left:15px;
-    text-decoration:none;
-    font-size:14px;
+/* ADD THIS (missing) */
+.nav-links{
+    display:flex;
+    gap:15px;
 }
 
+/* LINKS */
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    padding:6px 10px;
+    border-radius:6px;
+    transition:0.3s;
+}
+
+/* HOVER */
 .nav-links a:hover{
     color:#22c55e;
-     display:flex;
-     gap:15px;
+    background:#1f2937;   /* optional smooth effect */
+
 }
 .news-ticker{
     background:#111827;
