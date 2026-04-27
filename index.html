@@ -187,6 +187,13 @@ header{
     0%{ transform: translateX(100%); }
     100%{ transform: translateX(-100%); }
 }
+
+.ticker-move{
+    display:inline-block;
+    white-space:nowrap;
+    padding-left:100%;   /* ✅ FIX */
+    animation: scrollText 20s linear infinite;
+}
 </style>
 </head>
 
