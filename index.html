@@ -157,6 +157,8 @@ header{
 
 .nav-links a:hover{
     color:#22c55e;
+     display:flex;
+     gap:15px;
 }
 .news-ticker{
     background:#111827;
@@ -166,9 +168,9 @@ header{
 }
 
 .ticker-move{
-    display:inline-block;
-    white-space:nowrap;
+    .ticker-move{
     animation: scrollText 5s linear infinite;
+}
 }
 
 .ticker-move a{
@@ -268,17 +270,14 @@ fetch(sheetURL)
 // ✅ SHOW JOBS
     renderJobs(allJobs);
 // 🔴 ONLY LAST JOB (LATEST)
-let latestJob = allJobs[allJobs.length - 1];
+if(allJobs.length > 0){
+  let latestJob = allJobs[allJobs.length - 1];
 
-let tickerHTML = `
-  <a href="${latestJob.link}" target="_blank">
-    🔴 Latest Job: ${latestJob.title}
-  </a>
-`;
-
-// duplicate for smooth loop
-
-document.getElementById("tickerText").innerHTML = tickerHTML;
+  document.getElementById("tickerText").innerHTML =
+    `<a href="${latestJob.link}" target="_blank">
+      🔴 Latest Job: ${latestJob.title}
+    </a>`;
+}
 });
 
 function renderJobs(jobs){
