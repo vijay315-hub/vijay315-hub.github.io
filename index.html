@@ -269,23 +269,19 @@ fetch(sheetURL)
     });
 // ✅ SHOW JOBS
     renderJobs(allJobs);
-let tickerHTML = "";
+// 🔴 ONLY LAST JOB (LATEST)
+let latestJob = allJobs[allJobs.length - 1];
 
-// loop ALL jobs (circular feel)
-allJobs.forEach(job => {
+let tickerHTML = `
+  <a href="${latestJob.link}" target="_blank">
+    🔴 Latest Job: ${latestJob.title}
+  </a>
+`;
 
-    tickerHTML += `
-      <a href="${job.link}" target="_blank">
-        🔴 ${job.title}
-      </a>
-    `;
-});
-
-// duplicate for smooth infinite loop
+// duplicate for smooth loop
 tickerHTML += tickerHTML;
 
 document.getElementById("tickerText").innerHTML = tickerHTML;
-  
 });
 
 function renderJobs(jobs){
