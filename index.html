@@ -167,26 +167,27 @@ header{
     padding:10px 0;
 }
 
+/* MOVING TEXT */
 .ticker-move{
-    .ticker-move{
-    animation: scrollText 5s linear infinite;
-}
+    display:inline-block;
+    white-space:nowrap;
+    padding-left:100%;  /* ✅ start from right */
+    animation: scrollText 20s linear infinite;
 }
 
+/* TEXT STYLE */
 .ticker-move a{
     color:white;
-    margin-right:40px;
     text-decoration:none;
     font-size:14px;
+    margin-right:50px;
 }
 
-.ticker-move a:hover{
-    color:#22c55e;
-}
-
+/* ANIMATION */
 @keyframes scrollText{
-    0%{ transform: translateX(100%); }
+    0%{ transform: translateX(0); }
     100%{ transform: translateX(-100%); }
+
 }
 
 </style>
