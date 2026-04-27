@@ -159,7 +159,7 @@ header{
 .nav-links a:hover{
     color:#22c55e;
 }
- .news-ticker{
+.news-ticker{
     background:#111827;
     overflow:hidden;
     white-space:nowrap;
@@ -187,7 +187,7 @@ header{
     0%{ transform: translateX(100%); }
     100%{ transform: translateX(-100%); }
 }
- </style>
+</style>
 </head>
 
 <body>
@@ -269,8 +269,7 @@ fetch(sheetURL)
     });
 // ✅ SHOW JOBS
     renderJobs(allJobs);
-// 🔥 ADD THIS (TICKER FIX)
-    let tickerHTML = "";
+let tickerHTML = "";
 
 // loop ALL jobs (circular feel)
 allJobs.forEach(job => {
