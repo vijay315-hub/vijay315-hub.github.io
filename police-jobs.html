@@ -1,56 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Police Government Jobs 2026 | Latest Police Vacancy India</title>
+<title>Police SI Jobs 2026 | Sub Inspector Recruitment India</title>
+
 <meta name="description" content="Get latest police SI jobs in India including sub inspector recruitment, state police vacancy and central police jobs.">
+
 <meta name="keywords" content="police SI jobs, sub inspector recruitment, police vacancy 2026, SI jobs India, latest police jobs">
-<link rel="canonical" href="https://vijay315-hub.github.io/police-jobs.html">  
-<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/police-pass-jobs.html">  
 
 <style>
-body{font-family:Arial;margin:0;background:#f4f6f8;}
-header{background:#111827;color:white;padding:20px;text-align:center;}
-.container{width:90%;max-width:850px;margin:auto;}
-.card{background:white;padding:15px;margin:10px 0;border-radius:10px;}
-.btn{background:#111827;color:white;padding:6px 10px;border-radius:6px;text-decoration:none;}
+body{
+    margin:0;
+    font-family: Arial;
+    background:#f4f6f8;
+}
+
+header{
+    background:#111827;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    max-width:850px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:18px;
+    margin:12px 0;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.02);
+}
+
+.btn{
+    display:inline-block;
+    margin-top:8px;
+    margin-right:5px;
+    padding:7px 12px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    color:#6b7280;
+}
+ .btn{
+    display:inline-block;
+    margin-top:8px;
+    padding:7px 12px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+}   
 </style>
+
 </head>
 
 <body>
-
+<div style="text-align:center; margin:10px;">
+  <a class="btn" href="index.html">⬅ Back to Home</a>
+</div>
 <header>
-<h1>Police Government Jobs 2026</h1>
-<p>Latest Police vacancies in India</p>
+<h1>Police Pass Government Jobs</h1>
 </header>
 
-<div class="container" id="jobs">Loading...</div>
+<div class="container" id="jobs">Loading jobs...</div>
+
+<footer>© 2026 Job Portal</footer>
 
 <script>
+
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
 
 fetch(sheetURL)
 .then(res => res.text())
 .then(data => {
-    let rows = data.split("\n").slice(1);
+
+    let rows = data.trim().split("\n").slice(1);
     let html = "";
 
-    rows.forEach(row=>{
-        let col = row.split(",");
+    rows.forEach(row => {
+
+        let cols = row.split(",");
+
+        if(cols.length < 5) return;
+
+        let title = cols[0];
+        let desc = cols[1];
+        let link = cols[2];
+        let date = cols[3];
+        let pdf  = cols[4];
+
+        // 🔥 FILTER (Police page)
         if(col[0].toLowerCase().includes("police") || col[0].toLowerCase().includes("si")){
+
+            let pdfLink = pdf && pdf.trim() !== "" ? pdf : link;
+
             html += `
             <div class="card">
-              <h3>${col[0]}</h3>
-              <p>${col[1]}</p>
-              <a class="btn" href="${col[2]}" target="_blank">Apply</a>
-            </div>`;
+                <h3>${title}</h3>
+                <p>${desc}</p>
+                <small>${date}</small><br>
+
+                <a class="btn" href="${link}" target="_blank">Apply</a>
+
+                <a class="btn" href="${pdfLink}" target="_blank">PDF</a>
+
+                <a class="btn"
+                href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
+                target="_blank">
+                Share
+                </a>
+            </div>
+            `;
         }
     });
 
-    document.getElementById("jobs").innerHTML = html || "No Police Jobs Found";
+    document.getElementById("jobs").innerHTML = html || "No jobs found";
+
+})
+.catch(err => {
+    document.getElementById("jobs").innerHTML = "Error loading jobs";
 });
+
 </script>
 
 </body>
