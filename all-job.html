@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>All Government Jobs 2026 | India Job Portal</title>
+<meta name="description" content="Find all latest government jobs in India including SSC, Railway, Bank, Police, Teacher and more.">
+<meta name="keywords" content="government jobs 2026, SSC jobs, railway jobs, bank jobs, Gujarat jobs, latest jobs India">
+<meta name="robots" content="index, follow">
+
+<style>
+body{font-family:Arial;margin:0;background:#f4f6f8;}
+
+header{
+    background:#111827;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.controls{
+    text-align:center;
+    margin:20px;
+}
+
+.controls input, .controls select{
+    padding:10px;
+    margin:5px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+.container{
+    width:90%;
+    max-width:900px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:12px 0;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+.btn{
+    background:#111827;
+    color:white;
+    padding:6px 10px;
+    border-radius:6px;
+    text-decoration:none;
+    margin-right:5px;
+}
+
+.btn:hover{
+    background:#22c55e;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>All Government Jobs 2026 🔥</h1>
+<p>Search & Filter Jobs Easily</p>
+</header>
+
+<div class="controls">
+<input type="text" id="search" placeholder="Search jobs...">
+
+<select id="category">
+<option value="all">All Categories</option>
+<option value="clerk">Clerk</option>
+<option value="police">Police</option>
+<option value="engineer">Engineer</option>
+<option value="bank">Bank</option>
+<option value="teacher">Teacher</option>
+<option value="railway">Railway</option>
+<option value="ssc">SSC</option>
+<option value="data">Data Entry</option>
+<option value="peon">Peon</option>
+<option value="gujarat">Gujarat</option>
+</select>
+</div>
+
+<div class="container" id="jobs">Loading...</div>
+
+<script>
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
+
+let allJobs = [];
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+    let rows = data.trim().split("\n").slice(1);
+
+    rows.forEach(row => {
+
+        let col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+        allJobs.push({
+            title: col[0] || "",
+            desc: col[1] || "",
+            link: col[2] || "#",
+            date: col[3] || "",
+            pdf: col[4] || ""
+        });
+    });
+
+    renderJobs(allJobs);
+});
+
+// 🔍 FILTER LOGIC
+function filterJobs(){
+
+    let search = document.getElementById("search").value.toLowerCase();
+    let category = document.getElementById("category").value;
+
+    let filtered = allJobs.filter(job => {
+
+        let text = (job.title + job.desc).toLowerCase();
+
+        let matchSearch = text.includes(search);
+
+        let matchCategory = true;
+
+        if(category !== "all"){
+
+            if(category === "clerk") matchCategory = text.includes("clerk");
+            if(category === "police") matchCategory = text.includes("police") || text.includes("constable");
+            if(category === "engineer") matchCategory = text.includes("engineer") || text.includes("je");
+            if(category === "bank") matchCategory = text.includes("bank") || text.includes("ibps") || text.includes("sbi");
+            if(category === "teacher") matchCategory = text.includes("teacher") || text.includes("tgt") || text.includes("pgt");
+            if(category === "railway") matchCategory = text.includes("railway") || text.includes("rrb");
+            if(category === "ssc") matchCategory = text.includes("ssc") || text.includes("cgl") || text.includes("chsl");
+            if(category === "data") matchCategory = text.includes("data entry") || text.includes("deo");
+            if(category === "peon") matchCategory = text.includes("peon") || text.includes("helper") || text.includes("mts");
+            if(category === "gujarat") matchCategory = text.includes("gujarat") || text.includes("ojas") || text.includes("gsssb");
+        }
+
+        return matchSearch && matchCategory;
+    });
+
+    renderJobs(filtered);
+}
+
+// 🎯 RENDER
+function renderJobs(jobs){
+
+    let html = "";
+
+    jobs.forEach(job => {
+
+        let pdfBtn = job.pdf
+        ? `<a class="btn" href="${job.pdf}" target="_blank">PDF</a>`
+        : "";
+
+        html += `
+        <div class="card">
+            <h3>${job.title}</h3>
+            <p>${job.desc}</p>
+            <small>${job.date}</small><br>
+
+            <a class="btn" href="${job.link}" target="_blank">Apply</a>
+            ${pdfBtn}
+        </div>
+        `;
+    });
+
+    document.getElementById("jobs").innerHTML = html || "No jobs found";
+}
+
+// 🎯 EVENTS
+document.getElementById("search").addEventListener("input", filterJobs);
+document.getElementById("category").addEventListener("change", filterJobs);
+
+</script>
+
+</body>
+</html>
