@@ -112,7 +112,7 @@ fetch(sheetURL)
         let pdf  = cols[4];
 
         // 🔥 FILTER (Clerk page)
-        if(title.toLowerCase().includes("Clerk") || desc.toLowerCase().includes("Clerk")){
+        if(title.toLowerCase().includes("clerk") || desc.toLowerCase().includes("clerk")){
 
             let pdfLink = pdf && pdf.trim() !== "" ? pdf : link;
 
