@@ -1,24 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Police SI Jobs 2026 | Sub Inspector Recruitment India</title>
-
-<meta name="description" content="Get latest police SI jobs in India including sub inspector recruitment, state police vacancy and central police jobs.">
-
-<meta name="keywords" content="police SI jobs, sub inspector recruitment, police vacancy 2026, SI jobs India, latest police jobs">
-
-<link rel="canonical" href="https://vijay315-hub.github.io/police-jobs.html">  
+<title>Police Jobs 2026 | Constable & SI Recruitment India</title>
+<meta name="description" content="Find latest police jobs in India including constable, SI and state police recruitment. Daily updated job portal.">
+<meta name="keywords" content="police jobs, constable recruitment, SI jobs India, police vacancy 2026, latest police jobs">
+<link rel="canonical" href="https://vijay315-hub.github.io/police-jobs.html">
+<meta name="robots" content="index, follow">
 
 <style>
-body{
-    margin:0;
-    font-family: Arial;
-    background:#f4f6f8;
-}
+body{font-family:Arial;margin:0;background:#f4f6f8;}
 
 header{
     background:#111827;
@@ -35,61 +28,53 @@ header{
 
 .card{
     background:white;
-    padding:18px;
+    padding:15px;
     margin:12px 0;
-    border-radius:12px;
+    border-radius:10px;
     box-shadow:0 3px 10px rgba(0,0,0,0.08);
     transition:0.3s;
 }
 
 .card:hover{
-    transform:scale(1.02);
+    transform:translateY(-3px);
 }
 
 .btn{
-    display:inline-block;
-    margin-top:8px;
-    margin-right:5px;
-    padding:7px 12px;
     background:#111827;
     color:white;
-    border-radius:8px;
+    padding:6px 10px;
+    border-radius:6px;
     text-decoration:none;
+    margin-right:5px;
+    display:inline-block;
     font-size:13px;
 }
 
+.btn:hover{
+    background:#22c55e;
+}
 footer{
     text-align:center;
     padding:20px;
-    color:#6b7280;
+    color:#6b7280; 
 }
- .btn{
-    display:inline-block;
-    margin-top:8px;
-    padding:7px 12px;
-    background:#111827;
-    color:white;
-    border-radius:8px;
-    text-decoration:none;
-}   
 </style>
-
 </head>
 
 <body>
+
 <div style="text-align:center; margin:10px;">
   <a class="btn" href="index.html">⬅ Back to Home</a>
 </div>
+
 <header>
-<h1>Police Pass Government Jobs</h1>
+<h1>Police Government Jobs 2026 🚔</h1>
+<p>Constable, SI & Police Recruitment Updates</p>
 </header>
 
-<div class="container" id="jobs">Loading jobs...</div>
-
+<div class="container" id="jobs">Loading...</div>
 <footer>© 2026 Job Portal</footer>
-
 <script>
-
 const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
 
 fetch(sheetURL)
@@ -101,24 +86,29 @@ fetch(sheetURL)
 
     rows.forEach(row => {
 
-        let cols = row.split(",");
+        // ✅ SAFE CSV SPLIT
+        let col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
-        if(cols.length < 5) return;
+        let title = col[0] || "";
+        let desc  = col[1] || "";
+        let link  = col[2] || "#";
+        let date  = col[3] || "";
+        let pdf   = col[4] || "";
 
-        let title = cols[0];
-        let desc = cols[1];
-        let link = cols[2];
-        let date = cols[3];
-        let pdf  = cols[4];
+        // 🚔 POLICE FILTER (IMPORTANT)
+        if(
+            title.toLowerCase().includes("police") ||
+            title.toLowerCase().includes("constable") ||
+            title.toLowerCase().includes("si") ||
+            title.toLowerCase().includes("sub inspector") ||
+            desc.toLowerCase().includes("police")
+        ){
 
-        // 🔥 FILTER (Police page)
-        if(col[0].toLowerCase().includes("police") || col[0].toLowerCase().includes("si")){
-
-            let pdfLink = pdf && pdf.trim() !== "" ? pdf : link;
+            let pdfLink = pdf.trim() !== "" ? pdf : link;
 
             html += `
             <div class="card">
-                <h3>${title}</h3>
+                <h3>🚔 ${title}</h3>
                 <p>${desc}</p>
                 <small>${date}</small><br>
 
@@ -136,13 +126,12 @@ fetch(sheetURL)
         }
     });
 
-    document.getElementById("jobs").innerHTML = html || "No jobs found";
+    document.getElementById("jobs").innerHTML = html || "No Police Jobs Found";
 
 })
 .catch(err => {
     document.getElementById("jobs").innerHTML = "Error loading jobs";
 });
-
 </script>
 
 </body>
