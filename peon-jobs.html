@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Peon Jobs 2026 | Latest Peon Government Jobs India</title>
+<meta name="description" content="Find latest peon jobs in India including office peon, helper, attendant and 10th pass jobs.">
+<meta name="keywords" content="peon jobs, office peon vacancy, helper jobs, attendant jobs 2026, 10th pass government jobs">
+<link rel="canonical" href="https://vijay315-hub.github.io/peon-jobs.html">
+<meta name="robots" content="index, follow">
+
+<style>
+body{font-family:Arial;margin:0;background:#f4f6f8;}
+
+header{
+    background:#111827;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    width:90%;
+    max-width:850px;
+    margin:auto;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    margin:12px 0;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+}
+
+.btn{
+    background:#111827;
+    color:white;
+    padding:6px 10px;
+    border-radius:6px;
+    text-decoration:none;
+    margin-right:5px;
+    display:inline-block;
+    font-size:13px;
+}
+
+.btn:hover{
+    background:#22c55e;
+}
+  footer{
+    text-align:center;
+    padding:20px;
+    color:#6b7280;
+  }
+</style>
+</head>
+
+<body>
+
+<div style="text-align:center; margin:10px;">
+  <a class="btn" href="index.html">⬅ Back to Home</a>
+</div>
+
+<header>
+<h1>Peon Government Jobs 2026 🧹</h1>
+<p>Office Peon, Helper & Attendant Jobs</p>
+</header>
+
+<div class="container" id="jobs">Loading...</div>
+<footer>© 2026 Job Portal</footer>
+<script>
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+    let rows = data.trim().split("\n").slice(1);
+    let html = "";
+
+    rows.forEach(row => {
+
+        // ✅ SAFE CSV SPLIT
+        let col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+        let title = col[0] || "";
+        let desc  = col[1] || "";
+        let link  = col[2] || "#";
+        let date  = col[3] || "";
+        let pdf   = col[4] || "";
+
+        // 🧹 PEON FILTER (IMPORTANT)
+        if(
+            title.toLowerCase().includes("peon") ||
+            title.toLowerCase().includes("helper") ||
+            title.toLowerCase().includes("attendant") ||
+            title.toLowerCase().includes("multitasking") ||
+            title.toLowerCase().includes("mts") ||
+            desc.toLowerCase().includes("peon")
+        ){
+
+            let pdfLink = pdf.trim() !== "" ? pdf : link;
+
+            html += `
+            <div class="card">
+                <h3>🧹 ${title}</h3>
+                <p>${desc}</p>
+                <small>${date}</small><br>
+
+                <a class="btn" href="${link}" target="_blank">Apply</a>
+
+                <a class="btn" href="${pdfLink}" target="_blank">PDF</a>
+
+                <a class="btn"
+                href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
+                target="_blank">
+                Share
+                </a>
+            </div>
+            `;
+        }
+    });
+
+    document.getElementById("jobs").innerHTML = html || "No Peon Jobs Found";
+
+})
+.catch(err => {
+    document.getElementById("jobs").innerHTML = "Error loading jobs";
+});
+</script>
+
+</body>
+</html>
