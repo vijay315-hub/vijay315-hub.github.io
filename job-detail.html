@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Job Details</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+    color:#111827;
+}
+
+/* HEADER */
+header{
+    background: linear-gradient(90deg, #1e3a8a, #2563eb);
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:800px;
+    margin:30px auto;
+}
+
+/* CARD */
+.card{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* TITLE */
+.card h2{
+    margin-bottom:10px;
+    color:#111827;
+}
+
+/* DESCRIPTION */
+.card p{
+    color:#374151;
+    line-height:1.6;
+}
+
+/* DATE BADGE */
+.date{
+    display:inline-block;
+    margin:10px 0;
+    padding:5px 10px;
+    background:#dcfce7;
+    color:#166534;
+    border-radius:6px;
+    font-size:13px;
+}
+
+/* BUTTON BASE */
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    margin-right:10px;
+    padding:10px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+}
+
+/* APPLY BUTTON */
+.apply-btn{
+    background:#22c55e;
+    color:white;
+}
+
+.apply-btn:hover{
+    background:#16a34a;
+    transform:translateY(-2px);
+}
+
+/* PDF BUTTON */
+.pdf-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.pdf-btn:hover{
+    background:#1e3a8a;
+    transform:translateY(-2px);
+}
+
+/* BACK LINK */
+.back-btn{
+    display:inline-block;
+    padding:8px 14px;
+    margin-bottom:20px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#22c55e;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <a class="back-btn" href="index.html">⬅ Back to Home</a>
+
+  <div id="jobDetail">Loading job details...</div>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQE0orW_Uem5Vi736r-rSdwHKpJLmCmHh9IhVjIs2au5nnhMjhWv8Pp1X-yKHRlo-LhHuzHc9dgHPSH/pub?output=csv";
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+    let rows = data.split("\n").slice(1);
+
+    if(!rows[id]){
+        document.getElementById("jobDetail").innerHTML = "Job not found ❌";
+        return;
+    }
+
+    let cols = rows[id].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
+    let title = cols[0] || "No Title";
+    let desc = cols[1] || "";
+    let link = cols[2] || "#";
+    let date = cols[3] || "";
+    let pdf  = cols[4] || "#";
+
+    document.getElementById("jobDetail").innerHTML = `
+    <div class="card">
+        <h2>${title}</h2>
+
+        <p>${desc}</p>
+
+        <div class="date">Last Date: ${date}</div><br>
+
+        <a class="btn apply-btn" href="${link}" target="_blank">🚀 Apply Now</a>
+        <a class="btn pdf-btn" href="${pdf}" target="_blank">📄 View PDF</a>
+    </div>
+`;
+})
+.catch(err => {
+    document.getElementById("jobDetail").innerHTML = "Error loading job ❌";
+    console.log(err);
+});
+
+</script>
+</body>
+</html>
