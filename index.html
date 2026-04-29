@@ -387,7 +387,7 @@ function renderJobs(jobs){
 
     let html = "";
 
-    jobs.forEach(job => {
+    jobs.forEach((job, index) => {
 
         let pdfButton = job.pdf 
         ? `<a class="btn" href="${job.pdf}" target="_blank">View PDF</a>`
