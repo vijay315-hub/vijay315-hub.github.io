@@ -78,10 +78,10 @@ fetch(sheetURL)
     let rows = data.trim().split("\n").slice(1);
     let html = "";
 
-    // show latest first
+    // latest first
     rows.reverse();
 
-    rows.forEach(row => {
+    rows.forEach((row) => {
 
         let cols = row.split(",");
 
@@ -95,19 +95,31 @@ fetch(sheetURL)
 
         html += `
         <div class="card">
-            <h3>${title}</h3>
+            <h3>🔥 ${title}</h3>
             <p>${desc}</p>
             <small>${date}</small><br>
+
             <a class="btn" href="${link}" target="_blank">Apply</a>
+
             ${pdfBtn}
+
+            <a class="btn"
+            href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
+            target="_blank">
+            Share
+            </a>
         </div>
         `;
     });
 
     document.getElementById("jobs").innerHTML = html;
+
+})
+.catch(err => {
+    document.getElementById("jobs").innerHTML = "Error loading jobs ❌";
+    console.log(err);
 });
 
 </script>
-
 </body>
 </html>
