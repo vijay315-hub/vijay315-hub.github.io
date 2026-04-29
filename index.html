@@ -137,9 +137,9 @@ header{
     font-size:12px;
     color:#9ca3af;
 }
+/* NAVBAR CONTAINER */
 .navbar{
-    background:#111827;
-    color:white;
+    background: #111827; /* matches header */
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -147,36 +147,63 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
 }
 
-/* ADD THIS (missing) */
+/* LOGO */
+.logo img{
+    height:40px;
+    width:auto;
+}
+
+/* NAV LINKS */
 .nav-links{
     display:flex;
-    gap:15px;
+    align-items:center;
 }
 
-/* LINKS */
+/* LINK STYLE */
 .nav-links a{
     color:white;
+    margin-left:20px;
     text-decoration:none;
     font-size:14px;
-    padding:6px 10px;
-    border-radius:6px;
+    font-weight:500;
+    position:relative;
     transition:0.3s;
 }
 
-/* HOVER */
-.nav-links a:hover{
-    color:#22c55e;
-    background:#1f2937;   /* optional smooth effect */
+/* HOVER EFFECT (underline animation) */
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#22c55e;
+    left:0;
+    bottom:-4px;
+    transition:0.3s;
+}
 
+.nav-links a:hover::after{
+    width:100%;
 }
-.news-ticker{
-    background:#111827;
-    overflow:hidden;
-    white-space:nowrap;
-    padding:10px 0;
+
+/* HOVER COLOR */
+.nav-links a:hover{
+    color:#d1fae5;
 }
+
+/* ACTIVE LINK (optional) */
+.nav-links a.active{
+    color:#22c55e;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+    .nav-links{
+        display:none;
+    }
 
 /* MOVING TEXT */
 .ticker-move{
@@ -212,15 +239,22 @@ header{
 </head>
 
 <body>
- <nav class="navbar">
-  <h2>Vijay Job Portal</h2>
+<nav class="navbar">
+
+  <div class="logo">
+    <a href="index.html">
+      <img src="logo.png" alt="Vijay Jobs Logo">
+    </a>
+  </div>
 
   <div class="nav-links">
     <a href="index.html">Home</a>
-    <a href="10th-pass-jobs.html">10th Jobs</a>
-    <a href="12th-pass-jobs.html">12th Jobs</a>
     <a href="latest-jobs.html">Latest Jobs</a>
+    <a href="about.html">About</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="contact.html">Contact Us</a>
   </div>
+
 </nav>
 <header>
 <h1>Latest Government Job Updates in India</h1>
