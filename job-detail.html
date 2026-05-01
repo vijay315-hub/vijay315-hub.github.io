@@ -61,7 +61,7 @@ header{
 }
 
 /* BUTTON BASE */
-.btn{
+/* .btn{
     display:inline-block;
     margin-top:15px;
     margin-right:10px;
@@ -70,7 +70,7 @@ header{
     text-decoration:none;
     font-weight:500;
     transition:0.3s;
-}
+} */
 
 /* APPLY BUTTON */
 .apply-btn{
@@ -110,6 +110,40 @@ header{
 .back-btn:hover{
     background:#22c55e;
 }
+.detail-box{
+    background:#1f2937;
+    padding:20px;
+    margin-top:20px;
+    border-radius:12px;
+    color:#d1d5db;
+    line-height:1.8;
+}
+
+.detail-box h3{
+    color:white;
+    margin-bottom:10px;
+}
+
+.detail-box ul,
+.detail-box ol{
+    padding-left:20px;
+} 
+ .btn{
+    display:inline-block;
+    margin-top:10px;
+    margin-right:10px;
+    padding:10px 16px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#1e40af;
+}   
 </style>
 </head>
 
@@ -148,18 +182,72 @@ fetch(sheetURL)
     let link = cols[2] || "#";
     let date = cols[3] || "";
     let pdf  = cols[4] || "#";
-
+    let edu = cols[5] || "Not Mentioned";
+    let age = cols[6] || "Not Mentioned";
+    let salary = cols[7] || "Not Mentioned";
+    let location = cols[8] || "India";
+ 
     document.getElementById("jobDetail").innerHTML = `
-    <div class="card">
-        <h2>${title}</h2>
 
-        <p>${desc}</p>
+<h2>${title}</h2>
 
-        <div class="date">Last Date: ${date}</div><br>
+<p>${desc}</p>
 
-        <a class="btn apply-btn" href="${link}" target="_blank">🚀 Apply Now</a>
-        <a class="btn pdf-btn" href="${pdf}" target="_blank">📄 View PDF</a>
-    </div>
+<div class="detail-box">
+
+<h3>Job Overview</h3>
+
+<p><b>📚 Education:</b> ${edu}</p>
+
+<p><b>🎂 Age Limit:</b> ${age}</p>
+
+<p><b>💰 Salary:</b> ${salary}</p>
+
+<p><b>📍 Location:</b> ${location}</p>
+
+<p><b>📅 Date:</b> ${date}</p>
+
+</div>
+
+<div class="detail-box">
+
+<h3>Selection Process</h3>
+
+<ul>
+<li>Written Exam</li>
+<li>Document Verification</li>
+<li>Medical Test</li>
+</ul>
+
+</div>
+
+<div class="detail-box">
+
+<h3>How To Apply</h3>
+
+<ol>
+<li>Read official notification carefully</li>
+<li>Click Apply Now button</li>
+<li>Fill online form</li>
+<li>Upload required documents</li>
+<li>Submit form before last date</li>
+</ol>
+
+</div>
+
+<div class="detail-box">
+
+<h3>Important Links</h3>
+
+<a class="btn" href="${link || '#'}" target="_blank">
+🚀 Apply Now
+</a>
+
+<a class="btn" href="${pdf || '#'}" target="_blank">
+📄 Download PDF
+</a>
+
+</div>
 `;
 })
 .catch(err => {
