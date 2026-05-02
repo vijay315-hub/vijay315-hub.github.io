@@ -146,7 +146,7 @@ fetch(sheetURL)
     let rows = data.trim().split("\n").slice(1);
     let html = "";
 
-    rows.forEach(row => {
+     [...rows].reverse().forEach((row, index) => {
 
         let cols = row.split(",");
 
@@ -161,27 +161,44 @@ fetch(sheetURL)
         // 🔥 FILTER (12th page)
         if(title.toLowerCase().includes("12th") || desc.toLowerCase().includes("12th")){
 
-            let pdfLink = pdf && pdf.trim() !== "" ? pdf : link;
+            let pdfLink = pdf.trim() !== "" ? pdf : link;
 
-            html += `
-            <div class="card">
-                <h3>${title}</h3>
-                <p>${desc}</p>
-                <small>${date}</small><br>
+        html += `
+        <div class="card">
 
-                <a class="btn" href="${link}" target="_blank">Apply</a>
+            <h3>${title}</h3>
 
-                <a class="btn" href="${pdfLink}" target="_blank">PDF</a>
+            <p>${desc}</p>
 
-                <a class="btn"
-                href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
-                target="_blank">
-                Share
-                </a>
-            </div>
-            `;
-        }
-    });
+            <small>${date}</small><br>
+
+            <a class="btn"
+            href="job-detail.html?id=${rows.length - 1 - index}">
+            🔍 View Details
+            </a>
+
+            <a class="btn"
+            href="${link}"
+            target="_blank">
+            🚀 Apply
+            </a>
+
+            <a class="btn"
+            href="${pdfLink}"
+            target="_blank">
+            📄 PDF
+            </a>
+
+            <a class="btn"
+            href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
+            target="_blank">
+            📤 Share
+            </a>
+
+        </div>
+        `;
+    }
+});
 
     document.getElementById("jobs").innerHTML = html || "No jobs found";
 
