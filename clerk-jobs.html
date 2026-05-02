@@ -133,46 +133,60 @@ fetch(sheetURL)
     let rows = data.trim().split("\n").slice(1);
     let html = "";
 
-    rows.forEach(row => {
+   [...rows].reverse().forEach((row, index) => {
 
-        // ✅ SAFE CSV SPLIT
-        let col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+    let col = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
-        let title = col[0] || "";
-        let desc  = col[1] || "";
-        let link  = col[2] || "#";
-        let date  = col[3] || "";
-        let pdf   = col[4] || "";
+    let title = col[0] || "";
+    let desc  = col[1] || "";
+    let link  = col[2] || "#";
+    let date  = col[3] || "";
+    let pdf   = col[4] || "";
 
-        // ✅ SMART FILTER
-        if(
-            title.toLowerCase().includes("clerk") ||
-            title.toLowerCase().includes("assistant") ||
-            desc.toLowerCase().includes("clerk")
-        ){
+    if(
+        title.toLowerCase().includes("clerk") ||
+        title.toLowerCase().includes("assistant") ||
+        desc.toLowerCase().includes("clerk")
+    ){
 
-            let pdfLink = pdf.trim() !== "" ? pdf : link;
+        let pdfLink = pdf.trim() !== "" ? pdf : link;
 
-            html += `
-            <div class="card">
-                <h3>🔥 ${title}</h3>
-                <p>${desc}</p>
-                <small>${date}</small><br>
+        html += `
+        <div class="card">
 
-                <a class="btn" href="${link}" target="_blank">Apply</a>
+            <h3>${title}</h3>
 
-                <a class="btn" href="${pdfLink}" target="_blank">PDF</a>
+            <p>${desc}</p>
 
-                <a class="btn"
-                href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
-                target="_blank">
-                Share
-                </a>
-            </div>
-            `;
-        }
-    });
+            <small>${date}</small><br>
 
+            <a class="btn"
+            href="job-detail.html?id=${rows.length - 1 - index}">
+            🔍 View Details
+            </a>
+
+            <a class="btn"
+            href="${link}"
+            target="_blank">
+            🚀 Apply
+            </a>
+
+            <a class="btn"
+            href="${pdfLink}"
+            target="_blank">
+            📄 PDF
+            </a>
+
+            <a class="btn"
+            href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
+            target="_blank">
+            📤 Share
+            </a>
+
+        </div>
+        `;
+    }
+});
     document.getElementById("jobs").innerHTML = html || "No Clerk Jobs Found";
 
 })
