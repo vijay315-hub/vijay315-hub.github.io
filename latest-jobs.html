@@ -116,38 +116,51 @@ fetch(sheetURL)
 .then(data => {
 
     let rows = data.trim().split("\n").slice(1);
+
     let html = "";
 
-    // latest first
-    rows.reverse();
+    [...rows].reverse().forEach((row, index) => {
 
-    rows.forEach((row) => {
-
-        let cols = row.split(",");
+        let cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
         let title = cols[0] || "";
         let desc = cols[1] || "";
-        let link = cols[2] || "";
+        let link = cols[2] || "#";
         let date = cols[3] || "";
-        let pdf  = cols[4] || "";
-
-        let pdfBtn = pdf ? `<a class="btn" href="${pdf}" target="_blank">PDF</a>` : "";
+        let pdf  = cols[4] || "#";
 
         html += `
         <div class="card">
-            <h3>🔥 ${title}</h3>
+
+            <h3>${title}</h3>
+
             <p>${desc}</p>
+
             <small>${date}</small><br>
 
-            <a class="btn" href="${link}" target="_blank">Apply</a>
+            <a class="btn"
+            href="job-detail.html?id=${rows.length - 1 - index}">
+        🔍 View Details
+            </a>
 
-            ${pdfBtn}
+            <a class="btn"
+            href="${link}"
+            target="_blank">
+            🚀 Apply
+            </a>
+
+            <a class="btn"
+            href="${pdf}"
+            target="_blank">
+            📄 PDF
+            </a>
 
             <a class="btn"
             href="https://wa.me/?text=${encodeURIComponent(title + ' ' + link)}"
             target="_blank">
-            Share
+            📤 Share
             </a>
+
         </div>
         `;
     });
@@ -156,8 +169,12 @@ fetch(sheetURL)
 
 })
 .catch(err => {
-    document.getElementById("jobs").innerHTML = "Error loading jobs ❌";
+
+    document.getElementById("jobs").innerHTML =
+    "Error loading jobs ❌";
+
     console.log(err);
+
 });
 
 </script>
