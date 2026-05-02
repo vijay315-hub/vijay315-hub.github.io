@@ -389,9 +389,9 @@ function renderJobs(jobs){
 
     jobs.forEach((job, index) => {
 
-        let pdfButton = job.pdf 
-        ? `<a class="btn" href="${job.pdf}" target="_blank">View PDF</a>`
-        : "";
+        // let pdfButton = job.pdf 
+        // ? `<a class="btn" href="${job.pdf}" target="_blank">View PDF</a>`
+        // : "";
 
         html += `
         <div class="card">
@@ -399,7 +399,7 @@ function renderJobs(jobs){
             <p>${job.desc}</p>
             <small>${job.date}</small><br>
             <a class="btn" href="job-detail.html?id=${index}">View Details</a>
-            ${pdfButton}
+           
         </div>
         `;
     });
