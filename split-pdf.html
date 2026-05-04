@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Split PDF | Free Online PDF Splitter Tool</title>
+
+<meta name="description" content="Free online PDF splitter tool for students and government job candidates. Extract pages from PDF files instantly.">
+
+<meta name="keywords" content="split PDF, PDF splitter, extract PDF pages, online PDF tool">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/split-pdf.html">
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f8;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* MAIN */
+.container{
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input{
+    width:100%;
+    margin-top:15px;
+    padding:10px;
+    box-sizing:border-box;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+/* RESULT */
+.result{
+    margin-top:25px;
+    text-align:center;
+}
+
+/* DOWNLOAD */
+.download-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 18px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.download-btn:hover{
+    background:#22c55e;
+}
+
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>✂ Split PDF</h1>
+<p>Extract pages from PDF files instantly</p>
+</header>
+
+<div class="container">
+
+<label><b>Select PDF File</b></label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<label><b>Enter Page Number</b></label>
+
+<input
+type="number"
+id="pageNumber"
+placeholder="Example: 1">
+
+<button onclick="splitPDF()">
+Extract Page
+</button>
+
+<div class="result" id="result"></div>
+
+<div style="text-align:center; margin-top:25px;">
+
+<a style="
+background:#111827;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+"
+href="pdf-tools.html">
+
+⬅ Back to PDF Tools
+
+</a>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Vijay Job Portal
+</footer>
+
+<script>
+
+async function splitPDF(){
+
+    const file =
+    document.getElementById("pdfFile").files[0];
+
+    const pageNumber =
+    parseInt(
+        document.getElementById("pageNumber").value
+    );
+
+    if(!file){
+        alert("Please select PDF file");
+        return;
+    }
+
+    if(!pageNumber || pageNumber < 1){
+        alert("Please enter valid page number");
+        return;
+    }
+
+    const arrayBuffer =
+    await file.arrayBuffer();
+
+    const pdfDoc =
+    await PDFLib.PDFDocument.load(arrayBuffer);
+
+    const totalPages =
+    pdfDoc.getPageCount();
+
+    if(pageNumber > totalPages){
+        alert("Page number exceeds total pages");
+        return;
+    }
+
+    const newPdf =
+    await PDFLib.PDFDocument.create();
+
+    const [copiedPage] =
+    await newPdf.copyPages(
+        pdfDoc,
+        [pageNumber - 1]
+    );
+
+    newPdf.addPage(copiedPage);
+
+    const pdfBytes =
+    await newPdf.save();
+
+    const blob =
+    new Blob(
+        [pdfBytes],
+        { type:"application/pdf" }
+    );
+
+    const url =
+    URL.createObjectURL(blob);
+
+    document.getElementById("result").innerHTML =
+    `
+    <h3>✅ Page Extracted</h3>
+
+    <a class="download-btn"
+    href="${url}"
+    download="split-page.pdf">
+
+    ⬇ Download PDF Page
+
+    </a>
+    `;
+}
+
+</script>
+
+</body>
+</html>
