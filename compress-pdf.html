@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Compress PDF | Free Online PDF Compressor</title>
+
+<meta name="description" content="Free online PDF compressor tool for government job forms. Reduce PDF file size instantly for SSC, railway, banking and OJAS applications.">
+
+<meta name="keywords" content="compress PDF, PDF compressor, reduce PDF size, online PDF tool">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/compress-pdf.html">
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f8;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input{
+    width:100%;
+    margin-top:15px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+/* RESULT */
+.result{
+    margin-top:25px;
+    text-align:center;
+}
+
+/* DOWNLOAD */
+.download-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:12px 18px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.download-btn:hover{
+    background:#22c55e;
+}
+
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🗜 Compress PDF</h1>
+<p>Reduce PDF file size instantly</p>
+</header>
+
+<div class="container">
+
+<label><b>Select PDF File</b></label>
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<button onclick="compressPDF()">
+Compress PDF
+</button>
+
+<div class="result" id="result"></div>
+
+<div style="text-align:center; margin-top:25px;">
+
+<a style="
+background:#111827;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+"
+href="pdf-tools.html">
+
+⬅ Back to PDF Tools
+
+</a>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Vijay Job Portal
+</footer>
+
+<script>
+
+async function compressPDF(){
+
+    const file =
+    document.getElementById("pdfFile").files[0];
+
+    if(!file){
+        alert("Please select PDF file");
+        return;
+    }
+
+    const originalSize =
+    (file.size / 1024 / 1024).toFixed(2);
+
+    const arrayBuffer =
+    await file.arrayBuffer();
+
+    const pdfDoc =
+    await PDFLib.PDFDocument.load(arrayBuffer);
+
+    const compressedPdf =
+    await pdfDoc.save({
+        useObjectStreams:true
+    });
+
+    const blob =
+    new Blob(
+        [compressedPdf],
+        { type:"application/pdf" }
+    );
+
+    const compressedSize =
+    (blob.size / 1024 / 1024).toFixed(2);
+
+    const url =
+    URL.createObjectURL(blob);
+
+    document.getElementById("result").innerHTML =
+    `
+    <h3>✅ PDF Compressed</h3>
+
+    <p>
+    Original Size:
+    <b>${originalSize} MB</b>
+    </p>
+
+    <p>
+    Compressed Size:
+    <b>${compressedSize} MB</b>
+    </p>
+
+    <a class="download-btn"
+    href="${url}"
+    download="compressed.pdf">
+
+    ⬇ Download PDF
+
+    </a>
+    `;
+}
+
+</script>
+
+</body>
+</html>
