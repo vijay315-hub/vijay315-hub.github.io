@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Photo Resize Tool | Resize Image for Government Job Forms</title>
+
+<meta name="description" content="Free online photo resize tool for government job applications. Resize passport photos and signatures for SSC, railway, banking and OJAS forms.">
+
+<meta name="keywords" content="photo resize tool, image resizer, passport photo resize, signature resize, government job photo tool">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/photo-resize.html">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f8;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* MAIN BOX */
+.container{
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input{
+    width:100%;
+    margin-top:15px;
+    padding:10px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    margin-top:15px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+/* IMAGE PREVIEW */
+.preview{
+    text-align:center;
+    margin-top:25px;
+}
+
+.preview img{
+    max-width:100%;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 16px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.back-btn:hover{
+    background:#22c55e;
+}
+
+/* SEO */
+.seo-text{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#1f2937;
+    color:#d1d5db;
+    padding:25px;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.seo-text h2,
+.seo-text h3{
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🖼 Photo Resize Tool</h1>
+<p>Resize photos for government job application forms</p>
+</header>
+
+<div class="container">
+
+<label><b>Select Image</b></label>
+
+<input type="file" id="upload" accept="image/*">
+
+<label><b>Width (px)</b></label>
+<input type="number" id="width" placeholder="Enter width">
+
+<label><b>Height (px)</b></label>
+<input type="number" id="height" placeholder="Enter height">
+
+<button onclick="resizeImage()">
+Resize Photo
+</button>
+
+<div class="preview" id="preview">
+</div>
+
+<div style="text-align:center;">
+<a class="back-btn" href="tools.html">
+⬅ Back to Tools
+</a>
+</div>
+
+</div>
+
+<section class="seo-text">
+
+<h2>Free Online Photo Resize Tool</h2>
+
+<p>
+This free online image resize tool helps government job candidates resize passport photos and signatures for online application forms.
+</p>
+
+<p>
+Many recruitment websites including SSC, railway, banking, police and OJAS require photos and signatures within specific dimensions and file size limits.
+</p>
+
+<h3>Features</h3>
+
+<p>
+✔ Resize passport photos<br>
+✔ Resize signatures<br>
+✔ Mobile-friendly tool<br>
+✔ Instant image preview<br>
+✔ Free online access
+</p>
+
+<h3>Why Use This Tool?</h3>
+
+<p>
+Candidates often face upload errors because of incorrect image dimensions. This tool helps quickly prepare photos for official online forms.
+</p>
+
+</section>
+
+<footer>
+© 2026 Vijay Job Portal
+</footer>
+
+<script>
+
+function resizeImage(){
+
+    const fileInput = document.getElementById("upload");
+    const width = document.getElementById("width").value;
+    const height = document.getElementById("height").value;
+
+    if(!fileInput.files[0]){
+        alert("Please select image");
+        return;
+    }
+
+    if(!width || !height){
+        alert("Please enter width and height");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        const img = new Image();
+
+        img.onload = function(){
+
+            const canvas = document.createElement("canvas");
+            canvas.width = width;
+            canvas.height = height;
+
+            const ctx = canvas.getContext("2d");
+
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const resizedImage = canvas.toDataURL("image/jpeg");
+
+            document.getElementById("preview").innerHTML = `
+            
+            <h3>Preview</h3>
+
+            <img src="${resizedImage}">
+
+            <br><br>
+
+            <a class="back-btn"
+            href="${resizedImage}"
+            download="resized-photo.jpg">
+            ⬇ Download Image
+            </a>
+            `;
+        }
+
+        img.src = e.target.result;
+    }
+
+    reader.readAsDataURL(fileInput.files[0]);
+}
+
+</script>
+
+</body>
+</html>
