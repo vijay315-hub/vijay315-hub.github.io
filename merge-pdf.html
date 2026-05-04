@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Merge PDF Files | Free Online PDF Merge Tool</title>
+
+<meta name="description" content="Free online PDF merge tool for students and government job candidates. Combine multiple PDF files into one document instantly.">
+
+<meta name="keywords" content="merge PDF, combine PDF, PDF merger, online PDF tools">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/merge-pdf.html">
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f8;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* MAIN */
+.container{
+    width:90%;
+    max-width:700px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input{
+    width:100%;
+    margin-top:15px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+/* DOWNLOAD */
+.download{
+    margin-top:25px;
+    text-align:center;
+}
+
+.download a{
+    display:inline-block;
+    padding:12px 18px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.download a:hover{
+    background:#22c55e;
+}
+
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>📚 Merge PDF Files</h1>
+<p>Combine multiple PDF files into one document</p>
+</header>
+
+<div class="container">
+
+<label><b>Select Multiple PDF Files</b></label>
+
+<input type="file"
+id="pdfFiles"
+accept="application/pdf"
+multiple>
+
+<button onclick="mergePDFs()">
+Merge PDFs
+</button>
+
+<div class="download" id="download"></div>
+
+<div style="text-align:center; margin-top:25px;">
+
+<a style="
+background:#111827;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+"
+href="pdf-tools.html">
+
+⬅ Back to PDF Tools
+
+</a>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Vijay Job Portal
+</footer>
+
+<script>
+
+async function mergePDFs(){
+
+    const files =
+    document.getElementById("pdfFiles").files;
+
+    if(files.length < 2){
+        alert("Please select at least 2 PDF files");
+        return;
+    }
+
+    const mergedPdf =
+    await PDFLib.PDFDocument.create();
+
+    for(const file of files){
+
+        const arrayBuffer =
+        await file.arrayBuffer();
+
+        const pdf =
+        await PDFLib.PDFDocument.load(arrayBuffer);
+
+        const copiedPages =
+        await mergedPdf.copyPages(
+            pdf,
+            pdf.getPageIndices()
+        );
+
+        copiedPages.forEach((page)=>{
+            mergedPdf.addPage(page);
+        });
+    }
+
+    const mergedPdfFile =
+    await mergedPdf.save();
+
+    const blob =
+    new Blob(
+        [mergedPdfFile],
+        { type:"application/pdf" }
+    );
+
+    const url =
+    URL.createObjectURL(blob);
+
+    document.getElementById("download").innerHTML =
+    `
+    <h3>✅ PDF Ready</h3>
+
+    <a href="${url}"
+    download="merged.pdf">
+
+    ⬇ Download Merged PDF
+
+    </a>
+    `;
+}
+
+</script>
+
+</body>
+</html>
