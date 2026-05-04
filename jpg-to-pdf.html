@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JPG to PDF Converter</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+
+body{
+    font-family:Arial;
+    background:#f4f6f8;
+    margin:0;
+}
+
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    width:90%;
+    max-width:500px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+input{
+    margin-top:15px;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🖼 JPG to PDF Converter</h1>
+</header>
+
+<div class="container">
+
+<input type="file" id="imageFile" accept="image/*">
+
+<button onclick="convertToPDF()">
+Convert to PDF
+</button>
+
+</div>
+
+<script>
+
+async function convertToPDF(){
+
+    const file =
+    document.getElementById("imageFile").files[0];
+
+    if(!file){
+        alert("Please select image");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        const imgData = e.target.result;
+
+        const { jsPDF } = window.jspdf;
+
+        const pdf = new jsPDF();
+
+        pdf.addImage(imgData, 'JPEG', 10, 10, 180, 160);
+
+        pdf.save("converted.pdf");
+    }
+
+    reader.readAsDataURL(file);
+}
+
+</script>
+
+</body>
+</html>
