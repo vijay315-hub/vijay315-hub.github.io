@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image to Text OCR Tool | Free OCR Extractor</title>
+
+<meta name="description" content="Free online OCR tool to extract text from images instantly. Useful for students and government job candidates.">
+
+<meta name="keywords" content="OCR tool, image to text, extract text from image, OCR online">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/image-to-text.html">
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f8;
+}
+
+/* HEADER */
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* CONTAINER */
+.container{
+    width:90%;
+    max-width:800px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* INPUT */
+input{
+    width:100%;
+    margin-top:15px;
+}
+
+/* BUTTON */
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+/* TEXTAREA */
+textarea{
+    width:100%;
+    height:300px;
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+    font-size:15px;
+}
+
+/* PREVIEW */
+.preview{
+    margin-top:25px;
+    text-align:center;
+}
+
+.preview img{
+    max-width:100%;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* BACK BUTTON */
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    background:#111827;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.back-btn:hover{
+    background:#22c55e;
+}
+
+/* SEO */
+.seo-text{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:#1f2937;
+    color:#d1d5db;
+    padding:25px;
+    border-radius:12px;
+    line-height:1.8;
+}
+
+.seo-text h2,
+.seo-text h3{
+    color:white;
+}
+
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>📝 Image to Text OCR Tool</h1>
+
+<p>
+Extract text from images instantly
+</p>
+
+</header>
+
+<div class="container">
+
+<label><b>Select Image</b></label>
+
+<input
+type="file"
+id="imageFile"
+accept="image/*">
+
+<button onclick="extractText()">
+
+Extract Text
+
+</button>
+
+<div class="preview" id="preview"></div>
+
+<textarea
+id="result"
+placeholder="Extracted text will appear here...">
+</textarea>
+
+<div style="text-align:center;">
+
+<a class="back-btn"
+href="tools.html">
+
+⬅ Back to Tools
+
+</a>
+
+</div>
+
+</div>
+
+<section class="seo-text">
+
+<h2>Free Online OCR Image to Text Tool</h2>
+
+<p>
+This free OCR tool helps users extract text from images instantly using advanced optical character recognition technology.
+</p>
+
+<p>
+Students and government job candidates can use this tool to copy text from screenshots, documents, Aadhaar cards, notes and scanned images.
+</p>
+
+<h3>Features</h3>
+
+<p>
+✔ Extract text from images<br>
+✔ OCR technology support<br>
+✔ Mobile-friendly tool<br>
+✔ Instant text conversion<br>
+✔ Free online access
+</p>
+
+<h3>Why Use OCR Tool?</h3>
+
+<p>
+OCR tools help save time by converting printed or image text into editable digital text without manual typing.
+</p>
+
+</section>
+
+<footer>
+
+© 2026 Vijay Job Portal
+
+</footer>
+
+<script>
+
+async function extractText(){
+
+    const file =
+    document.getElementById("imageFile").files[0];
+
+    if(!file){
+
+        alert("Please select image");
+
+        return;
+    }
+
+    document.getElementById("result").value =
+    "Processing OCR... Please wait.";
+
+    /* IMAGE PREVIEW */
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        document.getElementById("preview").innerHTML =
+        `
+        <img src="${e.target.result}">
+        `;
+    }
+
+    reader.readAsDataURL(file);
+
+    /* OCR */
+
+    const {
+        data:{ text }
+    } = await Tesseract.recognize(
+        file,
+        'eng'
+    );
+
+    document.getElementById("result").value =
+    text;
+}
+
+</script>
+
+</body>
+</html>
