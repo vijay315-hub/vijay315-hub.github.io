@@ -257,7 +257,7 @@ fetch(sheetURL)
 
      [...rows].reverse().forEach((row, index) => {
 
-        let cols = row.split(",");
+        let cols = row.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
         if(cols.length < 5) return;
 
