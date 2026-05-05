@@ -4,15 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PDF to Excel OCR Tool</title>
+<title>PDF to Excel OCR Converter</title>
 
-<meta name="description" content="Free online PDF to Excel OCR tool for extracting text and table data from PDF files.">
+<meta name="description" content="Convert PDF files into Excel format using OCR technology.">
 
-<meta name="keywords" content="PDF to Excel, OCR PDF tool, PDF OCR extractor">
+<meta name="keywords" content="PDF to Excel, OCR converter, PDF Excel tool">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/pdf-to-excel-ocr.html">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
 <style>
 
@@ -31,7 +35,7 @@ header{
 
 .container{
     width:90%;
-    max-width:800px;
+    max-width:850px;
     margin:40px auto;
     background:white;
     padding:25px;
@@ -52,8 +56,8 @@ button{
     color:white;
     border:none;
     border-radius:8px;
-    cursor:pointer;
     font-size:16px;
+    cursor:pointer;
 }
 
 button:hover{
@@ -70,7 +74,7 @@ textarea{
     box-sizing:border-box;
 }
 
-.back-btn{
+.btn{
     display:inline-block;
     margin-top:20px;
     background:#111827;
@@ -80,7 +84,7 @@ textarea{
     text-decoration:none;
 }
 
-.back-btn:hover{
+.btn:hover{
     background:#22c55e;
 }
 
@@ -99,10 +103,10 @@ footer{
 
 <header>
 
-<h1>📊 PDF to Excel OCR Tool</h1>
+<h1>📊 PDF to Excel OCR Converter</h1>
 
 <p>
-Extract text and table data from PDF files
+Convert PDF text into Excel spreadsheet
 </p>
 
 </header>
@@ -114,9 +118,9 @@ type="file"
 id="pdfFile"
 accept="application/pdf">
 
-<button onclick="extractPDFText()">
+<button onclick="convertPDFToExcel()">
 
-Extract PDF Data
+Convert PDF to Excel
 
 </button>
 
@@ -127,7 +131,19 @@ placeholder="Extracted text will appear here...">
 
 <div style="text-align:center;">
 
-<a class="back-btn"
+<a class="btn"
+href="#"
+onclick="downloadExcel()">
+
+⬇ Download Excel File
+
+</a>
+
+</div>
+
+<div style="text-align:center;">
+
+<a class="btn"
 href="pdf-tools.html">
 
 ⬅ Back to PDF Tools
@@ -146,7 +162,9 @@ href="pdf-tools.html">
 
 <script>
 
-async function extractPDFText(){
+let extractedText = "";
+
+async function convertPDFToExcel(){
 
     const file =
     document.getElementById("pdfFile").files[0];
@@ -173,7 +191,7 @@ async function extractPDFText(){
             typedarray
         ).promise;
 
-        let finalText = "";
+        extractedText = "";
 
         for(let i=1; i<=pdf.numPages; i++){
 
@@ -207,17 +225,48 @@ async function extractPDFText(){
                 'eng'
             );
 
-            finalText +=
-            "\n\n--- PAGE " + i + " ---\n\n";
-
-            finalText += text;
+            extractedText += text + "\n";
         }
 
         document.getElementById("result").value =
-        finalText;
+        extractedText;
     }
 
     fileReader.readAsArrayBuffer(file);
+}
+
+/* DOWNLOAD EXCEL */
+
+function downloadExcel(){
+
+    if(extractedText.trim() === ""){
+
+        alert("No data found");
+
+        return;
+    }
+
+    let rows =
+    extractedText
+    .split("\n")
+    .map(line => [line]);
+
+    let worksheet =
+    XLSX.utils.aoa_to_sheet(rows);
+
+    let workbook =
+    XLSX.utils.book_new();
+
+    XLSX.utils.book_append_sheet(
+        workbook,
+        worksheet,
+        "PDF Data"
+    );
+
+    XLSX.writeFile(
+        workbook,
+        "pdf-to-excel.xlsx"
+    );
 }
 
 </script>
