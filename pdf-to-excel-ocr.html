@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF to Excel OCR Tool</title>
+
+<meta name="description" content="Free online PDF to Excel OCR tool for extracting text and table data from PDF files.">
+
+<meta name="keywords" content="PDF to Excel, OCR PDF tool, PDF OCR extractor">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f6f8;
+}
+
+header{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+.container{
+    width:90%;
+    max-width:800px;
+    margin:40px auto;
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+input{
+    width:100%;
+    margin-top:15px;
+}
+
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    background:#111827;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#22c55e;
+}
+
+textarea{
+    width:100%;
+    height:300px;
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    border:1px solid #ccc;
+    box-sizing:border-box;
+}
+
+.back-btn{
+    display:inline-block;
+    margin-top:20px;
+    background:#111827;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.back-btn:hover{
+    background:#22c55e;
+}
+
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<h1>📊 PDF to Excel OCR Tool</h1>
+
+<p>
+Extract text and table data from PDF files
+</p>
+
+</header>
+
+<div class="container">
+
+<input
+type="file"
+id="pdfFile"
+accept="application/pdf">
+
+<button onclick="extractPDFText()">
+
+Extract PDF Data
+
+</button>
+
+<textarea
+id="result"
+placeholder="Extracted text will appear here...">
+</textarea>
+
+<div style="text-align:center;">
+
+<a class="back-btn"
+href="pdf-tools.html">
+
+⬅ Back to PDF Tools
+
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+© 2026 Vijay Job Portal
+
+</footer>
+
+<script>
+
+async function extractPDFText(){
+
+    const file =
+    document.getElementById("pdfFile").files[0];
+
+    if(!file){
+
+        alert("Please select PDF file");
+
+        return;
+    }
+
+    document.getElementById("result").value =
+    "Processing OCR... Please wait.";
+
+    const fileReader = new FileReader();
+
+    fileReader.onload = async function(){
+
+        const typedarray =
+        new Uint8Array(this.result);
+
+        const pdf =
+        await pdfjsLib.getDocument(
+            typedarray
+        ).promise;
+
+        let finalText = "";
+
+        for(let i=1; i<=pdf.numPages; i++){
+
+            const page =
+            await pdf.getPage(i);
+
+            const viewport =
+            page.getViewport({ scale:2 });
+
+            const canvas =
+            document.createElement("canvas");
+
+            const context =
+            canvas.getContext("2d");
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({
+                canvasContext:context,
+                viewport:viewport
+            }).promise;
+
+            const image =
+            canvas.toDataURL("image/png");
+
+            const {
+                data:{ text }
+            } = await Tesseract.recognize(
+                image,
+                'eng'
+            );
+
+            finalText +=
+            "\n\n--- PAGE " + i + " ---\n\n";
+
+            finalText += text;
+        }
+
+        document.getElementById("result").value =
+        finalText;
+    }
+
+    fileReader.readAsArrayBuffer(file);
+}
+
+</script>
+
+</body>
+</html>
