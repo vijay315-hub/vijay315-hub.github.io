@@ -168,7 +168,22 @@ footer{
     }
 html, body{
     overflow-x: hidden;
-}     
+}  
+.loader{
+  border:5px solid #ddd;
+  border-top:5px solid #22c55e;
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  animation:spin 1s linear infinite;
+  margin:30px auto;
+}
+
+@keyframes spin{
+  100%{
+    transform:rotate(360deg);
+  }
+} 
 </style>
 
 </head>
@@ -198,7 +213,7 @@ html, body{
 <h1>10th Pass Government Jobs 📘</h1>
 </header>
 
-<div class="container" id="jobs">Loading jobs...</div>
+<div class="loader"></div>
 <section class="seo-text">
 
 <h2>Latest 10th Pass Government Jobs 2026</h2>
