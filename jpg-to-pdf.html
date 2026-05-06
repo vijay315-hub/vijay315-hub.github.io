@@ -142,6 +142,7 @@ async function convertToPDF(){
     }
 
     loader.innerText = "Processing images...";
+    preview.innerHTML = "";
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
@@ -149,7 +150,6 @@ async function convertToPDF(){
     for(let i = 0; i < files.length; i++){
 
         const file = files[i];
-
         const reader = new FileReader();
 
         await new Promise((resolve) => {
@@ -178,13 +178,19 @@ async function convertToPDF(){
         });
     }
 
-    loader.innerText = "Creating PDF...";
+    loader.innerText = "PDF Ready!";
 
-    pdf.save("converted.pdf");
+    // 👉 Create download button instead of auto download
+    const pdfBlob = pdf.output("blob");
+    const url = URL.createObjectURL(pdfBlob);
 
-    loader.innerText = "Download started!";
+    preview.innerHTML = `
+        <h3>Your PDF is Ready</h3>
+        <a class="download-btn" href="${url}" download="converted.pdf">
+        ⬇ Download PDF
+        </a>
+    `;
 }
-
 </script>
 
 </body>
