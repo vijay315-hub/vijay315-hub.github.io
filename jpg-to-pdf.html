@@ -4,10 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- SEO -->
-<title>JPG to PDF Converter Free Online | Convert Image to PDF</title>
-<meta name="description" content="Convert JPG to PDF online free. Fast, secure and easy image to PDF converter tool. No upload required.">
-<meta name="keywords" content="jpg to pdf, image to pdf converter, free pdf tool">
+<title>JPG to PDF Converter Free Online</title>
+
+<meta name="description" content="Convert JPG to PDF online free. Fast & secure tool.">
 <meta name="robots" content="index, follow">
 
 <link rel="canonical" href="https://vijay315-hub.github.io/jpg-to-pdf.html">
@@ -40,6 +39,7 @@ header{
 }
 
 input{
+    width:100%;
     margin-top:15px;
 }
 
@@ -52,7 +52,6 @@ button{
     border:none;
     border-radius:8px;
     cursor:pointer;
-    font-size:16px;
 }
 
 button:hover{
@@ -67,9 +66,20 @@ button:hover{
 
 .download-btn{
     display:inline-block;
-    margin-top:20px;
+    margin-top:15px;
+    padding:10px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
     text-decoration:none;
-    color:#111827;
+}
+
+.download-btn:hover{
+    background:#22c55e;
+}
+
+.loader{
+    margin-top:15px;
     font-weight:bold;
 }
 </style>
@@ -79,24 +89,22 @@ button:hover{
 
 <header>
 <h1>🖼 JPG to PDF Converter</h1>
-<p>Free & Fast Image to PDF Tool</p>
+<p>Fast & Free Tool</p>
 </header>
 
 <div class="container">
 
 <input type="file" id="imageFile" accept="image/*" multiple>
 
-<button onclick="convertToPDF()">
-Convert to PDF
-</button>
+<button onclick="convertToPDF()">Convert to PDF</button>
+
+<div class="loader" id="loader"></div>
 
 <div class="preview" id="preview"></div>
 
-<div style="text-align:center;">
 <a class="download-btn" href="pdf-tools.html">
 ⬅ Back to PDF Tools
 </a>
-</div>
 
 </div>
 
@@ -104,13 +112,14 @@ Convert to PDF
 
 const fileInput = document.getElementById("imageFile");
 const preview = document.getElementById("preview");
+const loader = document.getElementById("loader");
 
+// Preview Images (same UX as PDF page)
 fileInput.addEventListener("change", () => {
     preview.innerHTML = "";
-
     const files = fileInput.files;
 
-    for(let i=0; i<files.length; i++){
+    for(let i = 0; i < files.length; i++){
         const reader = new FileReader();
 
         reader.onload = function(e){
@@ -128,21 +137,18 @@ async function convertToPDF(){
     const files = fileInput.files;
 
     if(files.length === 0){
-        alert("Please select at least one image");
+        alert("Please select images");
         return;
     }
+
+    loader.innerText = "Processing images...";
 
     const { jsPDF } = window.jspdf;
     const pdf = new jsPDF();
 
-    for(let i=0; i<files.length; i++){
+    for(let i = 0; i < files.length; i++){
 
         const file = files[i];
-
-        if(!file.type.startsWith("image/")){
-            alert("Only image files allowed");
-            return;
-        }
 
         const reader = new FileReader();
 
@@ -172,7 +178,11 @@ async function convertToPDF(){
         });
     }
 
+    loader.innerText = "Creating PDF...";
+
     pdf.save("converted.pdf");
+
+    loader.innerText = "Download started!";
 }
 
 </script>
