@@ -1,22 +1,178 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://vijay315-hub.github.io</loc>
-  
-  <loc>https://vijay315-hub.github.iogujarat-jobs.html</loc>
-  <priority>0.9</priority>
+<!-- HOME -->
+<url>
+<loc>https://vijay315-hub.github.io/</loc>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
 
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
+<!-- MAIN PAGES -->
+<url>
+<loc>https://vijay315-hub.github.io/about.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
 
-  <url>
-    <loc>https://vijay315-hub.github.iojob.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<url>
+<loc>https://vijay315-hub.github.io/contact.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/privacy-policy.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<!-- JOB PAGES -->
+<url>
+<loc>https://vijay315-hub.github.io/10th-pass-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/12th-pass-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/latest-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>1.0</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/clerk-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/police-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/engineer-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/bank-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/teacher-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/gujarat-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/railway-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/ssc-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/data-entry-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/peon-jobs.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.8</priority>
+</url>
+
+<!-- TOOLS -->
+<url>
+<loc>https://vijay315-hub.github.io/tools.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/age-calculator.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/pdf-tools.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/photo-resize.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/percentage-calculator.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/image-to-text.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<!-- JHALMURI WEBSITE -->
+<url>
+<loc>https://vijay315-hub.github.io/jhalmuri.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/about-jhalmuri.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/recipe.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.9</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/benefits.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.8</priority>
+</url>
+
+<url>
+<loc>https://vijay315-hub.github.io/street-foods.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
 
 </urlset>
