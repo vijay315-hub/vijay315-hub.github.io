@@ -174,5 +174,15 @@
 <changefreq>weekly</changefreq>
 <priority>0.8</priority>
 </url>
+ <url>
+<loc>https://vijay315-hub.github.io/gpsc-jobs.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url>
+ <url>
+<loc>https://vijay315-hub.github.io/nursing-jobs.html</loc>
+<changefreq>weekly</changefreq>
+<priority>0.8</priority>
+</url> 
 
 </urlset>
