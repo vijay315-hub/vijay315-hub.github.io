@@ -5,57 +5,146 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Today News</title>
+<title>Latest News Today | India & World News</title>
+
+<meta name="description" content="Read today's latest India news, world news, technology, sports and portal updates.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://vijay315-hub.github.io/today-news.html">
 
 <style>
 
-body{
-    font-family:Arial;
+*{
     margin:0;
-    background:#f4f6f8;
+    padding:0;
+    box-sizing:border-box;
 }
 
+body{
+    font-family:Arial, sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+/* HEADER */
 header{
     background:#111827;
     color:white;
+    padding:25px;
     text-align:center;
-    padding:20px;
 }
 
+header h1{
+    margin-bottom:10px;
+}
+
+/* NAVBAR */
+.navbar{
+    background:#1f2937;
+    padding:12px;
+    text-align:center;
+}
+
+.navbar a{
+    color:white;
+    text-decoration:none;
+    margin:0 12px;
+    font-size:15px;
+}
+
+.navbar a:hover{
+    color:#22c55e;
+}
+
+/* MAIN CONTAINER */
 .container{
     width:90%;
-    max-width:900px;
+    max-width:1000px;
     margin:20px auto;
 }
 
+/* SECTION TITLE */
+.section-title{
+    margin:25px 0 15px;
+    color:#111827;
+    border-left:5px solid #22c55e;
+    padding-left:10px;
+}
+
+/* NEWS CARD */
 .news-card{
     background:white;
+    margin-bottom:20px;
     padding:20px;
-    margin-bottom:15px;
     border-radius:12px;
     box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.news-card:hover{
+    transform:translateY(-3px);
 }
 
 .news-card h2{
+    font-size:22px;
+    margin-bottom:10px;
     color:#111827;
 }
 
 .news-card p{
     color:#4b5563;
+    line-height:1.7;
 }
 
+/* BUTTON */
 .btn{
     display:inline-block;
-    margin-top:10px;
-    padding:8px 14px;
+    margin-top:12px;
     background:#111827;
     color:white;
     text-decoration:none;
+    padding:9px 15px;
     border-radius:8px;
+    transition:0.3s;
 }
 
 .btn:hover{
     background:#22c55e;
+}
+
+/* TAG */
+.tag{
+    display:inline-block;
+    background:#dcfce7;
+    color:#166534;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    margin-bottom:10px;
+}
+
+/* FOOTER */
+footer{
+    background:#111827;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+    .news-card h2{
+        font-size:18px;
+    }
+
+    .navbar a{
+        display:inline-block;
+        margin:8px;
+    }
+
 }
 
 </style>
@@ -64,21 +153,101 @@ header{
 
 <body>
 
+<!-- HEADER -->
 <header>
 
-<h1>Today Latest News 📰</h1>
+<h1>📰 Latest News Today</h1>
 
-<p>Live news updates</p>
+<p>India, World, Technology, Sports & Portal Updates</p>
 
 </header>
 
-<div class="container" id="news">
+<!-- NAVBAR -->
+<div class="navbar">
+
+<a href="index.html">Home</a>
+
+<a href="latest-jobs.html">Jobs</a>
+
+<a href="today-news.html">News</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+<!-- CUSTOM NEWS -->
+<h2 class="section-title">
+📢 Portal Updates
+</h2>
+
+<div class="news-card">
+
+<div class="tag">
+Portal Update
+</div>
+
+<h2>
+🚀 New Nursing Jobs Section Added
+</h2>
+
+<p>
+We added new nursing and healthcare recruitment pages with latest government vacancies and direct apply links.
+</p>
+
+<p>
+📅 Updated: 09 May 2026
+</p>
+
+</div>
+
+<div class="news-card">
+
+<div class="tag">
+Website Update
+</div>
+
+<h2>
+📢 GPSC Recruitment Updated
+</h2>
+
+<p>
+Latest GPSC Assistant Engineer, Nursing Officer and Law Officer recruitment notifications added.
+</p>
+
+<p>
+📅 Updated: 09 May 2026
+</p>
+
+</div>
+
+<!-- LIVE INDIA NEWS -->
+<h2 class="section-title">
+🇮🇳 India & World News
+</h2>
+
+<div id="news">
 
 Loading latest news...
 
 </div>
 
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+<p>
+© 2026 Vijay Job Portal
+</p>
+
+</footer>
+
 <script>
+
+/* GOOGLE NEWS RSS */
 
 const rssURL =
 "https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en";
@@ -91,15 +260,23 @@ fetch(rssURL)
 
     let html = "";
 
-    data.items.slice(0,10).forEach(news => {
+    data.items.slice(0,15).forEach(news => {
 
         html += `
 
         <div class="news-card">
 
-            <h2>${news.title}</h2>
+            <div class="tag">
+            Breaking News
+            </div>
 
-            <p>${news.pubDate}</p>
+            <h2>
+            ${news.title}
+            </h2>
+
+            <p>
+            📅 ${news.pubDate}
+            </p>
 
             <a class="btn"
             href="${news.link}"
@@ -120,7 +297,7 @@ fetch(rssURL)
 .catch(err => {
 
     document.getElementById("news").innerHTML =
-    "Unable to load news";
+    "<div class='news-card'>Unable to load latest news ❌</div>";
 
 });
 
