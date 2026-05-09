@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Today News | Latest India News</title>
+<title>Today News</title>
 
 <style>
 
@@ -19,7 +19,7 @@ header{
     background:#111827;
     color:white;
     text-align:center;
-    padding:25px;
+    padding:20px;
 }
 
 .container{
@@ -37,21 +37,24 @@ header{
 }
 
 .news-card h2{
-    font-size:20px;
     color:#111827;
 }
 
-.news-card a{
+.news-card p{
+    color:#4b5563;
+}
+
+.btn{
     display:inline-block;
     margin-top:10px;
+    padding:8px 14px;
     background:#111827;
     color:white;
     text-decoration:none;
-    padding:8px 14px;
     border-radius:8px;
 }
 
-.news-card a:hover{
+.btn:hover{
     background:#22c55e;
 }
 
@@ -65,7 +68,7 @@ header{
 
 <h1>Today Latest News 📰</h1>
 
-<p>Live updates from Google News</p>
+<p>Live news updates</p>
 
 </header>
 
@@ -88,7 +91,7 @@ fetch(rssURL)
 
     let html = "";
 
-    data.items.slice(0,15).forEach(news => {
+    data.items.slice(0,10).forEach(news => {
 
         html += `
 
@@ -96,11 +99,11 @@ fetch(rssURL)
 
             <h2>${news.title}</h2>
 
-            <p>
-            ${news.pubDate}
-            </p>
+            <p>${news.pubDate}</p>
 
-            <a href="${news.link}" target="_blank">
+            <a class="btn"
+            href="${news.link}"
+            target="_blank">
             Read Full News
             </a>
 
