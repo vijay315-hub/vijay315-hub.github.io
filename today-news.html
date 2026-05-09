@@ -5,11 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Today News 2026 | Latest India News</title>
-
-<meta name="description" content="Read latest India news, technology updates, sports, education, Gujarat updates and world news.">
-
-<meta name="robots" content="index, follow">
+<title>Today News | Latest India News</title>
 
 <style>
 
@@ -19,7 +15,6 @@ body{
     background:#f4f6f8;
 }
 
-/* HEADER */
 header{
     background:#111827;
     color:white;
@@ -27,66 +22,36 @@ header{
     padding:25px;
 }
 
-/* CONTAINER */
 .container{
     width:90%;
     max-width:900px;
     margin:20px auto;
 }
 
-/* NEWS CARD */
 .news-card{
     background:white;
     padding:20px;
-    margin-bottom:18px;
+    margin-bottom:15px;
     border-radius:12px;
     box-shadow:0 3px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
 }
 
-.news-card:hover{
-    transform:translateY(-3px);
-}
-
-/* TITLE */
 .news-card h2{
+    font-size:20px;
     color:#111827;
-    margin-bottom:10px;
 }
 
-/* TEXT */
-.news-card p{
-    color:#4b5563;
-    line-height:1.7;
-}
-
-/* BUTTON */
-.btn{
+.news-card a{
     display:inline-block;
     margin-top:10px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
     padding:8px 14px;
-    background:#111827;
-    color:white;
-    text-decoration:none;
     border-radius:8px;
 }
 
-.btn:hover{
-    background:#22c55e;
-}
-
-/* BACK BUTTON */
-.back-btn{
-    display:inline-block;
-    margin:15px;
-    padding:10px 15px;
-    background:#111827;
-    color:white;
-    text-decoration:none;
-    border-radius:8px;
-}
-
-.back-btn:hover{
+.news-card a:hover{
     background:#22c55e;
 }
 
@@ -96,92 +61,67 @@ header{
 
 <body>
 
-<a class="back-btn" href="index.html">
-⬅ Back to Home
-</a>
-
 <header>
 
 <h1>Today Latest News 📰</h1>
 
-<p>Daily updates from India and around the world</p>
+<p>Live updates from Google News</p>
 
 </header>
 
-<div class="container">
+<div class="container" id="news">
 
-<!-- NEWS -->
-<div class="news-card">
-
-<h2>🇮🇳 India News Update</h2>
-
-<p>
-Major government announcements and public updates released today across India.
-</p>
-
-<a class="btn" href="#">
-Read More
-</a>
+Loading latest news...
 
 </div>
 
-<div class="news-card">
+<script>
 
-<h2>📱 Technology News</h2>
+const rssURL =
+"https://api.rss2json.com/v1/api.json?rss_url=https://news.google.com/rss?hl=en-IN&gl=IN&ceid=IN:en";
 
-<p>
-Latest updates about AI, smartphones, apps and internet technology trends.
-</p>
+fetch(rssURL)
 
-<a class="btn" href="#">
-Read More
-</a>
+.then(res => res.json())
 
-</div>
+.then(data => {
 
-<div class="news-card">
+    let html = "";
 
-<h2>🏏 Sports News</h2>
+    data.items.slice(0,15).forEach(news => {
 
-<p>
-Cricket, football and other sports match highlights and tournament updates.
-</p>
+        html += `
 
-<a class="btn" href="#">
-Read More
-</a>
+        <div class="news-card">
 
-</div>
+            <h2>${news.title}</h2>
 
-<div class="news-card">
+            <p>
+            ${news.pubDate}
+            </p>
 
-<h2>🌦 Weather Update</h2>
+            <a href="${news.link}" target="_blank">
+            Read Full News
+            </a>
 
-<p>
-Rainfall alerts, heatwave news and weather forecast updates from India.
-</p>
+        </div>
 
-<a class="btn" href="#">
-Read More
-</a>
+        `;
 
-</div>
+    });
 
-<div class="news-card">
+    document.getElementById("news").innerHTML = html;
 
-<h2>🌍 World News</h2>
+})
 
-<p>
-International headlines and important global updates from different countries.
-</p>
+.catch(err => {
 
-<a class="btn" href="#">
-Read More
-</a>
+    document.getElementById("news").innerHTML =
+    "Unable to load news";
 
-</div>
+});
 
-</div>
+</script>
 
 </body>
 </html>
