@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -18,18 +19,25 @@ content="Best student deals in India including laptops, headphones, bags and stu
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
+/* FIX FOOTER GAP */
+
+html{
+    height:100%;
+}
+
+body{
+    min-height:100vh;
     margin:0;
     padding:0;
+    display:flex;
+    flex-direction:column;
     overflow-x:hidden;
     font-family:Arial,sans-serif;
     background:#f5f5f5;
 }
 
-body{
-    display:flex;
-    flex-direction:column;
+main{
+    flex:1;
 }
 
 /* NAVBAR */
@@ -67,7 +75,7 @@ body{
 header{
     background:#111827;
     color:white;
-    padding:30px;
+    padding:40px 20px;
     text-align:center;
 }
 
@@ -76,7 +84,7 @@ header p{
     color:#d1d5db;
 }
 
-/* BUTTON */
+/* BUTTONS */
 
 .btn{
     display:inline-block;
@@ -86,8 +94,8 @@ header p{
     color:white;
     border-radius:8px;
     text-decoration:none;
-    cursor:pointer;
     border:none;
+    cursor:pointer;
 }
 
 .btn:hover{
@@ -117,10 +125,9 @@ header p{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:20px;
-    align-items:start;
 }
 
-/* PRODUCT BOX */
+/* PRODUCT CARD */
 
 .product-box{
     background:white;
@@ -139,38 +146,43 @@ header p{
     height:180px;
     object-fit:contain;
     border-radius:8px;
-    background:#ffffff;
+    background:white;
 }
 
+/* PRODUCT TITLE */
+
 .product-box h3{
-    font-size:14px;
-    margin:10px 0;
-    height:35px;
-    overflow:hidden;
+    font-size:16px;
+    margin:12px 0;
+    min-height:40px;
 }
+
+/* PRICE */
 
 .price{
     color:#16a34a;
-    font-size:16px;
+    font-size:20px;
     font-weight:bold;
-    margin-bottom:8px;
+    margin-bottom:10px;
 }
 
 .old-price{
     text-decoration:line-through;
     color:gray;
-    font-size:12px;
+    font-size:13px;
     margin-left:5px;
 }
+
+/* BUTTON */
 
 .buy-btn{
     display:block;
     background:#111827;
     color:white;
-    padding:8px;
+    padding:10px;
     border-radius:7px;
     text-decoration:none;
-    font-size:13px;
+    font-size:14px;
 }
 
 .buy-btn:hover{
@@ -186,15 +198,12 @@ header p{
     text-align:center;
     width:100%;
     margin-top:auto;
-    display:block;
 }
 
-.footer{
-    background:#111827;
-    color:white;
-    padding:40px 20px;
-    text-align:center;
-    width:100%;
+.footer p{
+    color:#cbd5e1;
+    line-height:1.8;
+    font-size:14px;
 }
 
 /* MOBILE */
@@ -258,21 +267,40 @@ header p{
 <h1>Best Student Deals 2026</h1>
 
 <p>
-Find laptops, headphones, bags, watches and study products for students and job seekers.
+Find laptops, headphones, bags and study products for students and job seekers.
 </p>
 
 </header>
+
+<main>
 
 <!-- CATEGORY -->
 
 <div style="text-align:center; margin:15px;">
 
-<button class="btn filter-btn" data-category="all">All</button>
-<button class="btn filter-btn" data-category="laptop">Laptop</button>
-<button class="btn filter-btn" data-category="headphone">Headphones</button>
-<button class="btn filter-btn" data-category="bag">Bags</button>
-<button class="btn filter-btn" data-category="watch">Watches</button>
-<button class="btn filter-btn" data-category="study">Study</button>
+<button class="btn filter-btn" data-category="all">
+All
+</button>
+
+<button class="btn filter-btn" data-category="laptop">
+Laptop
+</button>
+
+<button class="btn filter-btn" data-category="headphone">
+Headphones
+</button>
+
+<button class="btn filter-btn" data-category="bag">
+Bags
+</button>
+
+<button class="btn filter-btn" data-category="watch">
+Watches
+</button>
+
+<button class="btn filter-btn" data-category="study">
+Study
+</button>
 
 </div>
 
@@ -280,9 +308,12 @@ Find laptops, headphones, bags, watches and study products for students and job 
 
 <div class="search-box">
 
-<input type="text" id="productSearch" placeholder="Search products...">
+<input type="text"
+id="productSearch"
+placeholder="Search products...">
 
-<button class="btn" onclick="searchProducts()">
+<button class="btn"
+onclick="searchProducts()">
 Search
 </button>
 
@@ -290,9 +321,14 @@ Search
 
 <!-- PRODUCTS -->
 
-<div class="product-grid" id="productGrid">
+<div class="product-grid"
+id="productGrid">
+
 Loading Products...
+
 </div>
+
+</main>
 
 <!-- FOOTER -->
 
@@ -313,32 +349,48 @@ We may earn commission when you purchase through these links.
 
 <script>
 
-/* GOOGLE SHEET CSV URL */
+/* GOOGLE SHEET */
 
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
+const sheetURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
 
 let allProducts = [];
 
+/* FETCH DATA */
+
 fetch(sheetURL)
+
 .then(res => res.text())
+
 .then(data => {
 
-let rows = data.trim().split("\n").slice(1);
+let rows =
+data.trim().split("\n").slice(1);
 
 rows.forEach(row => {
 
-let cols = row.split(",");
+let cols =
+row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+
+if(!cols) return;
 
 allProducts.push({
 
-id: cols[0] || "",
-title: cols[1] || "",
-image: cols[2] || "",
-price: cols[3] || "",
-oldprice: cols[4] || "",
-description: cols[5] || "",
-category: cols[6] || "",
-affiliate: cols[7] || ""
+id: cols[0]?.replace(/"/g,"") || "",
+
+title: cols[1]?.replace(/"/g,"") || "",
+
+image: cols[2]?.replace(/"/g,"") || "",
+
+price: cols[3]?.replace(/"/g,"") || "",
+
+oldprice: cols[4]?.replace(/"/g,"") || "",
+
+description: cols[5]?.replace(/"/g,"") || "",
+
+category: cols[6]?.replace(/"/g,"") || "",
+
+affiliate: cols[7]?.replace(/"/g,"") || ""
 
 });
 
@@ -348,7 +400,7 @@ renderProducts(allProducts);
 
 });
 
-/* RENDER PRODUCTS */
+/* RENDER */
 
 function renderProducts(products){
 
@@ -358,20 +410,28 @@ products.forEach(product => {
 
 html += `
 
-<div class="product-box" data-category="${product.category.toLowerCase()}">
+<div class="product-box">
 
-<img src="${product.image}" onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+<img src="${product.image}"
+onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
 
 <h3>${product.title}</h3>
 
 <div class="price">
+
 ${product.price}
-<span class="old-price">${product.oldprice}</span>
+
+<span class="old-price">
+${product.oldprice}
+</span>
+
 </div>
 
 <a href="product-detail.html?id=${product.id}"
 class="buy-btn">
+
 View Deal
+
 </a>
 
 </div>
@@ -380,7 +440,8 @@ View Deal
 
 });
 
-document.getElementById("productGrid").innerHTML = html;
+document.getElementById("productGrid")
+.innerHTML = html;
 
 }
 
@@ -388,11 +449,16 @@ document.getElementById("productGrid").innerHTML = html;
 
 function searchProducts(){
 
-let value = document.getElementById("productSearch")
+let value =
+document.getElementById("productSearch")
 .value.toLowerCase();
 
-let filtered = allProducts.filter(product =>
-product.title.toLowerCase().includes(value)
+let filtered =
+allProducts.filter(product =>
+
+product.title.toLowerCase()
+.includes(value)
+
 );
 
 renderProducts(filtered);
@@ -420,12 +486,17 @@ button.addEventListener("click", function(){
 let category = this.dataset.category;
 
 if(category === "all"){
-renderProducts(allProducts);
-}
-else{
 
-let filtered = allProducts.filter(product =>
-product.category.toLowerCase() === category
+renderProducts(allProducts);
+
+}else{
+
+let filtered =
+allProducts.filter(product =>
+
+product.category.toLowerCase()
+=== category
+
 );
 
 renderProducts(filtered);
