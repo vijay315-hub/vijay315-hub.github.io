@@ -1,16 +1,27 @@
-<!-- ========================= -->
-<!-- student-deals.html -->
-<!-- ========================= -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<title>Best Student Laptop Deals 2026 | Vijay Job Portal</title>
+<title>
+Best Student Laptop Deals 2026 | Vijay Job Portal
+</title>
+
+<meta name="description"
+content="Find best student laptop deals in India for coding, study, online classes and office work.">
+
+<meta name="keywords"
+content="student laptop deals, best laptops for students, coding laptops, gaming laptops">
+
+<meta name="robots"
+content="index, follow">
+
+<link rel="canonical"
+href="https://vijay315-hub.github.io/laptop.html">
 
 <style>
 
@@ -54,17 +65,38 @@ height:40px;
 .nav-links{
 display:flex;
 align-items:center;
+flex-wrap:wrap;
 }
 
 .nav-links a{
 color:white;
-margin-left:20px;
+margin-left:15px;
 text-decoration:none;
 font-size:14px;
 }
 
 .nav-links a:hover{
 color:#22c55e;
+}
+
+/* MOBILE NAV */
+
+@media(max-width:768px){
+
+.navbar{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.nav-links{
+width:100%;
+margin-top:10px;
+}
+
+.nav-links a{
+margin:6px;
+}
+
 }
 
 /* HEADER */
@@ -79,29 +111,56 @@ text-align:center;
 header p{
 margin-top:10px;
 color:#d1d5db;
+line-height:1.7;
 }
 
 /* BUTTON */
 
 .btn{
 display:inline-block;
-margin:5px;
-padding:8px 14px;
+padding:10px 16px;
 background:#111827;
 color:white;
-border-radius:8px;
+border-radius:30px;
 text-decoration:none;
 border:none;
 cursor:pointer;
+font-size:14px;
+white-space:nowrap;
+transition:0.3s;
 }
 
 .btn:hover{
 background:#22c55e;
 }
 
+/* CATEGORY */
+
+.category-scroll{
+display:flex;
+overflow-x:auto;
+overflow-y:hidden;
+gap:10px;
+padding:12px 10px;
+margin:10px;
+white-space:nowrap;
+-webkit-overflow-scrolling:touch;
+scrollbar-width:none;
+width:100%;
+}
+
+.category-scroll::-webkit-scrollbar{
+display:none;
+}
+
+.category-scroll .btn{
+flex:0 0 auto;
+}
+
 /* SEARCH */
 
 .search-box{
+position:relative;
 text-align:center;
 margin:20px;
 }
@@ -113,6 +172,33 @@ border-radius:10px;
 border:1px solid #ccc;
 }
 
+/* SUGGESTIONS */
+
+.suggestions-box{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+width:50%;
+background:white;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.1);
+z-index:1000;
+max-height:250px;
+overflow-y:auto;
+display:none;
+text-align:left;
+}
+
+.suggestion-item{
+padding:12px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+}
+
+.suggestion-item:hover{
+background:#f3f4f6;
+}
+
 /* PRODUCT GRID */
 
 .product-grid{
@@ -120,7 +206,8 @@ width:90%;
 max-width:1200px;
 margin:20px auto 40px auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 }
 
@@ -147,7 +234,7 @@ border-radius:8px;
 }
 
 .product-box h3{
-font-size:16px;
+font-size:15px;
 margin:12px 0;
 min-height:45px;
 }
@@ -166,15 +253,14 @@ font-size:13px;
 margin-left:5px;
 }
 
-/* BUTTON */
-
 .buy-btn{
 display:block;
 background:#111827;
 color:white;
 padding:10px;
-border-radius:7px;
+border-radius:8px;
 text-decoration:none;
+margin-top:10px;
 }
 
 .buy-btn:hover{
@@ -200,25 +286,40 @@ line-height:1.8;
 
 @media(max-width:768px){
 
-.navbar{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.nav-links{
-display:flex;
-flex-direction:column;
-width:100%;
-margin-top:10px;
-}
-
-.nav-links a{
-margin:8px 0;
-}
-
 .search-box input{
 width:90%;
-margin-bottom:10px;
+}
+
+.suggestions-box{
+width:90%;
+}
+
+.product-grid{
+grid-template-columns:
+repeat(2,1fr);
+gap:12px;
+}
+
+.product-box{
+min-height:320px;
+padding:10px;
+}
+
+.product-box img{
+height:130px;
+}
+
+.product-box h3{
+font-size:14px;
+}
+
+.price{
+font-size:17px;
+}
+
+.buy-btn{
+font-size:13px;
+padding:8px;
 }
 
 }
@@ -234,16 +335,37 @@ margin-bottom:10px;
 <nav class="navbar">
 
 <div class="logo">
+
 <a href="index.html">
+
 <img src="logo.png">
+
 </a>
+
 </div>
 
 <div class="nav-links">
-<a href="index.html">Home</a>
-<a href="student-deals.html">Deals</a>
-<a href="blog.html">Blog</a>
-<a href="contact.html">Contact</a>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="student-deals.html">
+Deals
+</a>
+
+<a href="laptop.html">
+Laptops
+</a>
+
+<a href="blog.html">
+Blog
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
 </div>
 
 </nav>
@@ -252,10 +374,13 @@ margin-bottom:10px;
 
 <header>
 
-<h1>Best Student Laptop Deals 2026</h1>  
+<h1>
+Best Student Laptop Deals 2026
+</h1>
 
 <p>
-Find laptops, headphones, watches and study products.
+Find coding laptops, gaming laptops,
+student laptops and office laptops.
 </p>
 
 </header>
@@ -264,45 +389,7 @@ Find laptops, headphones, watches and study products.
 
 <!-- CATEGORY -->
 
-<div style="text-align:center; margin:15px;">
-
-<button class="btn filter-btn" data-category="all">
-All
-</button>
-
-<button class="btn filter-btn" data-category="laptop">
-Laptop
-</button>
-
-<button class="btn filter-btn" data-category="headphone">
-Headphones
-</button>
-
-<button class="btn filter-btn" data-category="watch">
-Watch
-</button>
-
-<button class="btn filter-btn" data-category="study">
-Study
-</button>
-
-</div>
-
-<!-- SEARCH -->
-
-<div class="search-box">
-
-<input type="text"
-id="productSearch"
-placeholder="Search products...">
-
-<button class="btn"
-onclick="searchProducts()">
-Search
-</button>
-
-</div>
-<div style="text-align:center; margin-bottom:20px;">
+<div class="category-scroll">
 
 <button class="btn price-btn"
 data-price="30000">
@@ -326,6 +413,13 @@ Under ₹70000
 </button>
 
 <button class="btn price-btn"
+data-price="100000">
+
+Under ₹100000
+
+</button>
+
+<button class="btn price-btn"
 data-price="all">
 
 All Laptops
@@ -333,6 +427,29 @@ All Laptops
 </button>
 
 </div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input type="text"
+id="productSearch"
+placeholder="Search laptop, under 50000, HP..."
+autocomplete="off">
+
+<div id="suggestionsBox"
+class="suggestions-box">
+</div>
+
+<button class="btn"
+onclick="searchProducts()">
+
+Search
+
+</button>
+
+</div>
+
 <!-- PRODUCTS -->
 
 <div class="product-grid"
@@ -391,13 +508,10 @@ if(!cols) return;
 allProducts.push({
 
 id: cols[0]?.replace(/"/g,"") || "",
+
 title: cols[1]?.replace(/"/g,"") || "",
 
 image1: cols[2]?.replace(/"/g,"") || "",
-
-image2: cols[3]?.replace(/"/g,"") || "",
-
-image3: cols[4]?.replace(/"/g,"") || "",
 
 price: cols[5]?.replace(/"/g,"") || "",
 
@@ -405,18 +519,19 @@ oldprice: cols[6]?.replace(/"/g,"") || "",
 
 description: cols[7]?.replace(/"/g,"") || "",
 
-category: cols[8]?.replace(/"/g,"") || "",
-
-affiliate: cols[9]?.replace(/"/g,"") || ""
+category: cols[8]?.replace(/"/g,"") || ""
 
 });
 
 });
+
+/* SHOW ONLY LAPTOP */
 
 let laptops =
 allProducts.filter(product =>
 
-product.category.toLowerCase() === "laptop"
+product.category.toLowerCase()
+=== "laptop"
 
 );
 
@@ -437,7 +552,7 @@ html += `
 <div class="product-box">
 
 <img src="${product.image1}"
-onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
+alt="${product.title}">
 
 <h3>${product.title}</h3>
 
@@ -446,7 +561,9 @@ onerror="this.src='https://via.placeholder.com/300x200?text=No+Image'">
 ${product.price}
 
 <span class="old-price">
+
 ${product.oldprice}
+
 </span>
 
 </div>
@@ -475,51 +592,62 @@ function searchProducts(){
 
 let value =
 document.getElementById("productSearch")
-.value.toLowerCase();
+.value.toLowerCase().trim();
+
+/* UNDER PRICE */
+
+if(value.includes("under")){
+
+let amount =
+parseInt(value.replace(/[^\d]/g,''));
 
 let filtered =
-allProducts.filter(product =>
+allProducts.filter(product => {
 
-product.title.toLowerCase()
-.includes(value)
-
+let price =
+parseInt(
+product.price.replace(/[^\d]/g,'')
 );
+
+return product.category.toLowerCase()
+=== "laptop"
+
+&& price <= amount;
+
+});
 
 renderProducts(filtered);
 
 }
 
-/* ENTER SEARCH */
+/* NORMAL */
 
-document.getElementById("productSearch")
-.addEventListener("keyup", function(event){
-
-if(event.key === "Enter"){
-searchProducts();
-}
-
-});
-
-/* CATEGORY */
-
-document.querySelectorAll(".filter-btn")
-.forEach(button => {
-
-button.addEventListener("click", function(){
-
-let category = this.dataset.category;
-
-if(category === "all"){
-
-renderProducts(allProducts);
-
-}else{
+else{
 
 let filtered =
 allProducts.filter(product =>
 
 product.category.toLowerCase()
-=== category
+=== "laptop"
+
+&&
+
+(
+
+product.title.toLowerCase()
+.includes(value)
+
+||
+
+product.description.toLowerCase()
+.includes(value)
+
+||
+
+product.id.toLowerCase()
+.includes(value)
+
+)
 
 );
 
@@ -527,11 +655,22 @@ renderProducts(filtered);
 
 }
 
-});
+}
+
+/* ENTER */
+
+document.getElementById("productSearch")
+.addEventListener("keyup", function(event){
+
+if(event.key === "Enter"){
+
+searchProducts();
+
+}
 
 });
-  
-/* PRICE FILTER */
+
+/* PRICE BUTTON */
 
 document.querySelectorAll(".price-btn")
 .forEach(button => {
@@ -540,6 +679,8 @@ button.addEventListener("click", function(){
 
 let maxPrice =
 this.dataset.price;
+
+/* ALL */
 
 if(maxPrice === "all"){
 
@@ -553,7 +694,11 @@ product.category.toLowerCase()
 
 renderProducts(laptops);
 
-}else{
+}
+
+/* FILTER */
+
+else{
 
 let filtered =
 allProducts.filter(product => {
@@ -577,6 +722,102 @@ renderProducts(filtered);
 });
 
 });
+
+/* SUGGESTIONS */
+
+const suggestions = [
+
+"under 30000",
+"under 50000",
+"under 70000",
+
+"HP laptop",
+"Dell laptop",
+"ASUS laptop",
+
+"gaming laptop",
+"student laptop"
+
+];
+
+const searchInput =
+document.getElementById("productSearch");
+
+const suggestionsBox =
+document.getElementById("suggestionsBox");
+
+/* INPUT */
+
+searchInput.addEventListener("input", function(){
+
+let value =
+this.value.toLowerCase().trim();
+
+suggestionsBox.innerHTML = "";
+
+if(value === ""){
+
+suggestionsBox.style.display = "none";
+
+return;
+
+}
+
+let filtered =
+suggestions.filter(item =>
+
+item.toLowerCase().includes(value)
+
+);
+
+if(filtered.length > 0){
+
+suggestionsBox.style.display = "block";
+
+filtered.forEach(item => {
+
+let div =
+document.createElement("div");
+
+div.classList.add("suggestion-item");
+
+div.innerText = item;
+
+div.onclick = function(){
+
+searchInput.value = item;
+
+suggestionsBox.style.display = "none";
+
+searchProducts();
+
+};
+
+suggestionsBox.appendChild(div);
+
+});
+
+}else{
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
+/* HIDE */
+
+document.addEventListener("click", function(e){
+
+if(!searchInput.contains(e.target)
+&& !suggestionsBox.contains(e.target)){
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
 </script>
 
 </body>
