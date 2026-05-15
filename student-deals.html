@@ -288,21 +288,38 @@ Study
 
 </div>
 
-<!-- SEARCH -->
-
 <div class="search-box">
 
 <input type="text"
 id="productSearch"
-placeholder="Search products...">
+list="searchSuggestions"
+placeholder="Search laptop, under 50000, HP, Dell...">
+
+<datalist id="searchSuggestions">
+
+<option value="under 30000">
+<option value="under 50000">
+<option value="under 70000">
+
+<option value="HP laptop">
+<option value="Dell laptop">
+<option value="ASUS laptop">
+<option value="Lenovo laptop">
+
+<option value="gaming laptop">
+<option value="coding laptop">
+<option value="student laptop">
+
+</datalist>
 
 <button class="btn"
 onclick="searchProducts()">
+
 Search
+
 </button>
 
 </div>
-
 <!-- PRODUCTS -->
 
 <div class="product-grid"
@@ -452,17 +469,82 @@ renderProducts(filtered);
 
 }
 
-/* ENTER SEARCH */
+/* SMART SEARCH */
+
+function searchProducts(){
+
+let value =
+document.getElementById("productSearch")
+.value.toLowerCase().trim();
+
+/* SEARCH UNDER PRICE */
+
+if(value.includes("under")){
+
+/* EXTRACT NUMBER */
+
+let amount =
+parseInt(value.replace(/[^\d]/g,''));
+
+let filtered =
+allProducts.filter(product => {
+
+let price =
+parseInt(
+product.price.replace(/[^\d]/g,'')
+);
+
+return product.category.toLowerCase()
+=== "laptop"
+
+&& price <= amount;
+
+});
+
+renderProducts(filtered);
+
+}
+
+/* NORMAL SEARCH */
+
+else{
+
+let filtered =
+allProducts.filter(product =>
+
+product.title.toLowerCase()
+.includes(value)
+
+||
+
+product.description.toLowerCase()
+.includes(value)
+
+||
+
+product.id.toLowerCase()
+.includes(value)
+
+);
+
+renderProducts(filtered);
+
+}
+
+}
+
+/* ENTER KEY SEARCH */
 
 document.getElementById("productSearch")
 .addEventListener("keyup", function(event){
 
 if(event.key === "Enter"){
+
 searchProducts();
+
 }
 
 });
-
 /* CATEGORY */
 
 document.querySelectorAll(".filter-btn")
