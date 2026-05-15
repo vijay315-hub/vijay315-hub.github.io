@@ -1,24 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Deals | Vijay Job Portal</title>
+
+<meta name="description" content="Best student deals in India including laptops, headphones, smart watches, bags and study products.">
+
 <style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background:#111827;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo img{
+    height:40px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#22c55e;
+}
+
+/* HEADER */
+
+header{
+    background:#111827;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+header p{
+    color:#d1d5db;
+    margin-top:10px;
+}
+
+/* BUTTON */
+
+.btn{
+    display:inline-block;
+    margin:5px;
+    padding:8px 14px;
+    background:#111827;
+    color:white;
+    border-radius:8px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:0.3s;
+    font-size:14px;
+}
+
+.btn:hover{
+    background:#22c55e;
+}
+
+/* SEARCH */
+
+.search-box{
+    text-align:center;
+    margin:20px;
+}
+
+.search-box input{
+    width:60%;
+    padding:12px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
 
 /* PRODUCT GRID */
 
 .product-grid{
     width:90%;
-    max-width:1100px;
+    max-width:1200px;
     margin:20px auto;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:15px;
 }
 
-/* SMALL PRODUCT BOX */
+/* PRODUCT BOX */
 
 .product-box{
     background:white;
     border-radius:10px;
     padding:12px;
     text-align:center;
-    box-shadow:0 3px 8px rgba(0,0,0,0.08);
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
     transition:0.3s;
 }
 
@@ -36,9 +141,11 @@
 .product-box h3{
     font-size:14px;
     margin:10px 0;
-    height:38px;
+    height:35px;
     overflow:hidden;
 }
+
+/* PRICE */
 
 .price{
     color:#16a34a;
@@ -53,6 +160,8 @@
     font-size:12px;
     margin-left:5px;
 }
+
+/* BUY BUTTON */
 
 .buy-btn{
     display:block;
@@ -69,13 +178,120 @@
     background:#22c55e;
 }
 
+/* FOOTER */
+
+.footer{
+    background:#111827;
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+    margin-top:30px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    line-height:1.8;
+    font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    margin-top:10px;
+}
+
+.nav-links a{
+    margin:8px 0;
+}
+
+.search-box input{
+    width:90%;
+}
+
+}
+
 </style>
 
-<div class="product-grid">
+</head>
 
-<!-- ITEM 1 -->
+<body>
 
-<div class="product-box">
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="index.html">
+<img src="logo.png" alt="Logo">
+</a>
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="latest-jobs.html">Latest Jobs</a>
+<a href="tools.html">Tools</a>
+<a href="blog.html">Blog</a>
+<a href="student-deals.html">Deals</a>
+<a href="contact.html">Contact</a>
+</div>
+
+</nav>
+
+<!-- HEADER -->
+
+<header>
+
+<h1>Best Student Deals 2026</h1>
+
+<p>
+Find laptops, headphones, bags, watches and study products for students and job seekers.
+</p>
+
+</header>
+
+<!-- CATEGORY BUTTONS -->
+
+<div style="text-align:center; margin:15px;">
+
+<button class="btn filter-btn" data-category="all">All</button>
+
+<button class="btn filter-btn" data-category="laptop">Laptop</button>
+
+<button class="btn filter-btn" data-category="headphone">Headphones</button>
+
+<button class="btn filter-btn" data-category="bag">Bags</button>
+
+<button class="btn filter-btn" data-category="watch">Watches</button>
+
+<button class="btn filter-btn" data-category="study">Study</button>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input type="text" id="productSearch" placeholder="Search products...">
+
+</div>
+
+<!-- PRODUCT GRID -->
+
+<div class="product-grid" id="productGrid">
+
+<!-- PRODUCT -->
+
+<div class="product-box" data-category="laptop">
 
 <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1200&auto=format&fit=crop">
 
@@ -92,9 +308,9 @@ View Deal
 
 </div>
 
-<!-- ITEM 2 -->
+<!-- PRODUCT -->
 
-<div class="product-box">
+<div class="product-box" data-category="headphone">
 
 <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop">
 
@@ -111,9 +327,9 @@ View Deal
 
 </div>
 
-<!-- ITEM 3 -->
+<!-- PRODUCT -->
 
-<div class="product-box">
+<div class="product-box" data-category="bag">
 
 <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop">
 
@@ -130,28 +346,9 @@ View Deal
 
 </div>
 
-<!-- ITEM 4 -->
+<!-- PRODUCT -->
 
-<div class="product-box">
-
-<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200&auto=format&fit=crop">
-
-<h3>Gaming Laptop</h3>
-
-<div class="price">
-₹59,999
-<span class="old-price">₹69,999</span>
-</div>
-
-<a href="YOUR-EARNKARO-LINK" target="_blank" class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-<!-- ITEM 5 -->
-
-<div class="product-box">
+<div class="product-box" data-category="watch">
 
 <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1200&auto=format&fit=crop">
 
@@ -168,9 +365,9 @@ View Deal
 
 </div>
 
-<!-- ITEM 6 -->
+<!-- PRODUCT -->
 
-<div class="product-box">
+<div class="product-box" data-category="study">
 
 <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=1200&auto=format&fit=crop">
 
@@ -187,4 +384,98 @@ View Deal
 
 </div>
 
+<!-- PRODUCT -->
+
+<div class="product-box" data-category="laptop">
+
+<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200&auto=format&fit=crop">
+
+<h3>Gaming Laptop</h3>
+
+<div class="price">
+₹59,999
+<span class="old-price">₹69,999</span>
 </div>
+
+<a href="YOUR-EARNKARO-LINK" target="_blank" class="buy-btn">
+View Deal
+</a>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<p>
+⚠ Disclaimer: Some links on this page may be affiliate links. We may earn a commission when you purchase through these links at no extra cost to you.
+</p>
+
+<br>
+
+<p>
+© 2026 Vijay Job Portal
+</p>
+
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+/* SEARCH */
+
+document.getElementById("productSearch").addEventListener("input", function(){
+
+let value = this.value.toLowerCase();
+
+let products = document.querySelectorAll(".product-box");
+
+products.forEach(product => {
+
+let title = product.querySelector("h3").innerText.toLowerCase();
+
+if(title.includes(value)){
+product.style.display = "block";
+}else{
+product.style.display = "none";
+}
+
+});
+
+});
+
+/* CATEGORY FILTER */
+
+document.querySelectorAll(".filter-btn").forEach(button => {
+
+button.addEventListener("click", function(){
+
+let category = this.dataset.category;
+
+let products = document.querySelectorAll(".product-box");
+
+products.forEach(product => {
+
+if(category === "all"){
+product.style.display = "block";
+}
+else if(product.dataset.category === category){
+product.style.display = "block";
+}
+else{
+product.style.display = "none";
+}
+
+});
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
