@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<script>
+
+/* GOOGLE SHEET CSV URL */
+
+const sheetURL = "YOUR-GOOGLE-SHEET-CSV-LINK";
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+let rows = data.trim().split("\n").slice(1);
+
+let products = [];
+
+rows.forEach(row => {
+
+let cols = row.split(",");
+
+products.push({
+
+id: cols[0] || "",
+title: cols[1] || "",
+image: cols[2] || "",
+price: cols[3] || "",
+oldprice: cols[4] || "",
+description: cols[5] || "",
+category: cols[6] || "",
+affiliate: cols[7] || ""
+
+});
+
+});
+
+/* GET ID */
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+/* FIND PRODUCT */
+
+const product = products.find(p => p.id == id);
+
+/* SHOW PRODUCT */
+
+if(product){
+
+document.getElementById("productTitle")
+.innerText = product.title;
+
+document.getElementById("productPrice")
+.innerHTML = `${product.price}
+<span class="old-price">${product.oldprice}</span>`;
+
+document.getElementById("productImage")
+.src = product.image;
+
+document.getElementById("productDescription")
+.innerText = product.description;
+
+document.getElementById("buyBtn")
+.href = product.affiliate;
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
