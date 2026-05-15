@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Product Details | Vijay Job Portal</title>
+<title id="pageTitle">Product Details | Vijay Job Portal</title>
 
 <style>
 
@@ -238,7 +238,7 @@ We may earn commission when you purchase through these links.
 
 /* GOOGLE SHEET CSV URL */
 
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
+const sheetURL = "YOUR-GOOGLE-SHEET-CSV-LINK";
 
 fetch(sheetURL)
 .then(res => res.text())
@@ -296,6 +296,8 @@ document.getElementById("productDescription")
 
 document.getElementById("buyBtn")
 .href = product.affiliate;
+
+document.title = product.title + " | Vijay Job Portal";
 
 }
 
