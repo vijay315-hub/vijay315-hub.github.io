@@ -1,3 +1,6 @@
+# student-deals.html
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +11,7 @@
 <title>Student Deals | Vijay Job Portal</title>
 
 <meta name="description"
-content="Best student deals in India including laptops, headphones, watches, bags and study products.">
+content="Best student deals in India including laptops, headphones, bags and study products.">
 
 <style>
 
@@ -18,23 +21,12 @@ content="Best student deals in India including laptops, headphones, watches, bag
     box-sizing:border-box;
 }
 
-/* BODY */
-
 html,body{
     width:100%;
-    margin:0;
-    padding:0;
     overflow-x:hidden;
     font-family:Arial,sans-serif;
     background:#f5f5f5;
 }
-
-/* main{
-    flex:1;
-    width:100%;
-    display:flex;
-    flex-direction:column;
-} */
 
 /* NAVBAR */
 
@@ -44,9 +36,6 @@ html,body{
     justify-content:space-between;
     align-items:center;
     padding:12px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
 }
 
 .logo img{
@@ -63,7 +52,6 @@ html,body{
     margin-left:20px;
     text-decoration:none;
     font-size:14px;
-    transition:0.3s;
 }
 
 .nav-links a:hover{
@@ -80,8 +68,8 @@ header{
 }
 
 header p{
-    color:#d1d5db;
     margin-top:10px;
+    color:#d1d5db;
 }
 
 /* BUTTON */
@@ -95,8 +83,6 @@ header p{
     border-radius:8px;
     text-decoration:none;
     cursor:pointer;
-    transition:0.3s;
-    font-size:14px;
     border:none;
 }
 
@@ -127,7 +113,6 @@ header p{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:15px;
-    align-content:start;
 }
 
 /* PRODUCT BOX */
@@ -138,11 +123,6 @@ header p{
     padding:12px;
     text-align:center;
     box-shadow:0 3px 10px rgba(0,0,0,0.08);
-    transition:0.3s;
-}
-
-.product-box:hover{
-    transform:translateY(-3px);
 }
 
 .product-box img{
@@ -159,8 +139,6 @@ header p{
     overflow:hidden;
 }
 
-/* PRICE */
-
 .price{
     color:#16a34a;
     font-size:16px;
@@ -175,8 +153,6 @@ header p{
     margin-left:5px;
 }
 
-/* BUY BUTTON */
-
 .buy-btn{
     display:block;
     background:#111827;
@@ -185,7 +161,6 @@ header p{
     border-radius:7px;
     text-decoration:none;
     font-size:13px;
-    transition:0.3s;
 }
 
 .buy-btn:hover{
@@ -269,40 +244,21 @@ header p{
 <h1>Best Student Deals 2026</h1>
 
 <p>
-Find laptops, headphones, watches, bags and study products for students and job seekers.
+Find laptops, headphones, bags, watches and study products for students and job seekers.
 </p>
 
 </header>
 
-<main>
-
-<!-- CATEGORY BUTTONS -->
+<!-- CATEGORY -->
 
 <div style="text-align:center; margin:15px;">
 
-<button class="btn filter-btn" data-category="all">
-All
-</button>
-
-<button class="btn filter-btn" data-category="laptop">
-Laptop
-</button>
-
-<button class="btn filter-btn" data-category="headphone">
-Headphones
-</button>
-
-<button class="btn filter-btn" data-category="bag">
-Bags
-</button>
-
-<button class="btn filter-btn" data-category="watch">
-Watches
-</button>
-
-<button class="btn filter-btn" data-category="study">
-Study
-</button>
+<button class="btn filter-btn" data-category="all">All</button>
+<button class="btn filter-btn" data-category="laptop">Laptop</button>
+<button class="btn filter-btn" data-category="headphone">Headphones</button>
+<button class="btn filter-btn" data-category="bag">Bags</button>
+<button class="btn filter-btn" data-category="watch">Watches</button>
+<button class="btn filter-btn" data-category="study">Study</button>
 
 </div>
 
@@ -310,158 +266,27 @@ Study
 
 <div class="search-box">
 
-<input type="text"
-id="productSearch"
-placeholder="Search products...">
+<input type="text" id="productSearch" placeholder="Search products...">
 
-<button class="btn"
-onclick="searchProducts()">
+<button class="btn" onclick="searchProducts()">
 Search
 </button>
 
 </div>
 
-<!-- PRODUCT GRID -->
+<!-- PRODUCTS -->
 
-<div class="product-grid">
-
-<!-- PRODUCT -->
-
-<div class="product-box" data-category="laptop">
-
-<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=1200&auto=format&fit=crop">
-
-<h3>Student Laptop</h3>
-
-<div class="price">
-₹39,999
-<span class="old-price">₹45,999</span>
+<div class="product-grid" id="productGrid">
+Loading Products...
 </div>
-
-<a href="YOUR-EARNKARO-LINK"
-target="_blank"
-class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-<!-- PRODUCT -->
-
-<div class="product-box" data-category="headphone">
-
-<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1200&auto=format&fit=crop">
-
-<h3>Bluetooth Headphones</h3>
-
-<div class="price">
-₹999
-<span class="old-price">₹2,499</span>
-</div>
-
-<a href="YOUR-EARNKARO-LINK"
-target="_blank"
-class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-<!-- PRODUCT -->
-
-<div class="product-box" data-category="bag">
-
-<img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=1200&auto=format&fit=crop">
-
-<h3>College Backpack</h3>
-
-<div class="price">
-₹799
-<span class="old-price">₹1,999</span>
-</div>
-
-<a href="YOUR-EARNKARO-LINK"
-target="_blank"
-class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-<!-- PRODUCT -->
-
-<div class="product-box" data-category="watch">
-
-<img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?q=80&w=1200&auto=format&fit=crop">
-
-<h3>Smart Watch</h3>
-
-<div class="price">
-₹1,499
-<span class="old-price">₹3,499</span>
-</div>
-
-<a href="YOUR-EARNKARO-LINK"
-target="_blank"
-class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-<!-- PRODUCT -->
-
-<div class="product-box" data-category="study">
-
-<img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?q=80&w=1200&auto=format&fit=crop">
-
-<h3>Study Table Lamp</h3>
-
-<div class="price">
-₹699
-<span class="old-price">₹1,299</span>
-</div>
-
-<a href="YOUR-EARNKARO-LINK"
-target="_blank"
-class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-<!-- PRODUCT -->
-
-<div class="product-box" data-category="laptop">
-
-<img src="https://images.unsplash.com/photo-1517336714739-489689fd1ca8?q=80&w=1200&auto=format&fit=crop">
-
-<h3>Gaming Laptop</h3>
-
-<div class="price">
-₹59,999
-<span class="old-price">₹69,999</span>
-</div>
-
-<a href="YOUR-EARNKARO-LINK"
-target="_blank"
-class="buy-btn">
-View Deal
-</a>
-
-</div>
-
-</div>
-
-</main>
 
 <!-- FOOTER -->
 
 <footer class="footer">
 
 <p>
-⚠ Disclaimer: Some links on this page may be affiliate links.
-We may earn a commission when you purchase through these links.
+⚠ Disclaimer: Some links may be affiliate links.
+We may earn commission when you purchase through these links.
 </p>
 
 <br>
@@ -472,38 +297,95 @@ We may earn a commission when you purchase through these links.
 
 </footer>
 
-<!-- SCRIPT -->
-
 <script>
 
-/* MANUAL SEARCH */
+/* GOOGLE SHEET CSV URL */
 
-function searchProducts(){
+const sheetURL = "YOUR-GOOGLE-SHEET-CSV-LINK";
 
-let value =
-document.getElementById("productSearch")
-.value.toLowerCase();
+let allProducts = [];
 
-let products =
-document.querySelectorAll(".product-box");
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
 
-products.forEach(product => {
+let rows = data.trim().split("\n").slice(1);
 
-let title =
-product.querySelector("h3")
-.innerText.toLowerCase();
+rows.forEach(row => {
 
-if(title.includes(value)){
-product.style.display = "block";
-}else{
-product.style.display = "none";
-}
+let cols = row.split(",");
+
+allProducts.push({
+
+id: cols[0] || "",
+title: cols[1] || "",
+image: cols[2] || "",
+price: cols[3] || "",
+oldprice: cols[4] || "",
+description: cols[5] || "",
+category: cols[6] || "",
+affiliate: cols[7] || ""
 
 });
 
+});
+
+renderProducts(allProducts);
+
+});
+
+/* RENDER PRODUCTS */
+
+function renderProducts(products){
+
+let html = "";
+
+products.forEach(product => {
+
+html += `
+
+<div class="product-box" data-category="${product.category.toLowerCase()}">
+
+<img src="${product.image}">
+
+<h3>${product.title}</h3>
+
+<div class="price">
+${product.price}
+<span class="old-price">${product.oldprice}</span>
+</div>
+
+<a href="product-detail.html?id=${product.id}"
+class="buy-btn">
+View Deal
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("productGrid").innerHTML = html;
+
 }
 
-/* ENTER KEY SEARCH */
+/* SEARCH */
+
+function searchProducts(){
+
+let value = document.getElementById("productSearch")
+.value.toLowerCase();
+
+let filtered = allProducts.filter(product =>
+product.title.toLowerCase().includes(value)
+);
+
+renderProducts(filtered);
+
+}
+
+/* ENTER SEARCH */
 
 document.getElementById("productSearch")
 .addEventListener("keyup", function(event){
@@ -523,27 +405,376 @@ button.addEventListener("click", function(){
 
 let category = this.dataset.category;
 
-let products =
-document.querySelectorAll(".product-box");
-
-products.forEach(product => {
-
 if(category === "all"){
-product.style.display = "block";
-}
-else if(product.dataset.category === category){
-product.style.display = "block";
+renderProducts(allProducts);
 }
 else{
-product.style.display = "none";
-}
 
-});
+let filtered = allProducts.filter(product =>
+product.category.toLowerCase() === category
+);
+
+renderProducts(filtered);
+
+}
 
 });
 
 });
 
 </script>
+
 </body>
 </html>
+```
+
+---
+
+# product-detail.html
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Details | Vijay Job Portal</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background:#111827;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 20px;
+}
+
+.logo img{
+    height:40px;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+}
+
+.nav-links a{
+    color:white;
+    margin-left:20px;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.nav-links a:hover{
+    color:#22c55e;
+}
+
+/* PRODUCT */
+
+.product-container{
+    width:90%;
+    max-width:1000px;
+    margin:30px auto;
+    background:white;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+}
+
+.product-layout{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+.product-image img{
+    width:100%;
+    border-radius:12px;
+}
+
+.product-info h1{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.price{
+    color:#16a34a;
+    font-size:28px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:gray;
+    font-size:18px;
+    margin-left:10px;
+}
+
+.product-info p{
+    line-height:1.8;
+    color:#444;
+    margin-bottom:15px;
+}
+
+.buy-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:12px 25px;
+    background:#111827;
+    color:white;
+    text-decoration:none;
+    border-radius:8px;
+}
+
+.buy-btn:hover{
+    background:#22c55e;
+}
+
+/* FOOTER */
+
+.footer{
+    background:#111827;
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+    margin-top:30px;
+}
+
+.footer p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.nav-links{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    margin-top:10px;
+}
+
+.nav-links a{
+    margin:8px 0;
+}
+
+.product-layout{
+    grid-template-columns:1fr;
+}
+
+.product-info h1{
+    font-size:24px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="index.html">
+<img src="logo.png" alt="Logo">
+</a>
+</div>
+
+<div class="nav-links">
+<a href="index.html">Home</a>
+<a href="latest-jobs.html">Latest Jobs</a>
+<a href="tools.html">Tools</a>
+<a href="student-deals.html">Deals</a>
+<a href="contact.html">Contact</a>
+</div>
+
+</nav>
+
+<!-- PRODUCT -->
+
+<div class="product-container">
+
+<div class="product-layout">
+
+<div class="product-image">
+<img id="productImage">
+</div>
+
+<div class="product-info">
+
+<h1 id="productTitle"></h1>
+
+<div class="price" id="productPrice"></div>
+
+<p id="productDescription"></p>
+
+<a id="buyBtn"
+target="_blank"
+class="buy-btn">
+Buy Now
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<p>
+⚠ Disclaimer: Some links may be affiliate links.
+We may earn commission when you purchase through these links.
+</p>
+
+<br>
+
+<p>
+© 2026 Vijay Job Portal
+</p>
+
+</footer>
+
+<script>
+
+/* GOOGLE SHEET CSV URL */
+
+const sheetURL = "YOUR-GOOGLE-SHEET-CSV-LINK";
+
+fetch(sheetURL)
+.then(res => res.text())
+.then(data => {
+
+let rows = data.trim().split("\n").slice(1);
+
+let products = [];
+
+rows.forEach(row => {
+
+let cols = row.split(",");
+
+products.push({
+
+id: cols[0] || "",
+title: cols[1] || "",
+image: cols[2] || "",
+price: cols[3] || "",
+oldprice: cols[4] || "",
+description: cols[5] || "",
+category: cols[6] || "",
+affiliate: cols[7] || ""
+
+});
+
+});
+
+/* GET ID */
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+/* FIND PRODUCT */
+
+const product = products.find(p => p.id == id);
+
+/* SHOW PRODUCT */
+
+if(product){
+
+document.getElementById("productTitle")
+.innerText = product.title;
+
+document.getElementById("productPrice")
+.innerHTML = `${product.price}
+<span class="old-price">${product.oldprice}</span>`;
+
+document.getElementById("productImage")
+.src = product.image;
+
+document.getElementById("productDescription")
+.innerText = product.description;
+
+document.getElementById("buyBtn")
+.href = product.affiliate;
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
+```
+
+---
+
+# GOOGLE SHEET FORMAT
+
+| id | title          | image     | price  | oldprice | description              | category  | affiliate      |
+| -- | -------------- | --------- | ------ | -------- | ------------------------ | --------- | -------------- |
+| 1  | Student Laptop | image-url | ₹39999 | ₹45999   | Best laptop for students | laptop    | affiliate-link |
+| 2  | Headphones     | image-url | ₹999   | ₹2499    | Wireless headphones      | headphone | affiliate-link |
+
+---
+
+# IMPORTANT
+
+Replace:
+
+```text
+YOUR-GOOGLE-SHEET-CSV-LINK
+```
+
+with your Google Sheet CSV publish link.
+
+Example:
+
+```text
+https://docs.google.com/spreadsheets/d/e/xxxxxxxx/pub?output=csv
+```
+
+---
+
+# HOW TO GET CSV LINK
+
+1. Open Google Sheet
+2. File
+3. Share
+4. Publish to Web
+5. CSV
+6. Copy Link
+7. Paste into both pages
