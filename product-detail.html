@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title id="pageTitle">Product Details | Vijay Job Portal</title>
+<title>Product Details | Vijay Job Portal</title>
+
+<meta name="description"
+content="Best student product deals with affiliate links.">
 
 <style>
 
@@ -15,13 +19,23 @@
     box-sizing:border-box;
 }
 
-html,body{
-    width:100%;
-    margin:0;
-    padding:0;
-    overflow-x:hidden;
+/* FIX FOOTER GAP */
+
+html{
+    height:100%;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
     font-family:Arial,sans-serif;
     background:#f5f5f5;
+    overflow-x:hidden;
+}
+
+main{
+    flex:1;
 }
 
 /* NAVBAR */
@@ -54,62 +68,68 @@ html,body{
     color:#22c55e;
 }
 
-/* PRODUCT */
+/* PRODUCT CONTAINER */
 
 .product-container{
     width:90%;
-    max-width:1000px;
-    margin:30px auto;
+    max-width:1100px;
+    margin:40px auto;
     background:white;
     border-radius:12px;
     padding:25px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
-}
-
-.product-layout{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:30px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 
 .product-image img{
     width:100%;
-    border-radius:12px;
+    height:400px;
+    object-fit:contain;
+    border-radius:10px;
+    background:white;
 }
 
-.product-info h1{
-    font-size:30px;
-    margin-bottom:15px;
+.product-details h1{
+    font-size:32px;
+    margin-bottom:20px;
+    color:#111827;
 }
 
 .price{
     color:#16a34a;
-    font-size:28px;
+    font-size:30px;
     font-weight:bold;
-    margin:15px 0;
+    margin-bottom:10px;
 }
 
 .old-price{
-    text-decoration:line-through;
     color:gray;
+    text-decoration:line-through;
     font-size:18px;
     margin-left:10px;
 }
 
-.product-info p{
+.description{
+    margin-top:20px;
     line-height:1.8;
-    color:#444;
-    margin-bottom:15px;
+    color:#374151;
+    font-size:16px;
 }
+
+/* BUTTON */
 
 .buy-btn{
     display:inline-block;
-    margin-top:20px;
-    padding:12px 25px;
+    margin-top:25px;
     background:#111827;
     color:white;
-    text-decoration:none;
+    padding:14px 22px;
     border-radius:8px;
+    text-decoration:none;
+    font-size:16px;
+    transition:0.3s;
 }
 
 .buy-btn:hover{
@@ -123,8 +143,7 @@ html,body{
     color:white;
     padding:40px 20px;
     text-align:center;
-    width:100%;
-
+    margin-top:auto;
 }
 
 .footer p{
@@ -152,11 +171,19 @@ html,body{
     margin:8px 0;
 }
 
-.product-layout{
+.product-container{
     grid-template-columns:1fr;
 }
 
-.product-info h1{
+.product-image img{
+    height:280px;
+}
+
+.product-details h1{
+    font-size:24px;
+}
+
+.price{
     font-size:24px;
 }
 
@@ -182,48 +209,67 @@ html,body{
 <a href="index.html">Home</a>
 <a href="latest-jobs.html">Latest Jobs</a>
 <a href="tools.html">Tools</a>
+<a href="blog.html">Blog</a>
 <a href="student-deals.html">Deals</a>
 <a href="contact.html">Contact</a>
 </div>
 
 </nav>
 
+<main>
+
 <!-- PRODUCT -->
 
 <div class="product-container">
 
-<div class="product-layout">
-
 <div class="product-image">
-<img id="productImage" onerror="this.src='https://via.placeholder.com/500x400?text=No+Image'">
+
+<img id="productImage"
+onerror="this.src='https://via.placeholder.com/500x400?text=No+Image'">
+
 </div>
 
-<div class="product-info">
+<div class="product-details">
 
-<h1 id="productTitle"></h1>
+<h1 id="productTitle">
+Loading...
+</h1>
 
-<div class="price" id="productPrice"></div>
+<div class="price">
 
-<p id="productDescription"></p>
+<span id="productPrice"></span>
+
+<span class="old-price"
+id="productOldPrice"></span>
+
+</div>
+
+<p class="description"
+id="productDescription">
+Loading product details...
+</p>
 
 <a id="buyBtn"
-target="_blank"
-class="buy-btn">
+class="buy-btn"
+target="_blank">
+
 Buy Now
+
 </a>
 
 </div>
 
 </div>
 
-</div>
+</main>
 
 <!-- FOOTER -->
 
 <footer class="footer">
 
 <p>
-⚠ Disclaimer: Some links may be affiliate links.
+⚠ Disclaimer:
+Some links may be affiliate links.
 We may earn commission when you purchase through these links.
 </p>
 
@@ -237,60 +283,79 @@ We may earn commission when you purchase through these links.
 
 <script>
 
-/* GOOGLE SHEET CSV URL */
+/* GOOGLE SHEET */
 
-const sheetURL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
+const sheetURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
+
+/* GET PRODUCT ID */
+
+const params =
+new URLSearchParams(window.location.search);
+
+const productId =
+params.get("id");
+
+/* FETCH DATA */
 
 fetch(sheetURL)
+
 .then(res => res.text())
+
 .then(data => {
 
-let rows = data.trim().split("\n").slice(1);
+let rows =
+data.trim().split("\n").slice(1);
 
 let products = [];
 
 rows.forEach(row => {
 
-let cols = row.split(",");
+let cols =
+row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+
+if(!cols) return;
 
 products.push({
 
-id: cols[0] || "",
-title: cols[1] || "",
-image: cols[2] || "",
-price: cols[3] || "",
-oldprice: cols[4] || "",
-description: cols[5] || "",
-category: cols[6] || "",
-affiliate: cols[7] || ""
+id: cols[0]?.replace(/"/g,"") || "",
+
+title: cols[1]?.replace(/"/g,"") || "",
+
+image: cols[2]?.replace(/"/g,"") || "",
+
+price: cols[3]?.replace(/"/g,"") || "",
+
+oldprice: cols[4]?.replace(/"/g,"") || "",
+
+description: cols[5]?.replace(/"/g,"") || "",
+
+category: cols[6]?.replace(/"/g,"") || "",
+
+affiliate: cols[7]?.replace(/"/g,"") || ""
 
 });
 
 });
-
-/* GET ID */
-
-const params = new URLSearchParams(window.location.search);
-
-const id = params.get("id");
 
 /* FIND PRODUCT */
 
-const product = products.find(p => p.id == id);
-
-/* SHOW PRODUCT */
+let product =
+products.find(p => p.id === productId);
 
 if(product){
+
+document.getElementById("productImage")
+.src = product.image;
 
 document.getElementById("productTitle")
 .innerText = product.title;
 
 document.getElementById("productPrice")
-.innerHTML = `${product.price}
-<span class="old-price">${product.oldprice}</span>`;
+.innerText = product.price;
 
-document.getElementById("productImage")
-.src = product.image;
+document.getElementById("productOldPrice")
+.innerText = product.oldprice;
 
 document.getElementById("productDescription")
 .innerText = product.description;
@@ -298,7 +363,15 @@ document.getElementById("productDescription")
 document.getElementById("buyBtn")
 .href = product.affiliate;
 
-document.title = product.title + " | Vijay Job Portal";
+/* DYNAMIC PAGE TITLE */
+
+document.title =
+product.title + " | Vijay Job Portal";
+
+}else{
+
+document.querySelector(".product-container")
+.innerHTML = "<h2>Product Not Found</h2>";
 
 }
 
