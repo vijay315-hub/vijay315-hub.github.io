@@ -1,3 +1,7 @@
+<!-- ========================= -->
+<!-- product-detail.html -->
+<!-- ========================= -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,147 +12,160 @@
 
 <title>Product Details | Vijay Job Portal</title>
 
-<meta name="description"
-content="Best student product deals with affiliate links.">
-
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* FIX FOOTER GAP */
-
 html{
-    height:100%;
+height:100%;
 }
 
 body{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
-    overflow-x:hidden;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+overflow-x:hidden;
 }
 
 main{
-    flex:1;
+flex:1;
 }
 
 /* NAVBAR */
 
 .navbar{
-    background:#111827;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 20px;
+background:#111827;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
 }
 
 .logo img{
-    height:40px;
+height:40px;
 }
 
 .nav-links{
-    display:flex;
-    align-items:center;
+display:flex;
+align-items:center;
 }
 
 .nav-links a{
-    color:white;
-    margin-left:20px;
-    text-decoration:none;
-    font-size:14px;
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-size:14px;
 }
 
 .nav-links a:hover{
-    color:#22c55e;
+color:#22c55e;
 }
 
-/* PRODUCT CONTAINER */
+/* PRODUCT */
 
 .product-container{
-    width:90%;
-    max-width:1100px;
-    margin:40px auto;
-    background:white;
-    border-radius:12px;
-    padding:25px;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+width:90%;
+max-width:1100px;
+margin:40px auto;
+background:white;
+border-radius:12px;
+padding:25px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
 }
 
-.product-image img{
-    width:100%;
-    height:400px;
-    object-fit:contain;
-    border-radius:10px;
-    background:white;
+.main-image{
+width:100%;
+height:400px;
+object-fit:contain;
+background:white;
+border-radius:10px;
+}
+
+.thumbnail-container{
+display:flex;
+gap:10px;
+margin-top:15px;
+flex-wrap:wrap;
+}
+
+.thumbnail-container img{
+width:70px;
+height:70px;
+object-fit:contain;
+border:2px solid #ddd;
+border-radius:8px;
+cursor:pointer;
+padding:5px;
+background:white;
+}
+
+.thumbnail-container img:hover{
+border-color:#22c55e;
 }
 
 .product-details h1{
-    font-size:32px;
-    margin-bottom:20px;
-    color:#111827;
+font-size:32px;
+margin-bottom:20px;
 }
 
 .price{
-    color:#16a34a;
-    font-size:30px;
-    font-weight:bold;
-    margin-bottom:10px;
+color:#16a34a;
+font-size:30px;
+font-weight:bold;
+margin-bottom:10px;
 }
 
 .old-price{
-    color:gray;
-    text-decoration:line-through;
-    font-size:18px;
-    margin-left:10px;
+color:gray;
+text-decoration:line-through;
+font-size:18px;
+margin-left:10px;
 }
 
 .description{
-    margin-top:20px;
-    line-height:1.8;
-    color:#374151;
-    font-size:16px;
+margin-top:20px;
+line-height:1.8;
+color:#374151;
 }
 
 /* BUTTON */
 
 .buy-btn{
-    display:inline-block;
-    margin-top:25px;
-    background:#111827;
-    color:white;
-    padding:14px 22px;
-    border-radius:8px;
-    text-decoration:none;
-    font-size:16px;
-    transition:0.3s;
+display:inline-block;
+margin-top:25px;
+background:#111827;
+color:white;
+padding:14px 22px;
+border-radius:8px;
+text-decoration:none;
 }
 
 .buy-btn:hover{
-    background:#22c55e;
+background:#22c55e;
 }
 
 /* FOOTER */
 
 .footer{
-    background:#111827;
-    color:white;
-    padding:40px 20px;
-    text-align:center;
-    margin-top:auto;
+background:#111827;
+color:white;
+padding:40px 20px;
+text-align:center;
+margin-top:auto;
 }
 
 .footer p{
-    color:#cbd5e1;
-    line-height:1.8;
+color:#cbd5e1;
+line-height:1.8;
 }
 
 /* MOBILE */
@@ -156,35 +173,35 @@ main{
 @media(max-width:768px){
 
 .navbar{
-    flex-direction:column;
-    align-items:flex-start;
+flex-direction:column;
+align-items:flex-start;
 }
 
 .nav-links{
-    display:flex;
-    flex-direction:column;
-    width:100%;
-    margin-top:10px;
+display:flex;
+flex-direction:column;
+width:100%;
+margin-top:10px;
 }
 
 .nav-links a{
-    margin:8px 0;
+margin:8px 0;
 }
 
 .product-container{
-    grid-template-columns:1fr;
+grid-template-columns:1fr;
 }
 
-.product-image img{
-    height:280px;
+.main-image{
+height:280px;
 }
 
 .product-details h1{
-    font-size:24px;
+font-size:24px;
 }
 
 .price{
-    font-size:24px;
+font-size:24px;
 }
 
 }
@@ -201,16 +218,14 @@ main{
 
 <div class="logo">
 <a href="index.html">
-<img src="logo.png" alt="Logo">
+<img src="logo.png">
 </a>
 </div>
 
 <div class="nav-links">
 <a href="index.html">Home</a>
-<a href="latest-jobs.html">Latest Jobs</a>
-<a href="tools.html">Tools</a>
-<a href="blog.html">Blog</a>
 <a href="student-deals.html">Deals</a>
+<a href="blog.html">Blog</a>
 <a href="contact.html">Contact</a>
 </div>
 
@@ -222,10 +237,15 @@ main{
 
 <div class="product-container">
 
-<div class="product-image">
+<div>
 
 <img id="productImage"
+class="main-image"
 onerror="this.src='https://via.placeholder.com/500x400?text=No+Image'">
+
+<div class="thumbnail-container"
+id="thumbnailContainer">
+</div>
 
 </div>
 
@@ -246,7 +266,7 @@ id="productOldPrice"></span>
 
 <p class="description"
 id="productDescription">
-Loading product details...
+Loading...
 </p>
 
 <a id="buyBtn"
@@ -270,7 +290,6 @@ Buy Now
 <p>
 ⚠ Disclaimer:
 Some links may be affiliate links.
-We may earn commission when you purchase through these links.
 </p>
 
 <br>
@@ -288,7 +307,7 @@ We may earn commission when you purchase through these links.
 const sheetURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
 
-/* GET PRODUCT ID */
+/* GET ID */
 
 const params =
 new URLSearchParams(window.location.search);
@@ -296,7 +315,7 @@ new URLSearchParams(window.location.search);
 const productId =
 params.get("id");
 
-/* FETCH DATA */
+/* FETCH */
 
 fetch(sheetURL)
 
@@ -319,20 +338,18 @@ if(!cols) return;
 products.push({
 
 id: cols[0]?.replace(/"/g,"") || "",
-
 title: cols[1]?.replace(/"/g,"") || "",
 
-image: cols[2]?.replace(/"/g,"") || "",
+image1: cols[2]?.replace(/"/g,"") || "",
+image2: cols[3]?.replace(/"/g,"") || "",
+image3: cols[4]?.replace(/"/g,"") || "",
 
-price: cols[3]?.replace(/"/g,"") || "",
+price: cols[5]?.replace(/"/g,"") || "",
+oldprice: cols[6]?.replace(/"/g,"") || "",
 
-oldprice: cols[4]?.replace(/"/g,"") || "",
-
-description: cols[5]?.replace(/"/g,"") || "",
-
-category: cols[6]?.replace(/"/g,"") || "",
-
-affiliate: cols[7]?.replace(/"/g,"") || ""
+description: cols[7]?.replace(/"/g,"") || "",
+category: cols[8]?.replace(/"/g,"") || "",
+affiliate: cols[9]?.replace(/"/g,"") || ""
 
 });
 
@@ -346,7 +363,7 @@ products.find(p => p.id === productId);
 if(product){
 
 document.getElementById("productImage")
-.src = product.image;
+.src = product.image1;
 
 document.getElementById("productTitle")
 .innerText = product.title;
@@ -363,19 +380,51 @@ document.getElementById("productDescription")
 document.getElementById("buyBtn")
 .href = product.affiliate;
 
-/* DYNAMIC PAGE TITLE */
+/* PAGE TITLE */
 
 document.title =
 product.title + " | Vijay Job Portal";
 
-}else{
+/* THUMBNAILS */
 
-document.querySelector(".product-container")
-.innerHTML = "<h2>Product Not Found</h2>";
+let thumbnails = [
+product.image1,
+product.image2,
+product.image3
+];
+
+let thumbHTML = "";
+
+thumbnails.forEach(img => {
+
+if(img){
+
+thumbHTML += `
+
+<img src="${img}"
+onclick="changeImage('${img}')">
+
+`;
 
 }
 
 });
+
+document.getElementById("thumbnailContainer")
+.innerHTML = thumbHTML;
+
+}
+
+});
+
+/* CHANGE IMAGE */
+
+function changeImage(image){
+
+document.getElementById("productImage")
+.src = image;
+
+}
 
 </script>
 
