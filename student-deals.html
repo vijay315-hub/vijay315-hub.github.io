@@ -526,66 +526,66 @@ Some links may be affiliate links.
 
 /* GOOGLE SHEET */
 
+
+
 const sheetURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
 
 let allProducts = [];
 
-/* FETCH */
-
 fetch(sheetURL)
-
 .then(res => res.text())
-
 .then(data => {
 
-let rows =
-data.trim().split("\n").slice(1);
+const rows = data.split("\n").slice(1);
 
-rows.forEach(row => {
+rows.forEach((row,index)=>{
 
-let cols =
-row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+const cols = row.split(",");
 
-if(!cols) return;
+if(cols[1]){
 
 allProducts.push({
 
-id: cols[0]?.replace(/"/g,"") || "",
+id: cols[0]?.trim(),
 
-title: cols[1]?.replace(/"/g,"") || "",
+title: cols[1]?.trim(),
 
-image1: cols[2]?.replace(/"/g,"") || "",
+image1: cols[2]?.trim(),
 
-price: cols[5]?.replace(/"/g,"") || "",
+image2: cols[3]?.trim(),
 
-oldprice: cols[6]?.replace(/"/g,"") || "",
+image3: cols[4]?.trim(),
 
-description: cols[7]?.replace(/"/g,"") || "",
+price: cols[5]?.trim(),
 
-category: cols[8]?.replace(/"/g,"") || ""
+oldprice: cols[6]?.trim(),
+
+description: cols[7]?.trim(),
+
+category: cols[8]?.trim().toLowerCase(),
+
+affiliate: cols[9]?.trim()
 
 });
 
-});
+}
 
-/* SHOW ALL PRODUCTS */
+});
 
 renderProducts(allProducts);
 
 });
 
-/* RENDER */
-
 function renderProducts(products){
 
 let html = "";
 
-products.forEach(product => {
+products.forEach(product=>{
 
 html += `
 
-<div class="product-box">
+<div class="product-card">
 
 <img src="${product.image1}"
 alt="${product.title}">
@@ -594,21 +594,19 @@ alt="${product.title}">
 
 <div class="price">
 
-${product.price}
+<span class="new-price">
+₹${product.price}
+</span>
 
 <span class="old-price">
-
-${product.oldprice}
-
+₹${product.oldprice}
 </span>
 
 </div>
 
-<a href="product-detail.html?id=${product.id}"
-class="buy-btn">
-
+<a class="view-btn"
+href="product-detail.html?id=${product.id}">
 View Deal
-
 </a>
 
 </div>
@@ -617,10 +615,45 @@ View Deal
 
 });
 
-document.getElementById("productGrid")
-.innerHTML = html;
+document.getElementById("products").innerHTML = html;
 
 }
+
+function searchProducts(){
+
+const value =
+document.getElementById("searchInput")
+.value
+.toLowerCase();
+
+const filtered =
+allProducts.filter(product =>
+
+product.title.toLowerCase().includes(value) ||
+
+product.category.toLowerCase().includes(value) ||
+
+product.price.includes(value)
+
+);
+
+renderProducts(filtered);
+
+}
+
+function filterCategory(category){
+
+const filtered =
+allProducts.filter(product=>
+
+product.category === category
+
+);
+
+renderProducts(filtered);
+
+}
+
 
 /* SMART SEARCH */
 
