@@ -524,22 +524,22 @@ Some links may be affiliate links.
 
 <script>
 
-/* GOOGLE SHEET */
-
-
-
 const sheetURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
 
 let allProducts = [];
 
+/* FETCH PRODUCTS */
+
 fetch(sheetURL)
+
 .then(res => res.text())
+
 .then(data => {
 
 const rows = data.split("\n").slice(1);
 
-rows.forEach((row,index)=>{
+rows.forEach(row => {
 
 const cols = row.split(",");
 
@@ -577,36 +577,44 @@ renderProducts(allProducts);
 
 });
 
+/* RENDER PRODUCTS */
+
 function renderProducts(products){
 
 let html = "";
 
-products.forEach(product=>{
+products.forEach(product => {
 
 html += `
 
-<div class="product-card">
+<div class="product-box">
 
 <img src="${product.image1}"
-alt="${product.title}">
+alt="${product.title}"
 
-<h3>${product.title}</h3>
+onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+
+<h3>
+${product.title}
+</h3>
 
 <div class="price">
 
-<span class="new-price">
 ₹${product.price}
-</span>
 
 <span class="old-price">
+
 ₹${product.oldprice}
+
 </span>
 
 </div>
 
-<a class="view-btn"
+<a class="buy-btn"
 href="product-detail.html?id=${product.id}">
+
 View Deal
+
 </a>
 
 </div>
@@ -615,55 +623,21 @@ View Deal
 
 });
 
-document.getElementById("products").innerHTML = html;
+document.getElementById("productGrid").innerHTML = html;
 
 }
 
-function searchProducts(){
-
-const value =
-document.getElementById("searchInput")
-.value
-.toLowerCase();
-
-const filtered =
-allProducts.filter(product =>
-
-product.title.toLowerCase().includes(value) ||
-
-product.category.toLowerCase().includes(value) ||
-
-product.price.includes(value)
-
-);
-
-renderProducts(filtered);
-
-}
-
-function filterCategory(category){
-
-const filtered =
-allProducts.filter(product=>
-
-product.category === category
-
-);
-
-renderProducts(filtered);
-
-}
-
-
-/* SMART SEARCH */
+/* SEARCH */
 
 function searchProducts(){
 
 let value =
 document.getElementById("productSearch")
-.value.toLowerCase().trim();
+.value
+.toLowerCase()
+.trim();
 
-/* UNDER PRICE */
+/* UNDER PRICE SEARCH */
 
 if(value.includes("under")){
 
@@ -703,7 +677,7 @@ product.description.toLowerCase()
 
 ||
 
-product.id.toLowerCase()
+product.category.toLowerCase()
 .includes(value)
 
 );
@@ -714,9 +688,10 @@ renderProducts(filtered);
 
 }
 
-/* ENTER */
+/* ENTER KEY SEARCH */
 
 document.getElementById("productSearch")
+
 .addEventListener("keyup", function(event){
 
 if(event.key === "Enter"){
@@ -750,7 +725,7 @@ document.getElementById("productSearch");
 const suggestionsBox =
 document.getElementById("suggestionsBox");
 
-/* INPUT */
+/* SHOW SUGGESTIONS */
 
 searchInput.addEventListener("input", function(){
 
@@ -809,12 +784,19 @@ suggestionsBox.style.display = "none";
 
 });
 
-/* HIDE */
+/* HIDE SUGGESTIONS */
 
 document.addEventListener("click", function(e){
 
-if(!searchInput.contains(e.target)
-&& !suggestionsBox.contains(e.target)){
+if(
+
+!searchInput.contains(e.target)
+
+&&
+
+!suggestionsBox.contains(e.target)
+
+){
 
 suggestionsBox.style.display = "none";
 
