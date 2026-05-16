@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Best Mobile Deals 2026 | Vijay Job Portal
+</title>
+
+<meta name="description"
+content="Find best mobile phone deals for students, gaming and daily use in India.">
+
+<meta name="keywords"
+content="best mobiles India, gaming phones, student mobiles, budget smartphones">
+
+<meta name="robots"
+content="index, follow">
+
+<meta name="author"
+content="Vijay Job Portal">
+
+<link rel="canonical"
+href="https://vijay315-hub.github.io/mobile.html">
+
+<meta property="og:title"
+content="Best Mobile Deals 2026">
+
+<meta property="og:description"
+content="Latest smartphone and mobile deals for students">
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:image"
+content="logo.png">
+
+<link rel="icon"
+href="logo.png">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+height:100%;
+}
+
+body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+overflow-x:hidden;
+}
+
+main{
+flex:1;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#111827;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
+}
+
+.logo img{
+height:40px;
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+color:white;
+margin-left:15px;
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#22c55e;
+}
+
+/* HEADER */
+
+header{
+background:#111827;
+color:white;
+padding:40px 20px;
+text-align:center;
+}
+
+header p{
+margin-top:10px;
+color:#d1d5db;
+line-height:1.7;
+}
+
+/* CATEGORY */
+
+.category-scroll{
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:12px 10px;
+white-space:nowrap;
+scrollbar-width:none;
+}
+
+.category-scroll::-webkit-scrollbar{
+display:none;
+}
+
+.category-scroll .btn{
+flex:0 0 auto;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+padding:10px 16px;
+background:#111827;
+color:white;
+border-radius:30px;
+text-decoration:none;
+border:none;
+cursor:pointer;
+font-size:14px;
+transition:0.3s;
+}
+
+.btn:hover{
+background:#22c55e;
+}
+
+/* SEARCH */
+
+.search-box{
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+margin:20px;
+flex-wrap:wrap;
+}
+
+.search-box input{
+width:50%;
+padding:14px;
+border-radius:12px;
+border:1px solid #ccc;
+font-size:14px;
+outline:none;
+}
+
+.search-btn{
+padding:14px 18px;
+background:#111827;
+color:white;
+border:none;
+border-radius:12px;
+cursor:pointer;
+}
+
+.search-btn:hover{
+background:#22c55e;
+}
+
+/* SUGGESTIONS */
+
+.suggestions-box{
+position:absolute;
+top:60px;
+width:50%;
+background:white;
+border-radius:12px;
+box-shadow:0 4px 12px rgba(0,0,0,0.1);
+display:none;
+overflow:hidden;
+z-index:999;
+}
+
+.suggestion-item{
+padding:12px;
+cursor:pointer;
+border-bottom:1px solid #eee;
+}
+
+.suggestion-item:hover{
+background:#f3f4f6;
+}
+
+/* PRODUCT GRID */
+
+.product-grid{
+width:90%;
+max-width:1200px;
+margin:20px auto 40px auto;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+/* PRODUCT */
+
+.product-box{
+background:white;
+border-radius:12px;
+padding:12px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,0.08);
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+min-height:360px;
+}
+
+.product-box img{
+width:100%;
+height:180px;
+object-fit:contain;
+background:white;
+border-radius:8px;
+}
+
+.product-box h3{
+font-size:15px;
+margin:12px 0;
+min-height:45px;
+}
+
+.price{
+color:#16a34a;
+font-size:20px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.old-price{
+color:gray;
+text-decoration:line-through;
+font-size:13px;
+margin-left:5px;
+}
+
+.buy-btn{
+display:block;
+background:#111827;
+color:white;
+padding:10px;
+border-radius:8px;
+text-decoration:none;
+margin-top:10px;
+}
+
+.buy-btn:hover{
+background:#22c55e;
+}
+
+/* FOOTER */
+
+.footer{
+background:#111827;
+color:white;
+padding:40px 20px;
+text-align:center;
+margin-top:auto;
+}
+
+.footer p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.navbar{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.nav-links{
+display:flex;
+flex-direction:column;
+width:100%;
+margin-top:10px;
+}
+
+.nav-links a{
+margin:8px 0;
+}
+
+.search-box{
+flex-wrap:nowrap;
+padding:0 10px;
+}
+
+.search-box input{
+width:100%;
+min-width:0;
+font-size:13px;
+}
+
+.search-btn{
+padding:13px 14px;
+font-size:13px;
+flex-shrink:0;
+}
+
+.suggestions-box{
+width:90%;
+left:5%;
+top:58px;
+}
+
+.product-grid{
+grid-template-columns:
+repeat(2,1fr);
+gap:12px;
+}
+
+.product-box{
+min-height:320px;
+padding:10px;
+}
+
+.product-box img{
+height:130px;
+}
+
+.product-box h3{
+font-size:14px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<a href="index.html">
+
+<img src="logo.png">
+
+</a>
+
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="student-deals.html">
+Deals
+</a>
+
+<a href="mobile.html">
+Mobiles
+</a>
+
+<a href="laptop.html">
+Laptops
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+</nav>
+
+<header>
+
+<h1>
+Best Mobile Deals 2026
+</h1>
+
+<p>
+Find best smartphones for students, gaming and online learning.
+</p>
+
+</header>
+
+<main>
+
+<div class="category-scroll">
+
+<button class="btn price-btn"
+data-price="10000">
+
+Under ₹10000
+
+</button>
+
+<button class="btn price-btn"
+data-price="20000">
+
+Under ₹20000
+
+</button>
+
+<button class="btn price-btn"
+data-price="30000">
+
+Under ₹30000
+
+</button>
+
+<button class="btn price-btn"
+data-price="all">
+
+All Mobiles
+
+</button>
+
+</div>
+
+<div class="search-box">
+
+<input type="text"
+id="productSearch"
+placeholder="Search gaming mobile, samsung, vivo..."
+autocomplete="off">
+
+<button class="search-btn"
+onclick="searchProducts()">
+
+🔍 Search
+
+</button>
+
+<div class="suggestions-box"
+id="suggestionsBox">
+</div>
+
+</div>
+
+<div class="product-grid"
+id="productGrid">
+
+Loading Products...
+
+</div>
+
+</main>
+
+<footer class="footer">
+
+<p>
+⚠ Some links may be affiliate links.
+</p>
+
+<br>
+
+<p>
+© 2026 Vijay Job Portal
+</p>
+
+</footer>
+
+<script>
+
+const sheetURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vRX-wrlF5tmoY9e3vjobu5Y-7NI-6OFduc8E3V-fILbv0K3Zq4TQQgNgIfePNrQxza4xRH_o1ZLya_q/pub?output=csv";
+
+let allProducts = [];
+
+fetch(sheetURL)
+
+.then(res => res.text())
+
+.then(data => {
+
+let rows =
+data.trim().split("\n").slice(1);
+
+rows.forEach(row => {
+
+let cols =
+row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+
+if(!cols) return;
+
+allProducts.push({
+
+id: cols[0]?.replace(/"/g,"") || "",
+
+title: cols[1]?.replace(/"/g,"") || "",
+
+image1: cols[2]?.replace(/"/g,"") || "",
+
+price: cols[5]?.replace(/"/g,"") || "",
+
+oldprice: cols[6]?.replace(/"/g,"") || "",
+
+description: cols[7]?.replace(/"/g,"") || "",
+
+category: cols[8]?.replace(/"/g,"") || ""
+
+});
+
+});
+
+let mobiles =
+allProducts.filter(product =>
+
+product.category.toLowerCase()
+=== "mobile"
+
+);
+
+renderProducts(mobiles);
+
+});
+
+function renderProducts(products){
+
+let html = "";
+
+products.forEach(product => {
+
+html += `
+
+<div class="product-box">
+
+<img src="${product.image1}"
+alt="${product.title}">
+
+<h3>${product.title}</h3>
+
+<div class="price">
+
+${product.price}
+
+<span class="old-price">
+
+${product.oldprice}
+
+</span>
+
+</div>
+
+<a href="product-detail.html?id=${product.id}"
+class="buy-btn">
+
+View Deal
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("productGrid")
+.innerHTML = html;
+
+}
+
+function searchProducts(){
+
+let value =
+document.getElementById("productSearch")
+.value.toLowerCase();
+
+let filtered =
+allProducts.filter(product =>
+
+product.category.toLowerCase()
+=== "mobile"
+
+&&
+
+(
+
+product.title.toLowerCase()
+.includes(value)
+
+||
+
+product.description.toLowerCase()
+.includes(value)
+
+)
+
+);
+
+renderProducts(filtered);
+
+}
+
+document.getElementById("productSearch")
+.addEventListener("keyup", function(event){
+
+if(event.key === "Enter"){
+
+searchProducts();
+
+}
+
+});
+
+document.querySelectorAll(".price-btn")
+.forEach(button => {
+
+button.addEventListener("click", function(){
+
+let maxPrice =
+this.dataset.price;
+
+if(maxPrice === "all"){
+
+let mobiles =
+allProducts.filter(product =>
+
+product.category.toLowerCase()
+=== "mobile"
+
+);
+
+renderProducts(mobiles);
+
+}else{
+
+let filtered =
+allProducts.filter(product => {
+
+let price =
+parseInt(
+product.price.replace(/[^\d]/g,'')
+);
+
+return product.category.toLowerCase()
+=== "mobile"
+
+&& price <= parseInt(maxPrice);
+
+});
+
+renderProducts(filtered);
+
+}
+
+});
+
+});
+
+const suggestions = [
+
+"samsung mobile",
+"gaming phone",
+"vivo mobile",
+"realme mobile",
+"under 10000",
+"under 20000"
+
+];
+
+const searchInput =
+document.getElementById("productSearch");
+
+const suggestionsBox =
+document.getElementById("suggestionsBox");
+
+searchInput.addEventListener("input", function(){
+
+let value =
+this.value.toLowerCase();
+
+suggestionsBox.innerHTML = "";
+
+if(value === ""){
+
+suggestionsBox.style.display = "none";
+
+return;
+
+}
+
+let filtered =
+suggestions.filter(item =>
+
+item.toLowerCase()
+.includes(value)
+
+);
+
+if(filtered.length > 0){
+
+suggestionsBox.style.display = "block";
+
+filtered.forEach(item => {
+
+let div =
+document.createElement("div");
+
+div.classList.add("suggestion-item");
+
+div.innerText = item;
+
+div.onclick = function(){
+
+searchInput.value = item;
+
+suggestionsBox.style.display = "none";
+
+searchProducts();
+
+};
+
+suggestionsBox.appendChild(div);
+
+});
+
+}else{
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
+document.addEventListener("click", function(e){
+
+if(
+
+!searchInput.contains(e.target)
+
+&&
+
+!suggestionsBox.contains(e.target)
+
+){
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
