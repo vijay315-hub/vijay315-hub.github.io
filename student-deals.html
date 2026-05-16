@@ -529,61 +529,76 @@ const sheetURL =
 
 let allProducts = [];
 
+/* FETCH */
+
 fetch(sheetURL)
 
 .then(response => response.text())
 
-.then(csv => {
+.then(data => {
 
-const rows = csv.split("\n").slice(1);
+const rows = data.trim().split("\n").slice(1);
 
 rows.forEach(row => {
 
 /* SAFE CSV SPLIT */
 
-const cols =
-row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+const cols = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
 
-if(!cols || cols.length < 10) return;
+if(!cols) return;
 
-/* REMOVE " */
+/* CLEAN */
 
-const cleanCols =
-cols.map(col =>
-col.replace(/^"|"$/g,'').trim()
+const clean = cols.map(col =>
+col.replace(/^"|"$/g, "").trim()
 );
 
 /* SKIP EMPTY */
 
-if(!cleanCols[1]) return;
+if(clean.length < 10) return;
+
+if(!clean[1]) return;
+
+/* PUSH */
 
 allProducts.push({
 
-id: cleanCols[0],
+id: clean[0],
 
-title: cleanCols[1],
+title: clean[1],
 
-image1: cleanCols[2],
+image1: clean[2],
 
-image2: cleanCols[3],
+image2: clean[3],
 
-image3: cleanCols[4],
+image3: clean[4],
 
-price: cleanCols[5],
+price: clean[5],
 
-oldprice: cleanCols[6],
+oldprice: clean[6],
 
-description: cleanCols[7],
+description: clean[7],
 
-category: cleanCols[8].toLowerCase(),
+category: clean[8].toLowerCase(),
 
-affiliate: cleanCols[9]
+affiliate: clean[9]
+
+});
 
 });
 
-});
+/* SHOW */
 
 renderProducts(allProducts);
+
+})
+
+.catch(error => {
+
+document.getElementById("productGrid").innerHTML =
+"Failed to load products";
+
+console.log(error);
 
 });
 
@@ -593,13 +608,20 @@ function renderProducts(products){
 
 let html = "";
 
+if(products.length === 0){
+
+html = "<h2>No Products Found</h2>";
+
+}
+
 products.forEach(product => {
 
 html += `
 
 <div class="product-box">
 
-<img src="${product.image1}"
+<img
+src="${product.image1}"
 alt="${product.title}"
 
 onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
@@ -636,6 +658,180 @@ View Deal
 document.getElementById("productGrid").innerHTML = html;
 
 }
+
+/* SEARCH */
+
+function searchProducts(){
+
+let value =
+document.getElementById("productSearch")
+.value
+.toLowerCase()
+.trim();
+
+/* UNDER PRICE */
+
+if(value.includes("under")){
+
+let amount =
+parseInt(value.replace(/[^\d]/g,''));
+
+let filtered =
+allProducts.filter(product => {
+
+let price =
+parseInt(
+product.price.replace(/[^\d]/g,'')
+);
+
+return price <= amount;
+
+});
+
+renderProducts(filtered);
+
+}
+
+/* NORMAL */
+
+else{
+
+let filtered =
+allProducts.filter(product =>
+
+product.title.toLowerCase().includes(value)
+
+||
+
+product.description.toLowerCase().includes(value)
+
+||
+
+product.category.toLowerCase().includes(value)
+
+);
+
+renderProducts(filtered);
+
+}
+
+}
+
+/* ENTER */
+
+document.getElementById("productSearch")
+
+.addEventListener("keyup", function(event){
+
+if(event.key === "Enter"){
+
+searchProducts();
+
+}
+
+});
+
+/* SUGGESTIONS */
+
+const suggestions = [
+
+"under 30000",
+"under 50000",
+"under 70000",
+
+"HP laptop",
+"Dell laptop",
+"ASUS laptop",
+
+"gaming laptop",
+"student laptop"
+
+];
+
+const searchInput =
+document.getElementById("productSearch");
+
+const suggestionsBox =
+document.getElementById("suggestionsBox");
+
+/* INPUT */
+
+searchInput.addEventListener("input", function(){
+
+let value =
+this.value.toLowerCase().trim();
+
+suggestionsBox.innerHTML = "";
+
+if(value === ""){
+
+suggestionsBox.style.display = "none";
+
+return;
+
+}
+
+let filtered =
+suggestions.filter(item =>
+
+item.toLowerCase().includes(value)
+
+);
+
+if(filtered.length > 0){
+
+suggestionsBox.style.display = "block";
+
+filtered.forEach(item => {
+
+let div =
+document.createElement("div");
+
+div.classList.add("suggestion-item");
+
+div.innerText = item;
+
+div.onclick = function(){
+
+searchInput.value = item;
+
+suggestionsBox.style.display = "none";
+
+searchProducts();
+
+};
+
+suggestionsBox.appendChild(div);
+
+});
+
+}else{
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
+/* HIDE */
+
+document.addEventListener("click", function(e){
+
+if(
+
+!searchInput.contains(e.target)
+
+&&
+
+!suggestionsBox.contains(e.target)
+
+){
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
 
 </script>
 
