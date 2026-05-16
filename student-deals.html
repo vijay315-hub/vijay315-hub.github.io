@@ -4,26 +4,26 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-Best Student Deals 2026 | Vijay Job Portal
-</title>
+<title>Best Student Deals 2026 | Vijay Job Portal</title>
 
 <meta name="description"
 content="Find best student deals including laptops, headphones, watches, mobiles and study products.">
 
 <meta name="keywords"
-content="student deals, laptop deals, headphone deals, mobile deals">
+content="student deals, laptop deals, headphone deals, mobile deals, gaming accessories">
 
-<meta name="robots"
-content="index, follow">
+<meta name="robots" content="index, follow">
 
 <link rel="canonical"
 href="https://vijay315-hub.github.io/student-deals.html">
 
 <style>
+
+/* =========================
+RESET
+========================= */
 
 *{
 margin:0;
@@ -31,24 +31,16 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-height:100%;
-}
-
-body{
-min-height:100vh;
-display:flex;
-flex-direction:column;
+html,body{
+width:100%;
+overflow-x:hidden;
 font-family:Arial,sans-serif;
 background:#f5f5f5;
-overflow-x:hidden;
 }
 
-main{
-flex:1;
-}
-
-/* NAVBAR */
+/* =========================
+NAVBAR
+========================= */
 
 .navbar{
 background:#111827;
@@ -56,188 +48,137 @@ display:flex;
 justify-content:space-between;
 align-items:center;
 padding:12px 20px;
+flex-wrap:wrap;
 }
 
 .logo img{
-height:40px;
+height:42px;
 }
 
 .nav-links{
 display:flex;
 align-items:center;
 flex-wrap:wrap;
+gap:15px;
 }
 
 .nav-links a{
 color:white;
-margin-left:15px;
 text-decoration:none;
 font-size:14px;
+transition:0.3s;
 }
 
 .nav-links a:hover{
 color:#22c55e;
 }
 
-/* MOBILE NAV */
-
-@media(max-width:768px){
-
-.navbar{
-flex-direction:column;
-align-items:flex-start;
-}
-
-.nav-links{
-width:100%;
-margin-top:10px;
-}
-
-.nav-links a{
-margin:6px;
-}
-
-}
-
-/* HEADER */
+/* =========================
+HEADER
+========================= */
 
 header{
 background:#111827;
 color:white;
-padding:40px 20px;
 text-align:center;
+padding:50px 20px;
+}
+
+header h1{
+font-size:42px;
+margin-bottom:12px;
 }
 
 header p{
-margin-top:10px;
+font-size:17px;
 color:#d1d5db;
 line-height:1.7;
 }
 
-/* BUTTON */
-
-.btn{
-display:inline-block;
-padding:10px 16px;
-background:#111827;
-color:white;
-border-radius:30px;
-text-decoration:none;
-border:none;
-cursor:pointer;
-font-size:14px;
-white-space:nowrap;
-transition:0.3s;
-}
-
-.btn:hover{
-background:#22c55e;
-}
-
-/* CATEGORY */
+/* =========================
+CATEGORY
+========================= */
 
 .category-scroll{
 display:flex;
 overflow-x:auto;
-overflow-y:hidden;
 gap:10px;
-padding:12px 10px;
-margin:10px;
-white-space:nowrap;
--webkit-overflow-scrolling:touch;
+padding:15px;
 scrollbar-width:none;
-width:100%;
 }
 
 .category-scroll::-webkit-scrollbar{
 display:none;
 }
 
-.category-scroll .btn{
-flex:0 0 auto;
+.btn{
+background:#111827;
+color:white;
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+font-size:14px;
+white-space:nowrap;
+transition:0.3s;
+border:none;
+cursor:pointer;
 }
 
-/* SEARCH */
+.btn:hover{
+background:#22c55e;
+}
 
-/* SEARCH BOX */
+/* =========================
+SEARCH
+========================= */
 
-.search-box{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-margin:20px;
-flex-wrap:wrap;
+.search-wrapper{
 position:relative;
+width:90%;
+max-width:900px;
+margin:20px auto;
+display:flex;
+gap:10px;
 }
 
-/* INPUT */
-
-.search-box input{
-width:50%;
-padding:12px;
+.search-wrapper input{
+flex:1;
+padding:14px;
 border-radius:10px;
 border:1px solid #ccc;
-font-size:14px;
+font-size:15px;
 outline:none;
 }
 
-/* SEARCH BUTTON */
-
-.search-box button{
-padding:12px 18px;
+.search-wrapper button{
+padding:14px 20px;
 border:none;
 border-radius:10px;
 background:#111827;
 color:white;
 cursor:pointer;
 font-size:14px;
-white-space:nowrap;
-transition:0.3s;
 }
 
-.search-box button:hover{
+.search-wrapper button:hover{
 background:#22c55e;
 }
 
-/* MOBILE FIX */
-
-@media(max-width:768px){
-
-.search-box{
-flex-wrap:nowrap;
-gap:8px;
-padding:0 10px;
-}
-
-.search-box input{
-width:100%;
-min-width:0;
-}
-
-.search-box button{
-padding:12px 14px;
-font-size:13px;
-flex-shrink:0;
-}
-
-}
-
-/* SUGGESTIONS */
+/* =========================
+SUGGESTION BOX
+========================= */
 
 .suggestions-box{
 position:absolute;
-left:50%;
-transform:translateX(-50%);
-width:50%;
+top:58px;
+left:0;
+width:calc(100% - 100px);
 background:white;
 border-radius:10px;
 box-shadow:0 3px 10px rgba(0,0,0,0.1);
-z-index:1000;
-max-height:250px;
-overflow-y:auto;
 display:none;
-text-align:left;
+z-index:999;
+overflow:hidden;
 }
 
 .suggestion-item{
@@ -250,133 +191,169 @@ border-bottom:1px solid #eee;
 background:#f3f4f6;
 }
 
-/* PRODUCT GRID */
+/* =========================
+PRODUCT GRID
+========================= */
 
 .product-grid{
-width:90%;
-max-width:1200px;
-margin:20px auto 40px auto;
+width:92%;
+max-width:1300px;
+margin:30px auto;
 display:grid;
 grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
+repeat(auto-fit,minmax(230px,1fr));
+gap:22px;
 }
 
-/* PRODUCT */
+/* =========================
+PRODUCT CARD
+========================= */
 
 .product-box{
 background:white;
-border-radius:12px;
-padding:12px;
-text-align:center;
-box-shadow:0 3px 10px rgba(0,0,0,0.08);
+border-radius:14px;
+padding:14px;
+box-shadow:0 3px 12px rgba(0,0,0,0.08);
 display:flex;
 flex-direction:column;
 justify-content:space-between;
-min-height:420px;
+transition:0.3s;
+}
+
+.product-box:hover{
+transform:translateY(-5px);
 }
 
 .product-box img{
 width:100%;
-height:180px;
+height:220px;
 object-fit:contain;
 background:white;
-border-radius:8px;
+border-radius:10px;
 }
 
 .product-box h3{
 font-size:15px;
-margin:12px 0;
-line-height:1.5;
-min-height:65px;
+line-height:1.6;
+margin:14px 0;
+min-height:75px;
 overflow:hidden;
+
 display:-webkit-box;
 -webkit-line-clamp:3;
 -webkit-box-orient:vertical;
-word-break:break-word;
 }
 
 .price{
-color:#16a34a;
-font-size:20px;
+font-size:24px;
 font-weight:bold;
+color:#16a34a;
 margin-bottom:10px;
 }
 
 .old-price{
-color:gray;
+font-size:14px;
 text-decoration:line-through;
-font-size:13px;
-margin-left:5px;
+color:gray;
+margin-left:6px;
 }
 
 .buy-btn{
 display:block;
+text-align:center;
 background:#111827;
 color:white;
-padding:10px;
-border-radius:8px;
+padding:12px;
+border-radius:10px;
 text-decoration:none;
 margin-top:10px;
+transition:0.3s;
 }
 
 .buy-btn:hover{
 background:#22c55e;
 }
 
-/* FOOTER */
+/* =========================
+FOOTER
+========================= */
 
 .footer{
 background:#111827;
 color:white;
-padding:40px 20px;
 text-align:center;
-margin-top:auto;
+padding:40px 20px;
+margin-top:40px;
 }
 
 .footer p{
-color:#cbd5e1;
+color:#d1d5db;
 line-height:1.8;
 }
 
-/* MOBILE */
+/* =========================
+MOBILE
+========================= */
 
 @media(max-width:768px){
 
-.search-box input{
-width:90%;
+header h1{
+font-size:30px;
+}
+
+header p{
+font-size:15px;
+}
+
+.navbar{
+flex-direction:column;
+align-items:flex-start;
+gap:10px;
+}
+
+.search-wrapper{
+width:95%;
+}
+
+.search-wrapper input{
+font-size:14px;
+}
+
+.search-wrapper button{
+padding:14px 16px;
+font-size:13px;
 }
 
 .suggestions-box{
-width:90%;
+width:100%;
 }
 
 .product-grid{
-grid-template-columns:
-repeat(2,1fr);
+grid-template-columns:repeat(2,1fr);
 gap:12px;
+width:95%;
 }
 
 .product-box{
-min-height:320px;
 padding:10px;
 }
 
 .product-box img{
-height:130px;
+height:140px;
 }
 
 .product-box h3{
-font-size:14px;
+font-size:13px;
+min-height:60px;
 }
 
 .price{
-font-size:17px;
+font-size:18px;
 }
 
 .buy-btn{
 font-size:13px;
-padding:8px;
+padding:10px;
 }
 
 }
@@ -395,7 +372,7 @@ padding:8px;
 
 <a href="index.html">
 
-<img src="logo.png">
+<img src="logo.png" alt="Logo">
 
 </a>
 
@@ -403,25 +380,15 @@ padding:8px;
 
 <div class="nav-links">
 
-<a href="index.html">
-Home
-</a>
+<a href="index.html">Home</a>
 
-<a href="student-deals.html">
-Deals
-</a>
+<a href="student-deals.html">Deals</a>
 
-<a href="laptop.html">
-Laptops
-</a>
+<a href="laptop.html">Laptops</a>
 
-<a href="blog.html">
-Blog
-</a>
+<a href="blog.html">Blog</a>
 
-<a href="contact.html">
-Contact
-</a>
+<a href="contact.html">Contact</a>
 
 </div>
 
@@ -431,9 +398,7 @@ Contact
 
 <header>
 
-<h1>
-Best Student Deals 2026
-</h1>
+<h1>Best Student Deals 2026</h1>
 
 <p>
 Find laptops, mobiles, headphones,
@@ -442,45 +407,29 @@ watches and study products.
 
 </header>
 
-<main>
-
 <!-- CATEGORY -->
 
 <div class="category-scroll">
 
-<a href="laptop.html" class="btn">
-💻 Laptops
-</a>
+<a href="laptop.html" class="btn">💻 Laptops</a>
 
-<a href="headphones.html" class="btn">
-🎧 Headphones
-</a>
+<a href="headphones.html" class="btn">🎧 Headphones</a>
 
-<a href="watches.html" class="btn">
-⌚ Watches
-</a>
+<a href="watches.html" class="btn">⌚ Watches</a>
 
-<a href="study.html" class="btn">
-📚 Study
-</a>
+<a href="study.html" class="btn">📚 Study</a>
 
-<a href="mobile.html" class="btn">
-📱 Mobiles
-</a>
+<a href="mobile.html" class="btn">📱 Mobiles</a>
 
-<a href="gaming.html" class="btn">
-🎮 Gaming
-</a>
+<a href="gaming.html" class="btn">🎮 Gaming</a>
 
-<a href="accessories.html" class="btn">
-🖥 Accessories
-</a>
+<a href="accessories.html" class="btn">🖥 Accessories</a>
 
 </div>
 
 <!-- SEARCH -->
 
-<div class="search-box">
+<div class="search-wrapper">
 
 <input type="text"
 id="productSearch"
@@ -488,14 +437,10 @@ placeholder="Search products, under 50000, HP..."
 autocomplete="off">
 
 <div id="suggestionsBox"
-class="suggestions-box">
-</div>
+class="suggestions-box"></div>
 
-<button class="btn"
-onclick="searchProducts()">
-
+<button onclick="searchProducts()">
 Search
-
 </button>
 
 </div>
@@ -508,8 +453,6 @@ id="productGrid">
 Loading Products...
 
 </div>
-
-</main>
 
 <!-- FOOTER -->
 
@@ -535,7 +478,9 @@ const sheetURL =
 
 let allProducts = [];
 
-/* FETCH */
+/* =========================
+FETCH CSV
+========================= */
 
 fetch(sheetURL)
 
@@ -543,57 +488,40 @@ fetch(sheetURL)
 
 .then(data => {
 
-const rows = data.trim().split("\n").slice(1);
+const rows =
+data.trim().split("\n").slice(1);
 
 rows.forEach(row => {
 
-/* SAFE CSV SPLIT */
+const cols = parseCSV(row);
 
-const cols = row.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-
-if(!cols) return;
-
-/* CLEAN */
-
-const clean = cols.map(col =>
-col.replace(/^"|"$/g, "").trim()
-);
-
-/* SKIP EMPTY */
-
-if(clean.length < 10) return;
-
-if(!clean[1]) return;
-
-/* PUSH */
+if(cols.length < 10) return;
 
 allProducts.push({
 
-id: clean[0],
+id: cols[0] || "",
 
-title: clean[1],
+title: cols[1] || "",
 
-image1: clean[2],
+image1: cols[2] || "",
 
-image2: clean[3],
+image2: cols[3] || "",
 
-image3: clean[4],
+image3: cols[4] || "",
 
-price: clean[5],
+price: cols[5] || "",
 
-oldprice: clean[6],
+oldprice: cols[6] || "",
 
-description: clean[7],
+description: cols[7] || "",
 
-category: clean[8].toLowerCase(),
+category: cols[8]?.toLowerCase() || "",
 
-affiliate: clean[9]
-
-});
+affiliate: cols[9] || ""
 
 });
 
-/* SHOW */
+});
 
 renderProducts(allProducts);
 
@@ -602,13 +530,61 @@ renderProducts(allProducts);
 .catch(error => {
 
 document.getElementById("productGrid").innerHTML =
-"Failed to load products";
+"<h2>Products Failed To Load</h2>";
 
 console.log(error);
 
 });
 
-/* RENDER */
+/* =========================
+CSV PARSER
+========================= */
+
+function parseCSV(str){
+
+const result = [];
+
+let current = '';
+
+let insideQuotes = false;
+
+for(let i=0;i<str.length;i++){
+
+const char = str[i];
+
+if(char === '"'){
+
+insideQuotes = !insideQuotes;
+
+}
+
+else if(char === ',' && !insideQuotes){
+
+result.push(current.trim());
+
+current='';
+
+}
+
+else{
+
+current += char;
+
+}
+
+}
+
+result.push(current.trim());
+
+return result.map(item =>
+item.replace(/^"|"$/g,'')
+);
+
+}
+
+/* =========================
+RENDER PRODUCTS
+========================= */
 
 function renderProducts(products){
 
@@ -665,7 +641,9 @@ document.getElementById("productGrid").innerHTML = html;
 
 }
 
-/* SEARCH */
+/* =========================
+SEARCH
+========================= */
 
 function searchProducts(){
 
@@ -698,7 +676,7 @@ renderProducts(filtered);
 
 }
 
-/* NORMAL */
+/* NORMAL SEARCH */
 
 else{
 
@@ -723,13 +701,12 @@ renderProducts(filtered);
 
 }
 
-/* ENTER */
+/* ENTER KEY */
 
 document.getElementById("productSearch")
+.addEventListener("keyup", function(e){
 
-.addEventListener("keyup", function(event){
-
-if(event.key === "Enter"){
+if(e.key === "Enter"){
 
 searchProducts();
 
@@ -737,7 +714,9 @@ searchProducts();
 
 });
 
-/* SUGGESTIONS */
+/* =========================
+SEARCH SUGGESTIONS
+========================= */
 
 const suggestions = [
 
@@ -750,7 +729,11 @@ const suggestions = [
 "ASUS laptop",
 
 "gaming laptop",
-"student laptop"
+"student laptop",
+
+"mobile",
+"headphones",
+"watch"
 
 ];
 
@@ -759,8 +742,6 @@ document.getElementById("productSearch");
 
 const suggestionsBox =
 document.getElementById("suggestionsBox");
-
-/* INPUT */
 
 searchInput.addEventListener("input", function(){
 
@@ -811,7 +792,9 @@ suggestionsBox.appendChild(div);
 
 });
 
-}else{
+}
+
+else{
 
 suggestionsBox.style.display = "none";
 
@@ -819,7 +802,7 @@ suggestionsBox.style.display = "none";
 
 });
 
-/* HIDE */
+/* HIDE BOX */
 
 document.addEventListener("click", function(e){
 
