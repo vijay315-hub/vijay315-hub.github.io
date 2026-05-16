@@ -1,235 +1,435 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us - Vijay Job Portal</title>
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+About Us | Vijay Job Portal
+</title>
+
+<meta name="description"
+content="Vijay Job Portal provides latest government jobs, student deals, free tools, and educational resources for students in India.">
+
+<meta name="keywords"
+content="about Vijay Job Portal, government jobs India, student deals, free tools">
+
+<meta name="robots"
+content="index, follow">
+
+<meta name="author"
+content="Vijay Job Portal">
+
+<link rel="canonical"
+href="https://vijay315-hub.github.io/about.html">
+
+<meta property="og:title"
+content="About Vijay Job Portal">
+
+<meta property="og:description"
+content="Government jobs, student deals and free online tools for students.">
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:image"
+content="logo.png">
+
+<link rel="icon"
+href="logo.png">
 
 <style>
-body{
-    margin:0;
-    font-family: Arial;
-    background:#f4f6f8;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
+
+html{
+height:100%;
+}
+
+body{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+overflow-x:hidden;
+color:#111827;
+}
+
+main{
+flex:1;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#111827;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 20px;
+}
+
+.logo img{
+height:40px;
+}
+
+.nav-links{
+display:flex;
+align-items:center;
+flex-wrap:wrap;
+}
+
+.nav-links a{
+color:white;
+margin-left:15px;
+text-decoration:none;
+font-size:14px;
+transition:0.3s;
+}
+
+.nav-links a:hover{
+color:#22c55e;
+}
+
+/* HEADER */
 
 header{
-    background:#111827;
-    color:white;
-    padding:25px;
-    text-align:center;
+background:#111827;
+color:white;
+padding:60px 20px;
+text-align:center;
 }
+
+header h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+header p{
+font-size:16px;
+color:#d1d5db;
+max-width:700px;
+margin:auto;
+line-height:1.8;
+}
+
+/* CONTENT */
 
 .container{
-    max-width:850px;
-    margin:20px auto;
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.08);
+width:90%;
+max-width:1100px;
+margin:40px auto;
+display:grid;
+grid-template-columns:
+repeat(auto-fit,minmax(280px,1fr));
+gap:25px;
 }
 
-h1{
-    margin:0;
+.card{
+background:white;
+padding:25px;
+border-radius:14px;
+box-shadow:0 3px 12px rgba(0,0,0,0.08);
+transition:0.3s;
 }
 
-h2{
-    color:#111827;
-    margin-top:20px;
+.card:hover{
+transform:translateY(-4px);
 }
 
-p{
-    color:#4b5563;
-    line-height:1.7;
+.card h2{
+font-size:22px;
+margin-bottom:15px;
+color:#111827;
 }
 
-ul{
-    color:#4b5563;
+.card p{
+line-height:1.8;
+color:#374151;
+font-size:15px;
 }
 
-..btn{
-    display:inline-block;
-    margin-top:8px;
-    margin-right:8px;
-    padding:8px 14px;
-    background:#111827;
-    color:white;
-    border-radius:8px;
-    text-decoration:none;
-    font-size:14px;
-    transition:0.3s;
+/* HIGHLIGHT */
+
+.highlight{
+background:#111827;
+color:white;
+padding:40px 20px;
+text-align:center;
+margin-top:20px;
 }
 
-.btn:hover{
-    background:#22c55e; 
+.highlight h2{
+margin-bottom:15px;
+font-size:28px;
 }
 
-footer{
-    text-align:center;
-    padding:20px;
-    color:#6b7280;
-}
-/* NAVBAR CONTAINER */
-.navbar{
-    background: #111827; /* matches header */
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    width:100%;
-    box-sizing:border-box;
+.highlight p{
+max-width:800px;
+margin:auto;
+line-height:1.9;
+color:#d1d5db;
 }
 
-/* LOGO */
-.logo img{
-    height:40px;
-    width:auto;
+/* FOOTER */
+
+.footer{
+background:#111827;
+color:white;
+padding:40px 20px;
+text-align:center;
+margin-top:auto;
 }
 
-/* NAV LINKS */
-.nav-links{
-    display:flex;
-    align-items:center;
+.footer-links{
+margin:15px 0;
 }
 
-/* LINK STYLE */
-.nav-links a{
-    color:white;
-    margin-left:20px;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:500;
-    position:relative;
-    transition:0.3s;
-    word-wrap:break-word;  
+.footer-links a{
+color:#d1d5db;
+margin:0 10px;
+text-decoration:none;
 }
 
-/* HOVER EFFECT (underline animation) */
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    width:0%;
-    height:2px;
-    background:#22c55e;
-    left:0;
-    bottom:-4px;
-    transition:0.3s;
+.footer-links a:hover{
+color:#22c55e;
 }
 
-.nav-links a:hover::after{
-    width:100%;
+.footer p{
+line-height:1.8;
+color:#cbd5e1;
 }
 
-/* HOVER COLOR */
-.nav-links a:hover{
-    color:#d1fae5;
-}
+/* MOBILE */
 
-/* ACTIVE LINK (optional) */
-.nav-links a.active{
-    color:#22c55e;
-}
-
-/* MOBILE RESPONSIVE */
 @media(max-width:768px){
-    body{
-        padding:0;
-        margin:0;
-    }
-    .navbar{
-        flex-direction:column;
-        align-items:flex-start;
-    }
 
-    .nav-links{
-        display:flex;           /* SHOW MENU */
-        flex-direction:column;  /* vertical menu */
-        width:100%;
-        margin-top:10px;
-    }
+.navbar{
+flex-direction:column;
+align-items:flex-start;
+}
 
-    .nav-links a{
-        margin:8px 0;
-        padding:8px 0;
-    }
-html, body{
-    overflow-x: hidden;
+.nav-links{
+display:flex;
+flex-direction:column;
+width:100%;
+margin-top:10px;
 }
+
+.nav-links a{
+margin:8px 0;
 }
+
+header h1{
+font-size:28px;
+}
+
+header p{
+font-size:14px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
+
 <nav class="navbar">
 
-  <div class="logo">
-    <a href="index.html">
-      <img src="logo.png" alt="Vijay Jobs Logo">
-    </a>
-  </div>
+<div class="logo">
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="privacy-policy.html">Privacy</a>
-    <a href="contact.html">Contact Us</a>
-  </div>
+<a href="index.html">
 
-</nav>    
-<!-- NAV -->
-<!-- <div style="text-align:center;">
-  <a class="btn" href="index.html">🏠 Home</a>
-</div> -->
+<img src="logo.png"
+alt="Logo">
 
-<header>
-<h1>About Vijay Job Portal</h1>
-</header>
-
-<div class="container">
-
-<p><strong>Vijay Job Portal</strong> is a dedicated platform that provides the latest government job updates across India. Our goal is to help job seekers easily find accurate and timely information about various government job opportunities.</p>
-
-<h2>What We Provide</h2>
-<ul>
-<li>Latest Government Job Notifications</li>
-<li>10th Pass Government Jobs</li>
-<li>12th Pass Government Jobs</li>
-<li>Graduate Level Jobs</li>
-<li>Direct Apply Links and Official Notifications (PDF)</li>
-</ul>
-
-<h2>Our Mission</h2>
-<p>Our mission is to simplify the job search process by collecting job information from official government websites and presenting it in a clear, simple, and user-friendly format.</p>
-
-<h2>Why Choose Us</h2>
-<ul>
-<li>Daily Job Updates</li>
-<li>Simple and Easy to Use Interface</li>
-<li>Fast Access to Important Job Details</li>
-<li>Trusted Information Sources</li>
-</ul>
-
-<h2>Disclaimer</h2>
-<p>We are not a government organization and are not affiliated with any government body. We only provide information collected from official sources. Users are advised to verify details from official websites before applying.</p>
+</a>
 
 </div>
 
-<footer>
- <div class="card" style="text-align:center;">
+<div class="nav-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="latest-jobs.html">
+Jobs
+</a>
+
+<a href="student-deals.html">
+Deals
+</a>
+
+<a href="tools.html">
+Tools
+</a>
+
+<a href="blog.html">
+Blog
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+</nav>
+
+<header>
+
+<h1>
+About Vijay Job Portal
+</h1>
 
 <p>
-⚠ Disclaimer:
-We are not a government website.
-We only provide job information collected from official sources.
-Please verify details from official websites before applying.
+Vijay Job Portal is an online platform created to help students and job seekers find latest government jobs, student deals, educational tools, and useful resources in one place.
 </p>
 
-</div>   
-© 2026 Vijay Job Portal | All Rights Reserved
+</header>
+
+<main>
+
+<div class="container">
+
+<div class="card">
+
+<h2>
+Latest Government Jobs
+</h2>
+
+<p>
+We provide daily updates about government jobs in India including SSC, Railway, Banking, Gujarat Jobs, Police Jobs, Teaching Jobs and more.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+Student Deals
+</h2>
+
+<p>
+Students can explore affordable laptops, mobiles, headphones, study products, gaming accessories and other useful products with latest deals and offers.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+Free Online Tools
+</h2>
+
+<p>
+Our platform also offers useful free tools like calculators, converters, typing tools, student utilities and productivity tools for everyday use.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+Educational Resources
+</h2>
+
+<p>
+We aim to help students with career guidance, job updates, online resources and useful educational content.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+User Friendly Platform
+</h2>
+
+<p>
+Our website is designed with simple navigation, mobile responsive design, fast loading pages and easy search options for better user experience.
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>
+Our Goal
+</h2>
+
+<p>
+Our goal is to build a useful platform where students and job seekers can access jobs, deals and tools from one website easily.
+</p>
+
+</div>
+
+</div>
+
+<div class="highlight">
+
+<h2>
+Why Choose Vijay Job Portal?
+</h2>
+
+<p>
+We continuously work to provide updated job information, student offers, useful tools and helpful resources in a simple and organized way. Our platform focuses on students, freshers and job seekers across India.
+</p>
+
+</div>
+
+</main>
+
+<footer class="footer">
+
+<h3>
+Vijay Job Portal
+</h3>
+
+<div class="footer-links">
+
+<a href="index.html">
+Home
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="privacy-policy.html">
+Privacy Policy
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+</div>
+
+<p>
+⚠ Disclaimer: We are not a government website. We only provide information collected from official and public sources.
+</p>
+
+<br>
+
+<p>
+© 2026 Vijay Job Portal. All Rights Reserved.
+</p>
+
 </footer>
 
 </body>
+
 </html>
