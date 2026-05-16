@@ -529,47 +529,57 @@ const sheetURL =
 
 let allProducts = [];
 
-/* FETCH PRODUCTS */
-
 fetch(sheetURL)
 
-.then(res => res.text())
+.then(response => response.text())
 
-.then(data => {
+.then(csv => {
 
-const rows = data.split("\n").slice(1);
+const rows = csv.split("\n").slice(1);
 
 rows.forEach(row => {
 
-const cols = row.split(",");
+/* SAFE CSV SPLIT */
 
-if(cols[1]){
+const cols =
+row.match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g);
+
+if(!cols || cols.length < 10) return;
+
+/* REMOVE " */
+
+const cleanCols =
+cols.map(col =>
+col.replace(/^"|"$/g,'').trim()
+);
+
+/* SKIP EMPTY */
+
+if(!cleanCols[1]) return;
 
 allProducts.push({
 
-id: cols[0]?.trim(),
+id: cleanCols[0],
 
-title: cols[1]?.trim(),
+title: cleanCols[1],
 
-image1: cols[2]?.trim(),
+image1: cleanCols[2],
 
-image2: cols[3]?.trim(),
+image2: cleanCols[3],
 
-image3: cols[4]?.trim(),
+image3: cleanCols[4],
 
-price: cols[5]?.trim(),
+price: cleanCols[5],
 
-oldprice: cols[6]?.trim(),
+oldprice: cleanCols[6],
 
-description: cols[7]?.trim(),
+description: cleanCols[7],
 
-category: cols[8]?.trim().toLowerCase(),
+category: cleanCols[8].toLowerCase(),
 
-affiliate: cols[9]?.trim()
+affiliate: cleanCols[9]
 
 });
-
-}
 
 });
 
@@ -577,7 +587,7 @@ renderProducts(allProducts);
 
 });
 
-/* RENDER PRODUCTS */
+/* RENDER */
 
 function renderProducts(products){
 
@@ -626,183 +636,6 @@ View Deal
 document.getElementById("productGrid").innerHTML = html;
 
 }
-
-/* SEARCH */
-
-function searchProducts(){
-
-let value =
-document.getElementById("productSearch")
-.value
-.toLowerCase()
-.trim();
-
-/* UNDER PRICE SEARCH */
-
-if(value.includes("under")){
-
-let amount =
-parseInt(value.replace(/[^\d]/g,''));
-
-let filtered =
-allProducts.filter(product => {
-
-let price =
-parseInt(
-product.price.replace(/[^\d]/g,'')
-);
-
-return price <= amount;
-
-});
-
-renderProducts(filtered);
-
-}
-
-/* NORMAL SEARCH */
-
-else{
-
-let filtered =
-allProducts.filter(product =>
-
-product.title.toLowerCase()
-.includes(value)
-
-||
-
-product.description.toLowerCase()
-.includes(value)
-
-||
-
-product.category.toLowerCase()
-.includes(value)
-
-);
-
-renderProducts(filtered);
-
-}
-
-}
-
-/* ENTER KEY SEARCH */
-
-document.getElementById("productSearch")
-
-.addEventListener("keyup", function(event){
-
-if(event.key === "Enter"){
-
-searchProducts();
-
-}
-
-});
-
-/* SEARCH SUGGESTIONS */
-
-const suggestions = [
-
-"under 30000",
-"under 50000",
-"under 70000",
-
-"HP laptop",
-"Dell laptop",
-"ASUS laptop",
-
-"gaming laptop",
-"student laptop"
-
-];
-
-const searchInput =
-document.getElementById("productSearch");
-
-const suggestionsBox =
-document.getElementById("suggestionsBox");
-
-/* SHOW SUGGESTIONS */
-
-searchInput.addEventListener("input", function(){
-
-let value =
-this.value.toLowerCase().trim();
-
-suggestionsBox.innerHTML = "";
-
-if(value === ""){
-
-suggestionsBox.style.display = "none";
-
-return;
-
-}
-
-let filtered =
-suggestions.filter(item =>
-
-item.toLowerCase().includes(value)
-
-);
-
-if(filtered.length > 0){
-
-suggestionsBox.style.display = "block";
-
-filtered.forEach(item => {
-
-let div =
-document.createElement("div");
-
-div.classList.add("suggestion-item");
-
-div.innerText = item;
-
-div.onclick = function(){
-
-searchInput.value = item;
-
-suggestionsBox.style.display = "none";
-
-searchProducts();
-
-};
-
-suggestionsBox.appendChild(div);
-
-});
-
-}else{
-
-suggestionsBox.style.display = "none";
-
-}
-
-});
-
-/* HIDE SUGGESTIONS */
-
-document.addEventListener("click", function(e){
-
-if(
-
-!searchInput.contains(e.target)
-
-&&
-
-!suggestionsBox.contains(e.target)
-
-){
-
-suggestionsBox.style.display = "none";
-
-}
-
-});
 
 </script>
 
