@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+AI Shorts Prompt Generator
+</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#111827;
+color:white;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.container{
+background:#1f2937;
+width:100%;
+max-width:700px;
+padding:30px;
+border-radius:16px;
+box-shadow:0 5px 20px rgba(0,0,0,0.3);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+font-size:32px;
+}
+
+p{
+text-align:center;
+margin-bottom:25px;
+color:#d1d5db;
+}
+
+select,
+input,
+textarea,
+button{
+width:100%;
+padding:14px;
+margin-top:12px;
+border:none;
+border-radius:10px;
+font-size:15px;
+}
+
+select,
+input,
+textarea{
+background:#374151;
+color:white;
+}
+
+textarea{
+height:260px;
+resize:none;
+line-height:1.7;
+}
+
+button{
+background:#22c55e;
+color:white;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:#16a34a;
+}
+
+.copy-btn{
+background:#2563eb;
+margin-top:10px;
+}
+
+.copy-btn:hover{
+background:#1d4ed8;
+}
+
+.footer{
+margin-top:20px;
+text-align:center;
+font-size:14px;
+color:#9ca3af;
+}
+
+@media(max-width:768px){
+
+.container{
+padding:20px;
+}
+
+h1{
+font-size:25px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+AI Shorts Prompt Generator
+</h1>
+
+<p>
+Generate YouTube Shorts & Instagram Reel AI prompts instantly.
+</p>
+
+<select id="category">
+
+<option value="Laptop">
+Laptop
+</option>
+
+<option value="Mobile">
+Mobile
+</option>
+
+<option value="Accessories">
+Accessories
+</option>
+
+<option value="Study">
+Study Setup
+</option>
+
+<option value="Gaming">
+Gaming
+</option>
+
+</select>
+
+<input type="text"
+id="productName"
+placeholder="Enter Product Name">
+
+<button onclick="generatePrompt()">
+Generate Prompt
+</button>
+
+<textarea id="result"
+placeholder="Generated prompt will appear here...">
+</textarea>
+
+<button class="copy-btn"
+onclick="copyPrompt()">
+Copy Prompt
+</button>
+
+<div class="footer">
+
+© 2026 Vijay Tech Deals
+
+</div>
+
+</div>
+
+<script>
+
+function generatePrompt(){
+
+let category =
+document.getElementById("category").value;
+
+let product =
+document.getElementById("productName").value;
+
+let prompt = "";
+
+/* LAPTOP */
+
+if(category === "Laptop"){
+
+prompt =
+`Create a modern animated cartoon avatar YouTube Shorts video for ${product}. Show RGB tech room, laptop zoom shots, typing scenes, gaming visuals, and smooth transitions. Add animated text “Best Student Laptop 2026 🔥”, “Fast Performance”, and “Perfect For Students”. Vertical 9:16 format for YouTube Shorts and Instagram Reels.`;
+
+}
+
+/* MOBILE */
+
+if(category === "Mobile"){
+
+prompt =
+`Create a modern animated cartoon avatar Shorts video for ${product}. Show smartphone close-up shots, gaming, scrolling social media, camera showcase, and smooth transitions in a futuristic RGB setup. Add animated text “Best Budget Smartphone 2026 🔥” and “Perfect For Students”. Vertical 9:16 format for YouTube Shorts and Instagram Reels.`;
+
+}
+
+/* ACCESSORIES */
+
+if(category === "Accessories"){
+
+prompt =
+`Create a modern cartoon student accessories Shorts video for ${product}. Show aesthetic desk setup, RGB study room, productivity scenes, smooth zoom effects, and modern transitions. Add animated text “Best Student Accessories 2026 🔥” and “Boost Productivity”. Vertical 9:16 format for YouTube Shorts and Instagram Reels.`;
+
+}
+
+/* STUDY */
+
+if(category === "Study"){
+
+prompt =
+`Create a modern study setup Shorts video for ${product}. Show aesthetic study desk, notebooks, laptop setup, productivity visuals, and RGB lighting. Add text “Best Study Setup 2026 🔥” and “Smart Student Essentials”. Vertical 9:16 format.`;
+
+}
+
+/* GAMING */
+
+if(category === "Gaming"){
+
+prompt =
+`Create a cinematic gaming setup Shorts video for ${product}. Show RGB gaming room, keyboard lighting, gaming scenes, modern transitions, and dramatic effects. Add text “Ultimate Gaming Setup 2026 🔥”. Vertical 9:16 format.`;
+
+}
+
+document.getElementById("result").value = prompt;
+
+}
+
+/* COPY */
+
+function copyPrompt(){
+
+let copyText =
+document.getElementById("result");
+
+copyText.select();
+
+document.execCommand("copy");
+
+alert("Prompt Copied!");
+
+}
+
+</script>
+
+</body>
+
+</html>
