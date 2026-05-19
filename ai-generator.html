@@ -9,7 +9,7 @@
 content="width=device-width, initial-scale=1.0">
 
 <title>
-AI Shorts Prompt Generator
+AI Creator Tools | Vijay Tech Deals
 </title>
 
 <style>
@@ -24,17 +24,13 @@ body{
 font-family:Arial,sans-serif;
 background:#111827;
 color:white;
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
 padding:20px;
 }
 
 .container{
+max-width:800px;
+margin:auto;
 background:#1f2937;
-width:100%;
-max-width:700px;
 padding:30px;
 border-radius:16px;
 box-shadow:0 5px 20px rgba(0,0,0,0.3);
@@ -42,14 +38,21 @@ box-shadow:0 5px 20px rgba(0,0,0,0.3);
 
 h1{
 text-align:center;
-margin-bottom:20px;
-font-size:32px;
+margin-bottom:10px;
+font-size:34px;
 }
 
-p{
+.sub{
 text-align:center;
-margin-bottom:25px;
 color:#d1d5db;
+margin-bottom:25px;
+}
+
+label{
+display:block;
+margin-top:15px;
+margin-bottom:8px;
+font-weight:bold;
 }
 
 select,
@@ -58,10 +61,10 @@ textarea,
 button{
 width:100%;
 padding:14px;
-margin-top:12px;
 border:none;
 border-radius:10px;
 font-size:15px;
+margin-top:8px;
 }
 
 select,
@@ -72,7 +75,7 @@ color:white;
 }
 
 textarea{
-height:260px;
+height:160px;
 resize:none;
 line-height:1.7;
 }
@@ -91,18 +94,22 @@ background:#16a34a;
 
 .copy-btn{
 background:#2563eb;
-margin-top:10px;
+margin-top:8px;
 }
 
 .copy-btn:hover{
 background:#1d4ed8;
 }
 
+.section{
+margin-top:30px;
+}
+
 .footer{
-margin-top:20px;
 text-align:center;
-font-size:14px;
+margin-top:30px;
 color:#9ca3af;
+font-size:14px;
 }
 
 @media(max-width:768px){
@@ -112,7 +119,7 @@ padding:20px;
 }
 
 h1{
-font-size:25px;
+font-size:26px;
 }
 
 }
@@ -126,12 +133,16 @@ font-size:25px;
 <div class="container">
 
 <h1>
-AI Shorts Prompt Generator
+AI Creator Tools
 </h1>
 
-<p>
-Generate YouTube Shorts & Instagram Reel AI prompts instantly.
+<p class="sub">
+Generate AI prompts, titles, hashtags and descriptions instantly.
 </p>
+
+<label>
+Select Category
+</label>
 
 <select id="category">
 
@@ -157,22 +168,89 @@ Gaming
 
 </select>
 
+<label>
+Enter Product Name
+</label>
+
 <input type="text"
 id="productName"
-placeholder="Enter Product Name">
+placeholder="Example: ASUS Vivobook Laptop">
+
+<!-- PROMPT -->
+
+<div class="section">
 
 <button onclick="generatePrompt()">
-Generate Prompt
+Generate AI Prompt
 </button>
 
-<textarea id="result"
-placeholder="Generated prompt will appear here...">
+<textarea id="promptResult"
+placeholder="AI prompt will appear here...">
 </textarea>
 
 <button class="copy-btn"
-onclick="copyPrompt()">
+onclick="copyText('promptResult')">
 Copy Prompt
 </button>
+
+</div>
+
+<!-- TITLE -->
+
+<div class="section">
+
+<button onclick="generateTitle()">
+Generate YouTube Title
+</button>
+
+<textarea id="titleResult"
+placeholder="Title will appear here...">
+</textarea>
+
+<button class="copy-btn"
+onclick="copyText('titleResult')">
+Copy Title
+</button>
+
+</div>
+
+<!-- TAGS -->
+
+<div class="section">
+
+<button onclick="generateTags()">
+Generate Hashtags
+</button>
+
+<textarea id="tagResult"
+placeholder="Hashtags will appear here...">
+</textarea>
+
+<button class="copy-btn"
+onclick="copyText('tagResult')">
+Copy Hashtags
+</button>
+
+</div>
+
+<!-- DESCRIPTION -->
+
+<div class="section">
+
+<button onclick="generateDescription()">
+Generate Description
+</button>
+
+<textarea id="descriptionResult"
+placeholder="Description will appear here...">
+</textarea>
+
+<button class="copy-btn"
+onclick="copyText('descriptionResult')">
+Copy Description
+</button>
+
+</div>
 
 <div class="footer">
 
@@ -184,6 +262,8 @@ Copy Prompt
 
 <script>
 
+/* PROMPT */
+
 function generatePrompt(){
 
 let category =
@@ -194,67 +274,177 @@ document.getElementById("productName").value;
 
 let prompt = "";
 
-/* LAPTOP */
-
 if(category === "Laptop"){
 
 prompt =
-`Create a modern animated cartoon avatar YouTube Shorts video for ${product}. Show RGB tech room, laptop zoom shots, typing scenes, gaming visuals, and smooth transitions. Add animated text “Best Student Laptop 2026 🔥”, “Fast Performance”, and “Perfect For Students”. Vertical 9:16 format for YouTube Shorts and Instagram Reels.`;
+`Create a modern animated cartoon avatar YouTube Shorts video for ${product}. Show RGB tech room, typing scenes, gaming visuals, and laptop zoom shots. Add text “Best Student Laptop 2026 🔥”. Vertical 9:16 format.`;
 
 }
-
-/* MOBILE */
 
 if(category === "Mobile"){
 
 prompt =
-`Create a modern animated cartoon avatar Shorts video for ${product}. Show smartphone close-up shots, gaming, scrolling social media, camera showcase, and smooth transitions in a futuristic RGB setup. Add animated text “Best Budget Smartphone 2026 🔥” and “Perfect For Students”. Vertical 9:16 format for YouTube Shorts and Instagram Reels.`;
+`Create a modern animated cartoon avatar smartphone Shorts video for ${product}. Show smartphone close-up shots, gaming, scrolling social media, and camera showcase in RGB setup. Add text “Best Budget Smartphone 2026 🔥”. Vertical 9:16 format.`;
 
 }
-
-/* ACCESSORIES */
 
 if(category === "Accessories"){
 
 prompt =
-`Create a modern cartoon student accessories Shorts video for ${product}. Show aesthetic desk setup, RGB study room, productivity scenes, smooth zoom effects, and modern transitions. Add animated text “Best Student Accessories 2026 🔥” and “Boost Productivity”. Vertical 9:16 format for YouTube Shorts and Instagram Reels.`;
+`Create a modern cartoon student accessories Shorts video for ${product}. Show aesthetic desk setup, RGB lights, productivity scenes, and smooth transitions. Add text “Best Student Accessories 2026 🔥”.`;
 
 }
-
-/* STUDY */
 
 if(category === "Study"){
 
 prompt =
-`Create a modern study setup Shorts video for ${product}. Show aesthetic study desk, notebooks, laptop setup, productivity visuals, and RGB lighting. Add text “Best Study Setup 2026 🔥” and “Smart Student Essentials”. Vertical 9:16 format.`;
+`Create a modern study setup Shorts video for ${product}. Show aesthetic study desk, productivity visuals, notebooks, laptop setup, and RGB lighting. Add text “Best Study Setup 2026 🔥”.`;
 
 }
-
-/* GAMING */
 
 if(category === "Gaming"){
 
 prompt =
-`Create a cinematic gaming setup Shorts video for ${product}. Show RGB gaming room, keyboard lighting, gaming scenes, modern transitions, and dramatic effects. Add text “Ultimate Gaming Setup 2026 🔥”. Vertical 9:16 format.`;
+`Create a cinematic gaming setup Shorts video for ${product}. Show RGB gaming room, keyboard lighting, and gaming scenes with smooth transitions.`;
 
 }
 
-document.getElementById("result").value = prompt;
+document.getElementById("promptResult").value = prompt;
+
+}
+
+/* TITLE */
+
+function generateTitle(){
+
+let category =
+document.getElementById("category").value;
+
+let product =
+document.getElementById("productName").value;
+
+let title = "";
+
+if(category === "Laptop"){
+
+title =
+`Best ${product} Laptop Under ₹70000 🔥 #shorts`;
+
+}
+
+if(category === "Mobile"){
+
+title =
+`${product} Best Budget Phone 2026 🔥 #shorts`;
+
+}
+
+if(category === "Accessories"){
+
+title =
+`Best Student Accessories 2026 🔥`;
+
+}
+
+if(category === "Study"){
+
+title =
+`Best Study Setup 2026 🔥`;
+
+}
+
+if(category === "Gaming"){
+
+title =
+`Ultimate Gaming Setup 2026 🔥`;
+
+}
+
+document.getElementById("titleResult").value = title;
+
+}
+
+/* TAGS */
+
+function generateTags(){
+
+let category =
+document.getElementById("category").value;
+
+let tags = "";
+
+if(category === "Laptop"){
+
+tags =
+"#laptop #studentlaptop #asus #tech #shorts";
+
+}
+
+if(category === "Mobile"){
+
+tags =
+"#mobile #smartphone #budgetphone #tech #shorts";
+
+}
+
+if(category === "Accessories"){
+
+tags =
+"#studysetup #desksetup #student #shorts";
+
+}
+
+if(category === "Study"){
+
+tags =
+"#studysetup #productivity #students #shorts";
+
+}
+
+if(category === "Gaming"){
+
+tags =
+"#gaming #gamingsetup #rgb #shorts";
+
+}
+
+document.getElementById("tagResult").value = tags;
+
+}
+
+/* DESCRIPTION */
+
+function generateDescription(){
+
+let product =
+document.getElementById("productName").value;
+
+let desc =
+`🔥 Check out ${product} for students and creators.
+
+Best deals available now.
+
+Visit Website:
+https://vijay315-hub.github.io
+
+#shorts`;
+
+document.getElementById("descriptionResult").value = desc;
 
 }
 
 /* COPY */
 
-function copyPrompt(){
+function copyText(id){
 
 let copyText =
-document.getElementById("result");
+document.getElementById(id);
 
 copyText.select();
 
 document.execCommand("copy");
 
-alert("Prompt Copied!");
+alert("Copied!");
 
 }
 
