@@ -3,7 +3,7 @@
 
 <head>
 
-<!-- BASIC SEO -->
+<!-- SEO -->
 
 <meta charset="UTF-8">
 
@@ -68,15 +68,26 @@ gtag('config', 'G-MHBPC1C96Y');
 
 <!-- ADSENSE -->
 
-<meta name="google-adsense-account" content="ca-pub-2328489162459722">
+<meta name="google-adsense-account"
+content="ca-pub-2328489162459722">
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2328489162459722"
-     crossorigin="anonymous"></script>
+<script async
+src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2328489162459722"
+crossorigin="anonymous">
+</script>
 
 <!-- FAVICON -->
 
 <link rel="icon"
 href="logo.png">
+
+<!-- FONT -->
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 <style>
 
@@ -88,80 +99,157 @@ padding:0;
 box-sizing:border-box;
 }
 
-html, body{
-width:100%;
-overflow-x:hidden;
-font-family:Arial,sans-serif;
-background:#f5f5f5;
+html{
+scroll-behavior:smooth;
 }
 
-/* NAVBAR */ 
+body{
+font-family:'Poppins',sans-serif;
+background:#f8fafc;
+color:#1e293b;
+overflow-x:hidden;
+}
 
- /* .navbar{
-background:#111827;
+/* CONTAINER */
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:#0f172a;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:12px 20px;
+padding:16px 30px;
 position:sticky;
 top:0;
 z-index:1000;
+box-shadow:0 4px 14px rgba(0,0,0,0.1);
 }
 
 .logo img{
-height:40px;
+height:48px;
 }
 
 .nav-links{
 display:flex;
 align-items:center;
+gap:20px;
 flex-wrap:wrap;
 }
 
 .nav-links a{
 color:white;
-margin-left:18px;
 text-decoration:none;
 font-size:14px;
+font-weight:500;
 transition:0.3s;
+position:relative;
 }
 
 .nav-links a:hover{
-color:#22c55e;
-} */
+color:#f97316;
+}
 
-/* HEADER */
+/* HERO */
 
 header{
-background:#111827;
-color:white;
-padding:30px 20px;
+background:linear-gradient(to right,#0f172a,#1e293b);
+padding:90px 20px;
 text-align:center;
+color:white;
+}
+
+.hero-badge{
+display:inline-block;
+background:rgba(255,255,255,0.1);
+padding:10px 18px;
+border-radius:30px;
+font-size:14px;
+margin-bottom:25px;
+color:#f97316;
+}
+
+header h1{
+font-size:54px;
+line-height:1.3;
+margin-bottom:20px;
 }
 
 header p{
-margin-top:10px;
-color:#d1d5db;
-line-height:1.7;
+max-width:850px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+color:#cbd5e1;
+}
+
+/* HERO BUTTONS */
+
+.hero-buttons{
+margin-top:30px;
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+}
+
+.hero-btn{
+padding:14px 24px;
+border-radius:12px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.primary-btn{
+background:#f97316;
+color:white;
+}
+
+.primary-btn:hover{
+background:#ea580c;
+}
+
+.secondary-btn{
+border:2px solid white;
+color:white;
+}
+
+.secondary-btn:hover{
+background:white;
+color:#0f172a;
 }
 
 /* NEWS TICKER */
 
 .news-ticker{
+margin-top:35px;
 overflow:hidden;
-margin-top:15px;
+background:rgba(255,255,255,0.08);
+padding:15px;
+border-radius:14px;
+max-width:1000px;
+margin-left:auto;
+margin-right:auto;
 }
 
 .ticker-move{
 display:inline-block;
 white-space:nowrap;
 padding-left:100%;
-animation:scrollText 20s linear infinite;
+animation:scrollText 18s linear infinite;
 }
 
 .ticker-move a{
 color:white;
 text-decoration:none;
+font-weight:500;
 }
 
 @keyframes scrollText{
@@ -176,119 +264,225 @@ transform:translateX(-100%);
 
 }
 
-/* BUTTONS */
+/* CATEGORY BUTTONS */
+
+.category-wrapper{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:14px;
+padding:50px 20px;
+background:white;
+}
 
 .btn{
-display:inline-block;
-margin:5px;
-padding:9px 14px;
-background:#111827;
-color:white;
-border-radius:8px;
+background:white;
+border:1px solid #e2e8f0;
+padding:12px 18px;
+border-radius:14px;
 text-decoration:none;
+color:#0f172a;
+font-weight:500;
 transition:0.3s;
-font-size:14px;
+box-shadow:0 4px 10px rgba(0,0,0,0.05);
 }
 
 .btn:hover{
-background:#22c55e;
+background:#f97316;
+color:white;
+transform:translateY(-3px);
 }
 
-/* SEARCH BOX */
+/* SEARCH */
 
 .search-box{
-position:relative;
 display:flex;
 justify-content:center;
 align-items:center;
-gap:10px;
-margin:20px;
-flex-wrap:wrap;
+gap:12px;
+margin:40px auto;
+max-width:900px;
+position:relative;
+padding:0 20px;
 }
 
 .search-box input{
-width:60%;
-padding:14px;
-border-radius:12px;
-border:1px solid #d1d5db;
-font-size:14px;
+flex:1;
+padding:18px;
+border:none;
+border-radius:18px;
+font-size:15px;
 outline:none;
+background:white;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
 .search-btn{
-padding:14px 18px;
-background:#111827;
-color:white;
+padding:18px 24px;
 border:none;
-border-radius:12px;
+border-radius:18px;
+background:#f97316;
+color:white;
+font-weight:600;
 cursor:pointer;
-font-size:14px;
 transition:0.3s;
 }
 
 .search-btn:hover{
-background:#22c55e;
+background:#ea580c;
 }
 
 /* SUGGESTIONS */
 
 .suggestions-box{
 position:absolute;
-top:60px;
-width:60%;
+top:72px;
+left:20px;
+right:20px;
 background:white;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
+border-radius:18px;
 overflow:hidden;
+box-shadow:0 4px 18px rgba(0,0,0,0.1);
 display:none;
 z-index:999;
 }
 
 .suggestion-item{
-padding:12px;
+padding:14px;
 cursor:pointer;
 border-bottom:1px solid #eee;
 }
 
 .suggestion-item:hover{
-background:#f3f4f6;
+background:#f1f5f9;
 }
 
-/* JOB CONTAINER */
+/* SECTION TITLE */
 
-.container{
-width:90%;
-max-width:850px;
-margin:auto;
+.section-title{
+text-align:center;
+margin:50px 0 35px;
+}
+
+.section-title h2{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.section-title p{
+color:#64748b;
+}
+
+/* JOB GRID */
+
+#jobs{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:25px;
+margin-bottom:70px;
 }
 
 /* CARD */
 
 .card{
 background:white;
-padding:18px;
-margin:12px 0;
-border-radius:12px;
-box-shadow:0 3px 10px rgba(0,0,0,0.08);
+padding:28px;
+border-radius:22px;
+box-shadow:0 6px 20px rgba(0,0,0,0.06);
+transition:0.3s;
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:5px;
+background:#f97316;
+}
+
+.card:hover{
+transform:translateY(-6px);
 }
 
 .card h3{
-margin-bottom:10px;
+font-size:22px;
+line-height:1.5;
+margin-bottom:15px;
 }
 
 .card p{
-line-height:1.6;
-margin-bottom:10px;
+line-height:1.8;
+margin-bottom:15px;
+color:#475569;
+}
+
+.card small{
+color:#64748b;
+display:inline-block;
+margin-bottom:15px;
+}
+
+.view-btn{
+display:inline-block;
+padding:12px 18px;
+background:#0f172a;
+color:white;
+text-decoration:none;
+border-radius:12px;
+transition:0.3s;
+font-size:14px;
+}
+
+.view-btn:hover{
+background:#f97316;
+}
+
+/* INFO SECTION */
+
+.info-section{
+padding:80px 20px;
+background:white;
+}
+
+.info-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+margin-top:40px;
+}
+
+.info-card{
+background:#f8fafc;
+padding:30px;
+border-radius:20px;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+transition:0.3s;
+}
+
+.info-card:hover{
+transform:translateY(-5px);
+}
+
+.info-card h3{
+margin-bottom:15px;
 }
 
 /* FOOTER */
 
 .footer{
-background:#111827;
+background:#0f172a;
 color:white;
-padding:40px 20px;
+padding:70px 20px 30px;
 text-align:center;
-margin-top:40px;
+}
+
+.footer h3{
+font-size:30px;
+margin-bottom:15px;
 }
 
 .footer p{
@@ -297,138 +491,130 @@ line-height:1.8;
 }
 
 .footer-links{
-margin:15px 0;
+margin:25px 0;
 }
 
 .footer-links a{
 color:white;
-margin:0 10px;
+margin:0 12px;
 text-decoration:none;
+transition:0.3s;
 }
 
 .footer-links a:hover{
-color:#22c55e;
+color:#f97316;
+}
+/* FOOTER GRID */
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:40px;
+margin-bottom:50px;
+text-align:left;
+}
+
+.footer-box h3,
+.footer-box h4{
+margin-bottom:18px;
+color:white;
+}
+
+.footer-box p{
+color:#cbd5e1;
+line-height:1.8;
+}
+
+.footer-box a{
+display:block;
+color:#cbd5e1;
+text-decoration:none;
+margin-bottom:12px;
+transition:0.3s;
+}
+
+.footer-box a:hover{
+color:#f97316;
+padding-left:5px;
+}
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,0.1);
+padding-top:30px;
+text-align:center;
+}
+/* MOBILE */
+
+@media(max-width:768px){
+
+.navbar{
+flex-direction:column;
+align-items:flex-start;
+padding:20px;
+}
+
+.nav-links{
+margin-top:15px;
+flex-direction:column;
+align-items:flex-start;
+width:100%;
+}
+
+header{
+padding:70px 20px;
+}
+
+header h1{
+font-size:34px;
+}
+
+header p{
+font-size:15px;
 }
 
 .search-box{
-flex-wrap:nowrap;
-padding:0 10px;
+flex-direction:column;
 }
 
-.search-box input{
-width:100%;
-min-width:0;
-font-size:13px;
-}
-
+.search-box input,
 .search-btn{
-padding:13px 14px;
-font-size:13px;
-flex-shrink:0;
+width:100%;
 }
 
-.suggestions-box{
-width:90%;
-left:5%;
-top:58px;
+.section-title h2{
+font-size:30px;
 }
 
-.btn{
-font-size:13px;
+}
+/* ARTICLE CARDS */
+
+.article-card{
+padding:0;
+overflow:hidden;
 }
 
-/* NAVBAR CONTAINER */
-.navbar{
-    background: #111827; /* matches header */
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    width:100%;
-    box-sizing:border-box;
+.article-card img{
+width:100%;
+height:230px;
+object-fit:cover;
+display:block;
 }
 
-/* LOGO */
-.logo img{
-    height:40px;
-    width:auto;
+.article-content{
+padding:25px;
 }
 
-/* NAV LINKS */
-.nav-links{
-    display:flex;
-    align-items:center;
+.article-content h3{
+margin-bottom:14px;
+font-size:22px;
+line-height:1.5;
 }
 
-/* LINK STYLE */
-.nav-links a{
-    color:white;
-    margin-left:20px;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:500;
-    position:relative;
-    transition:0.3s;
-    word-wrap:break-word;  
-}
-
-/* HOVER EFFECT (underline animation) */
-.nav-links a::after{
-    content:"";
-    position:absolute;
-    width:0%;
-    height:2px;
-    background:#22c55e;
-    left:0;
-    bottom:-4px;
-    transition:0.3s;
-}
-
-.nav-links a:hover::after{
-    width:100%;
-}
-
-/* HOVER COLOR */
-.nav-links a:hover{
-    color:#d1fae5;
-}
-
-/* ACTIVE LINK (optional) */
-.nav-links a.active{
-    color:#22c55e;
-}
-
-/* MOBILE RESPONSIVE */
-@media(max-width:768px){
-    body{
-        padding:0;
-        margin:0;
-    }
-    .navbar{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .nav-links{
-        display:flex;           /* SHOW MENU */
-        flex-direction:column;  /* vertical menu */
-        width:100%;
-        margin-top:10px;
-    }
-
-    .nav-links a{
-        margin:8px 0;
-        padding:8px 0;
-    }
-html, body{
-    overflow-x: hidden;
-}
-
-
+.article-content p{
+color:#475569;
+line-height:1.8;
+margin-bottom:20px;
+}  
 </style>
 
 </head>
@@ -439,36 +625,81 @@ html, body{
 
 <nav class="navbar">
 
-  <div class="logo">
-    <a href="index.html">
-      <img src="logo.png" alt="Vijay Jobs Logo">
-    </a>
-  </div>
+<div class="logo">
 
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="latest-jobs.html">Latest Jobs</a>
-    <a href="student-deals.html">Student Deals</a>
-     <a href="ai-generator.html">AI Generator</a>  
-     <a href="tools.html">Tools</a> 
-    <a href="about.html">About</a>
-    <a href="privacy-policy.html">Privacy</a>
-    <a href="contact.html">Contact Us</a>
-  </div>
+<a href="index.html">
+
+<img src="logo.png"
+alt="Vijay Jobs Logo">
+
+</a>
+
+</div>
+
+<div class="nav-links">
+
+<a href="index.html">Home</a>
+
+<a href="latest-jobs.html">Latest Jobs</a>
+
+<a href="student-deals.html">Student Deals</a>
+
+<a href="ai-generator.html">AI Generator</a>
+
+<a href="tools.html">Tools</a>
+
+<a href="about.html">About</a>
+
+<a href="privacy-policy.html">Privacy</a>
+
+<a href="contact.html">Contact</a>
+
+</div>
 
 </nav>
 
-<!-- HEADER -->
+<!-- HERO -->
 
 <header>
 
+<div class="hero-badge">
+
+🔥 Daily Updated Government Jobs Portal
+
+</div>
+
 <h1>
-Latest Government Job Updates in India
+
+Latest Government Jobs 2026 Updates
+
 </h1>
 
 <p>
-Daily updated government job listings including SSC, Railway, Gujarat and banking jobs.
+
+Find latest SSC, Railway, Gujarat Government, Banking,
+Police, Defence, Clerk, Data Entry and State Government Jobs.
+
 </p>
+
+<div class="hero-buttons">
+
+<a href="latest-jobs.html"
+class="hero-btn primary-btn">
+
+Latest Jobs
+
+</a>
+
+<a href="contact.html"
+class="hero-btn secondary-btn">
+
+Contact Us
+
+</a>
+
+</div>
+
+<!-- TICKER -->
 
 <div class="news-ticker">
 
@@ -483,27 +714,44 @@ id="tickerText">
 
 </header>
 
-<!-- CATEGORY BUTTONS -->
+<!-- CATEGORY -->
 
-<div style="text-align:center; margin:15px;">
+<div class="category-wrapper">
 
- <a class="btn" href="10th-pass-jobs.html">10th Pass Jobs</a>
-  <a class="btn" href="12th-pass-jobs.html">12th Pass Jobs</a>
-  <a class="btn" href="latest-jobs.html">Latest Jobs</a>
-  <a class="btn" href="clerk-jobs.html">Clerk Jobs</a>
-   <a class="btn" href="police-jobs.html">Police Jobs</a>
-   <a class="btn" href="engineer-jobs.html">Engineer Jobs</a>
-   <a class="btn" href="bank-jobs.html">Bank Jobs</a>
-   <a class="btn" href="teacher-jobs.html">Teacher Jobs</a>
-   <a class="btn" href="gujarat-jobs.html">Gujarat Jobs</a>
-   <a class="btn" href="railway-jobs.html">Railway Jobs</a>
-   <a class="btn" href="ssc-jobs.html">SSC Jobs</a>
-    <a class="btn" href="data-entry-jobs.html">Data Entry Jobs</a>
-   <a class="btn" href="peon-jobs.html">Peon Jobs</a> 
-   <a class="btn" href="gpsc-jobs.html">GPSC-Jobs</a>
-   <a class="btn" href="nursing-jobs.html">Nursing-Jobs</a>
-   <a class="btn" href="tools.html">🛠 Free Tools</a>
-   <a class="btn" href="student-deals.html">🛒 Student Deals</a>
+<a class="btn" href="10th-pass-jobs.html">10th Pass Jobs</a>
+
+<a class="btn" href="12th-pass-jobs.html">12th Pass Jobs</a>
+
+<a class="btn" href="latest-jobs.html">Latest Jobs</a>
+
+<a class="btn" href="clerk-jobs.html">Clerk Jobs</a>
+
+<a class="btn" href="police-jobs.html">Police Jobs</a>
+
+<a class="btn" href="engineer-jobs.html">Engineer Jobs</a>
+
+<a class="btn" href="bank-jobs.html">Bank Jobs</a>
+
+<a class="btn" href="teacher-jobs.html">Teacher Jobs</a>
+
+<a class="btn" href="gujarat-jobs.html">Gujarat Jobs</a>
+
+<a class="btn" href="railway-jobs.html">Railway Jobs</a>
+
+<a class="btn" href="ssc-jobs.html">SSC Jobs</a>
+
+<a class="btn" href="data-entry-jobs.html">Data Entry Jobs</a>
+
+<a class="btn" href="peon-jobs.html">Peon Jobs</a>
+
+<a class="btn" href="gpsc-jobs.html">GPSC Jobs</a>
+
+<a class="btn" href="nursing-jobs.html">Nursing Jobs</a>
+
+<a class="btn" href="tools.html">🛠 Free Tools</a>
+
+<a class="btn" href="student-deals.html">🛒 Student Deals</a>
+
 </div>
 
 <!-- SEARCH -->
@@ -528,6 +776,20 @@ id="suggestionsBox">
 
 </div>
 
+<!-- JOB TITLE -->
+
+<div class="section-title">
+
+<h2>
+Latest Government Jobs
+</h2>
+
+<p>
+Daily updated recruitment notifications from India
+</p>
+
+</div>
+
 <!-- JOBS -->
 
 <div class="container"
@@ -537,46 +799,286 @@ Loading...
 
 </div>
 
+<!-- INFO SECTION -->
+
+<section class="info-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+Career Guidance & Information
+</h2>
+
+<p>
+Helpful content for students and job seekers
+</p>
+
+</div>
+
+<div class="info-grid">
+
+<div class="info-card">
+
+<h3>
+SSC Preparation
+</h3>
+
+<p>
+Get preparation tips, syllabus updates and exam guidance for SSC exams.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>
+Railway Recruitment
+</h3>
+
+<p>
+Find latest railway jobs, admit cards and recruitment notifications.
+</p>
+
+</div>
+
+<div class="info-card">
+
+<h3>
+Government Career Guide
+</h3>
+
+<p>
+Learn about the best government job opportunities after 10th, 12th and graduation.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- CAREER GUIDANCE SECTION -->
+
+<section class="info-section">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>
+Career Guidance & Current Affairs
+</h2>
+
+<p>
+Helpful articles for exam preparation
+</p>
+
+</div>
+
+<div class="info-grid">
+
+<!-- CARD 1 -->
+
+<div class="card article-card">
+
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop"
+alt="SSC Preparation">
+
+<div class="article-content">
+
+<h3>
+How To Prepare For SSC CGL 2026
+</h3>
+
+<p>
+Complete preparation strategy, study plan, books and tips for SSC CGL beginners.
+</p>
+
+<a href="ssc-preparation.html"
+class="view-btn">
+
+Read More
+
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 2 -->
+
+<div class="card article-card">
+
+<img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=1200&auto=format&fit=crop"
+alt="Government Jobs">
+
+<div class="article-content">
+
+<h3>
+Best Government Jobs After BCA
+</h3>
+
+<p>
+Explore top government career opportunities for BCA students in India.
+</p>
+
+<a href="bca-government-jobs.html"
+class="view-btn">
+
+Read More
+
+</a>
+
+</div>
+
+</div>
+
+<!-- CARD 3 -->
+
+<div class="card article-card">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop"
+alt="Current Affairs">
+
+<div class="article-content">
+
+<h3>
+Daily Current Affairs 2026
+</h3>
+
+<p>
+Latest India and world current affairs updates for competitive exams preparation.
+</p>
+
+<a href="current-affairs.html"
+class="view-btn">
+
+Read More
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
 <!-- FOOTER -->
 
 <footer class="footer">
+
+<div class="container">
+
+<div class="footer-grid">
+
+<!-- ABOUT -->
+
+<div class="footer-box">
 
 <h3>
 Vijay Job Portal
 </h3>
 
 <p>
-Find latest government jobs in India.
+Find latest government jobs, SSC jobs, railway jobs, banking jobs,
+Gujarat jobs, admit cards, results and career guidance updates.
 </p>
-
-<div class="footer-links">
-
-<a href="about.html">
-About
-</a>
-
-<a href="privacy-policy.html">
-Privacy
-</a>
-
-<a href="contact.html">
-Contact
-</a>
 
 </div>
 
+<!-- QUICK LINKS -->
+
+<div class="footer-box">
+
+<h4>
+Quick Links
+</h4>
+
+<a href="index.html">Home</a>
+
+<a href="latest-jobs.html">Latest Jobs</a>
+
+<a href="current-affairs.html">Current Affairs</a>
+
+<a href="admit-card.html">Admit Card</a>
+
+<a href="results.html">Results</a>
+
+</div>
+
+<!-- JOB CATEGORIES -->
+
+<div class="footer-box">
+
+<h4>
+Job Categories
+</h4>
+
+<a href="ssc-jobs.html">SSC Jobs</a>
+
+<a href="railway-jobs.html">Railway Jobs</a>
+
+<a href="bank-jobs.html">Bank Jobs</a>
+
+<a href="police-jobs.html">Police Jobs</a>
+
+<a href="gujarat-jobs.html">Gujarat Jobs</a>
+
+</div>
+
+<!-- IMPORTANT -->
+
+<div class="footer-box">
+
+<h4>
+Important Pages
+</h4>
+
+<a href="about.html">About Us</a>
+
+<a href="privacy-policy.html">Privacy Policy</a>
+
+<a href="contact.html">Contact Us</a>
+
+<a href="disclaimer.html">Disclaimer</a>
+
+<a href="terms.html">Terms & Conditions</a>
+
+</div>
+
+</div>
+
+<!-- DISCLAIMER -->
+
+<div class="footer-bottom">
+
 <p>
+
 ⚠ Disclaimer:
-We are not a government website.
+We are not a government website and do not represent any government organization.
+
 </p>
 
 <br>
 
 <p>
-© 2026 Vijay Job Portal
+
+© 2026 Vijay Job Portal. All Rights Reserved.
+
 </p>
 
+</div>
+
+</div>
+
 </footer>
+<!-- SCRIPT -->
 
 <script>
 
@@ -661,12 +1163,12 @@ ${job.desc}
 </p>
 
 <small>
-${job.date}
+📅 ${job.date}
 </small>
 
 <br><br>
 
-<a class="btn"
+<a class="view-btn"
 href="job-detail.html?id=${index}">
 
 View Details
